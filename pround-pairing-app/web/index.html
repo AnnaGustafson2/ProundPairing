@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Club Pairing App</title>
+    <title>Pround Pairing App</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,27 +16,6 @@
                 <p class="muted">Loading members…</p>
             </div>
             <button id="start-session-btn" disabled>Start Session</button>
-        </section>
-
-        <section id="constraints-section" class="hidden">
-            <h2>2. Pairing rules for today</h2>
-            <div class="constraint-form">
-                <select id="constraint-type">
-                    <option value="PAIR">Pair together</option>
-                    <option value="AVOID">Keep apart</option>
-                </select>
-                <select id="member-a"></select>
-                <span>and</span>
-                <select id="member-b"></select>
-                <button id="add-constraint-btn">Add</button>
-            </div>
-            <ul id="constraint-list"></ul>
-        </section>
-
-        <section id="generate-section" class="hidden">
-            <h2>3. Generate groups</h2>
-            <button id="generate-btn">Generate Groups</button>
-            <div id="results"></div>
         </section>
 
         <p id="status-message" class="muted"></p>

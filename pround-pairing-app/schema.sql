@@ -16,11 +16,3 @@ CREATE TABLE attendance (
     member_id INTEGER NOT NULL REFERENCES members(id),
     PRIMARY KEY (session_id, member_id)
 );
-
-CREATE TABLE constraints (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    session_id INTEGER REFERENCES sessions(id),  -- NULL = permanent constraint
-    type TEXT NOT NULL CHECK (type IN ('PAIR', 'AVOID')),
-    member_a_id INTEGER NOT NULL REFERENCES members(id),
-    member_b_id INTEGER NOT NULL REFERENCES members(id)
-);
