@@ -5,14 +5,18 @@
   font-display: swap;
   src: url('/fonts/plus-jakarta-sans-v12-latin-200.woff2') format('woff2');
 }
+
+/* For the header and general page */
 html {
     margin: 0;
 }
 
 body {
+    margin: 0;
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-weight: 200;
-    margin: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .header-bar h1 {
@@ -26,58 +30,105 @@ body {
    font-size: 3rem;
 }
 
+.gold-button {
+    background-color: #EAAA00;
+    border-radius: 5px;
+    color: #000000;
+    display: inline-block;
+    text-align: center;
+    padding: 0.5rem 0.75rem;
+    min-width: 7rem;
+    box-sizing: border-box;
+}
+
 /* For the Input Section */
 label {
     font-weight: 400;
     margin-right: 1rem;
 }
 
-.round {
-display: flex;
-   border-color: #000000;
-   border: 1px solid #000000;
-   gap: 3rem;
-   height: 5rem;
-}
-.debater-landing-zone {
-    flex: 1;
-    min-height: 100%;
-    border: 1px dashed #999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-/*
 #member-container {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 3rem;
     width: 100%;
-} 
+    padding: 0.5rem;
+}
 
-#member-inputs,
-#new-member-inputs {
-    display: flex;
+#current-name {
+    min-width: 10rem;
+    min-height: 4rem;
+    text-align: center;
+    display: inline-flex;
+    justify-content: center;
     align-items: center;
+    border-color: #000000;
+    border: 1px solid #000000;
+    border-radius: 5px;
 }
 
-#member-inputs form,
-#new-member-inputs form {
+#buttons-container {
     display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+#add-row-one, #add-row-two {
+    display: flex;
+    gap: 3rem;
+}
+
+/* For the Participants */
+.participants-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem;
+    padding: 2rem;
+}
+
+.draggable-debater {
+    min-width: 8rem;
+    min-height: 3rem;
+    display: inline-flex;
+    justify-content: center;
     align-items: center;
-    gap: 0.75rem;
+    position: relative;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    padding: 0.25rem;
 }
 
-#new-member-inputs {
-    gap: 0.75rem;
-} */
-
-#add-buttons {
-    gap: 0.5rem;
+.draggable-debater button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 200;
+    color: #9D2235;
+    padding: 0;
+    position: absolute;
+    right: 0.2rem;
+    top: 0.1rem;
 }
 
-/* For the Participants and Rounds Section */
+.neutral-debater {
+    background-color: #DDABDD;
+}
+
+.gov-debater {
+    background-color: #FC968C;
+}
+
+.opp-debater {
+    background-color: #89CFF0;
+}
+
+.judge-debater {
+    background-color: #AFD9AE;
+}
+
 h2 {
     font-size: 1rem;
     text-align: center;
@@ -86,4 +137,82 @@ h2 {
 h3 {
     font-size: 0.75rem;
     text-align: center;
+}
+
+/* For the Rounds Section *//* For the Rounds Section */
+.round {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+    position: relative;
+    border: 1px solid #000000;
+    padding: 0.5rem;
+    padding-top: 4.5rem;
+    flex: 0 0 22rem;
+    box-sizing: border-box;
+}
+
+.judge-box {
+    position: absolute;
+    top: 0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    min-height: 3rem;
+    min-width: 9rem;
+    border: 1px dashed #999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.side-one, .side-two {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.side-one .debater-landing-zone,
+.side-two .debater-landing-zone {
+    flex: 0 0 3rem;
+    min-width: 9rem;
+    min-height: 3rem;
+    border: 1px dashed #999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rounds-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem;
+    max-width: 72rem;
+    margin: 0 auto;
+}
+
+.round button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 200;
+    color: #9D2235;
+    padding: 0;
+    position: absolute;
+    right: 0.2rem;
+    top: 0.1rem;
+}
+
+#add-round {
+   margin-left: auto;
+   margin-right: 0;
+   width: fit-content; 
+}
+
+#save-attendance {
+   margin-left: auto;
+   margin-right: auto;
+   width: fit-content; 
 }

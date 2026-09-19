@@ -19,33 +19,45 @@
                 <label for="member-names">Enter Member Names:</label>
                 <input type="text" id="member-names" name="member-names">
             </form>
-            <div id="add-buttons">
-                <p id="current-name"></p>
-                <button id="neutral-add">Add</button>
-                <button id="gov-add">Add as GOV</button>
-                <button>Add as Judge</button>
-                <button>Add as OPP</button>
+            <p id="current-name"></p>
+            <div id="add-buttons-container">
+                <div id="add-row-one">
+                    <button class="gold-button" id="neutral-add">Add</button>
+                    <button class="gold-button" id="gov-add">Add as GOV</button>
+                </div>
+                <div id="add-row-two">
+                    <button class="gold-button" id="judge-add">Add as Judge</button>
+                    <button class="gold-button" id="opp-add">Add as OPP</button>
+                </div>
             </div>
         </section>
-
-        <section class="participants-container">
+        
+        <section id="dragging-container">
             <h2>Participants</h2>
             <h3>Drag debaters together to form teams</h3>
-        </section>
+            <section class="participants-container"></section>
 
-        <section class="rounds-container">
             <h2>Round(s)</h2>
             <h3>Drop teams or debaters into a round</h3>
-            <div class="round">
-                <div class="debater-landing-zone">Speaker One</div>
-                <div class="debater-landing-zone">Speaker Two</div>
-                <div class="debater-landing-zone">Opponent One</div>
-                <div class="debater-landing-zone">Opponent Two</div>
-                <div class="debater-landing-zone">Judge</div>
-            </div>
+            <section class="rounds-container">
+                <div class="round">
+                    <div class="side-one">
+                        <div class="debater-landing-zone"></div>
+                        <div class="debater-landing-zone"></div>
+                    </div>
+                    <div class="debater-landing-zone judge-box"></div>
+                    <div class="side-two">
+                        <div class="debater-landing-zone"></div>
+                        <div class="debater-landing-zone"></div>
+                    </div>
+                    <button class="delete-round-button" aria-label="Remove Round">x</button>
+                </div>
+            </section>
+        
         </section>
-        <button>Save Attendance</button>
-        <button id="add-round">Add Round</button>
+        
+        <button class="gold-button" id="add-round">Add New Round</button>
+        <button class="gold-button" id="save-attendance">Save Attendance</button>
         <script src="app.js"></script>
     </body>
 </html>
