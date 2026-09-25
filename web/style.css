@@ -41,6 +41,15 @@ body {
     box-sizing: border-box;
 }
 
+#utility-buttons {
+   margin: 0;
+   display: flex;
+   justify-content: right;
+   align-items: center;   
+   gap: 1rem;
+   padding: 1rem 1rem 0rem 1rem;
+}
+
 /* For the Input Section */
 label {
     font-weight: 400;
@@ -76,6 +85,7 @@ label {
 #add-row-one, #add-row-two {
     display: flex;
     gap: 3rem;
+    margin-bottom: 0.25rem;
 }
 
 /* For the Participants */
@@ -118,11 +128,11 @@ label {
 }
 
 .gov-debater {
-    background-color: #FC968C;
+    background-color: #89CFF0;
 }
 
 .opp-debater {
-    background-color: #89CFF0;
+    background-color: #FC968C;
 }
 
 .judge-debater {
@@ -205,14 +215,11 @@ h3 {
     top: 0.1rem;
 }
 
-#add-round {
-   margin-left: auto;
-   margin-right: 0;
-   width: fit-content; 
+#add-round-container {
+   display: flex;
+   justify-content: center;
+   padding: 1rem;
 }
-
-#save-attendance {
-   margin-left: auto;
-   margin-right: auto;
+#add-round {
    width: fit-content; 
 }

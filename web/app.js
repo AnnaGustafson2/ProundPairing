@@ -25,13 +25,7 @@ const oppAdd = document.getElementById('opp-add');
 const judgeAdd = document.getElementById('judge-add');
 const participantsContainer = document.querySelector('.participants-container');
 
-function addDebater(tag) {
-    const current_member = document.getElementById("current-name")
-    const current_member_name = current_member.textContent;
-    if (current_member_name === "") {
-        alert("Enter a Member Name!");
-        return;
-    }
+function addDebater(tag, current_member_name) {
     const newDebater = document.createElement('div');
     newDebater.classList.add(tag, 'draggable-debater');
     newDebater.setAttribute('draggable', 'true');
@@ -54,24 +48,46 @@ function addDebater(tag) {
 
     participantsContainer.appendChild(newDebater);
 
+    const current_member = document.getElementById("current-name");
     current_member.textContent = "";
-    memberInputBox.value = "";
+}
+
+function getDebaterName() {
+    const current_member = document.getElementById("current-name")
+    const current_member_name = current_member.textContent;
+    if (current_member_name === "") {
+        alert("Enter a Member Name!");
+        return null;
+    }
+    else return current_member_name;
 }
 
 neutralAdd.addEventListener('click', () => {
-    addDebater('neutral-debater');
+    const current_member_name = getDebaterName();
+    if (current_member_name != null) {
+        addDebater('neutral-debater', current_member_name);
+    }
 });
 
 govAdd.addEventListener('click', () => {
-    addDebater('gov-debater');
+    const current_member_name = getDebaterName();
+    if (current_member_name != null) {
+        addDebater('gov-debater', current_member_name);
+    }
 });
 
 oppAdd.addEventListener('click', () => {
-    addDebater('opp-debater');
+    const current_member_name = getDebaterName();
+    if (current_member_name != null) {
+        addDebater('opp-debater', current_member_name);
+    }
 });
 
 judgeAdd.addEventListener('click', () => {
-    addDebater('judge-debater');
+    const current_member_name = getDebaterName();
+    if (current_member_name != null) {
+        addDebater('judge-debater', current_member_name);
+    }
 });
 
 /* The following handles the draggable drop events */
@@ -215,3 +231,41 @@ saveAttendence.addEventListener('click', async function() {
         alert('Error saving attendance: ' + err.message);
     }
 });
+
+/* The following handles populating the debaters from the spreadsheet */
+const populateMembers = document.getElementById('populate-add');
+
+populateMembers.addEventListener('click', async function() {
+    const data = await getSheetData();
+    data.shift();
+    for (const member of data) {
+        if (member[2] == "Debating") {
+            addDebater('neutral-debater', member[1]);
+        } else {
+            addDebater('judge-debater', member[1]);
+        } 
+    }
+});
+
+async function getSheetData() {
+  try {
+    const response = await fetch(SPREADSHEET_URL);
+    const csvText = await response.text();
+    return parseCSV(csvText);
+  } catch (error) {
+    console.error('Error fetching the sheet:', error);
+    return [];
+  }
+}
+
+const SHEET_ID = '1RIo3Zv4hGx219aceSZw_Xyhhn_0w1y9gxJRP17H_n7c';
+const GID = '1273919032';
+const SPREADSHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=${GID}`;
+
+function parseCSV(text) {
+  return text.split('\n').map(row => {
+    return row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(cell => 
+      cell.replace(/^"|"$/g, '').trim()
+    );
+  });
+}
