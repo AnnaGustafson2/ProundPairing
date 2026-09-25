@@ -35,6 +35,7 @@ function addDebater(tag) {
     const newDebater = document.createElement('div');
     newDebater.classList.add(tag, 'draggable-debater');
     newDebater.setAttribute('draggable', 'true');
+    newDebater.dataset.name = current_member_name;
 
     const name = document.createElement('span');
     name.textContent = current_member_name;
@@ -164,7 +165,7 @@ roundAdd.addEventListener('click', () => {
 
     newRound.appendChild(deleteButton);
     
-    roundContainer.appendChild(newRound);
+    roundContainer.prepend(newRound);
 });
 
 const button = document.querySelector('.delete-round-button');
@@ -179,13 +180,12 @@ const saveAttendence = document.getElementById('save-attendance');
 saveAttendence.addEventListener('click', async function() {
     let attending = [];
     const debaters = roundContainer.querySelectorAll('.draggable-debater');
-    for (const debater of debaters) {
-        let name = debater.textContent.trim();
-        name = name.replace(/x/g, '').trim();
-        if (name !== "") {
-            attending.push(name);
+        for (const debater of debaters) {
+            const name = debater.dataset.name;
+            if (name) {
+                attending.push(name);
+            }
         }
-    }
 
     const today = new Date().toISOString().slice(0, 10);
 
