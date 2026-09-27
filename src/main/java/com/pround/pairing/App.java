@@ -58,6 +58,26 @@ public class App {
             ctx.json(matches);
         });
 
+        app.get("/api/members", ctx -> {
+            String sql = "SELECT id, name FROM members ORDER BY name";
+            List<MemberDTO> members = new ArrayList<>();
+            try (Connection conn = Database.connect();
+                PreparedStatement stmt = conn.prepareStatement(sql);
+                ResultSet rs = stmt.executeQuery()) {
+
+                while (rs.next()) {
+                    MemberDTO m = new MemberDTO();
+                    m.id = rs.getInt("id");
+                    m.name = rs.getString("name");
+                    members.add(m);
+                }
+                ctx.json(members);
+
+            } catch (SQLException e) {
+                ctx.status(500).json(new HealthResponse("error", e.getMessage()));
+            }
+        });
+
         app.post("/api/attendance", App::saveAttendance);
 
         System.out.println("Server running at http://localhost:7070");
@@ -152,5 +172,10 @@ public class App {
     static class AttendanceResponse {
         public Long sessionId;
         public List<String> notFound;
+    }
+
+    static class MemberDTO {
+        public int id;
+        public String name;
     }
 }

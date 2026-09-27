@@ -233,29 +233,94 @@ saveAttendence.addEventListener('click', async function() {
 });
 
 /* The following handles populating the debaters from the spreadsheet */
+function levenshteinDistance(a, b) {
+    a = a.toLowerCase().trim();
+    b = b.toLowerCase().trim();
+
+    const matrix = Array.from({ length: a.length + 1 }, () => new Array(b.length + 1).fill(0));
+
+    for (let i = 0; i <= a.length; i++) matrix[i][0] = i;
+    for (let j = 0; j <= b.length; j++) matrix[0][j] = j;
+
+    for (let i = 1; i <= a.length; i++) {
+        for (let j = 1; j <= b.length; j++) {
+            const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+            matrix[i][j] = Math.min(
+                matrix[i - 1][j] + 1,
+                matrix[i][j - 1] + 1,  
+                matrix[i - 1][j - 1] + cost 
+            );
+        }
+    }
+    return matrix[a.length][b.length];
+}
+
+function findBestMatch(inputName, rosterNames) {
+    let best = null;
+    for (const rosterName of rosterNames) {
+        const distance = levenshteinDistance(inputName, rosterName);
+        if (best === null || distance < best.distance) {
+            best = { name: rosterName, distance };
+        }
+    }
+    // Threshold: allow roughly 1 typo per 2 characters, minimum of 2.
+    const threshold = Math.max(2, Math.floor(inputName.length / 2));
+    if (best && best.distance === 0) return { name: best.name, exact: true };
+    if (best && best.distance <= threshold) return { name: best.name, exact: false };
+    return null;
+}
+
 const populateMembers = document.getElementById('populate-add');
 
 populateMembers.addEventListener('click', async function() {
+    const res = await fetch('/api/members');
+    const roster = await res.json();
+    const rosterNames = roster.map(m => m.name);
+
     const data = await getSheetData();
     data.shift();
+
+    const skipped = [];
+
     for (const member of data) {
-        if (member[2] == "Debating") {
-            addDebater('neutral-debater', member[1]);
+        const importedName = member[1];
+        const match = findBestMatch(importedName, rosterNames);
+
+        let resolvedName;
+
+        if (match && match.exact) {
+            resolvedName = match.name;
+        } else if (match) {
+            const confirmed = confirm(
+                `No exact match for "${importedName}". Did you mean "${match.name}"?`
+            );
+            if (confirmed) {
+                resolvedName = match.name;
+            } else {
+                skipped.push(importedName);
+                continue;
+            }
         } else {
-            addDebater('judge-debater', member[1]);
-        } 
+            skipped.push(importedName);
+            continue;
+        }
+
+        if (member[2] == "Debating") {
+            addDebater('neutral-debater', resolvedName);
+        } else {
+            addDebater('judge-debater', resolvedName);
+        }
+    }
+
+    if (skipped.length > 0) {
+        alert('Skipped (no match found in roster):\n' + skipped.join('\n'));
     }
 });
 
 async function getSheetData() {
-  try {
     const response = await fetch(SPREADSHEET_URL);
-    const csvText = await response.text();
-    return parseCSV(csvText);
-  } catch (error) {
-    console.error('Error fetching the sheet:', error);
-    return [];
-  }
+    const text = await response.text();
+    return parseCSV(text);
 }
 
 const SHEET_ID = '1RIo3Zv4hGx219aceSZw_Xyhhn_0w1y9gxJRP17H_n7c';
