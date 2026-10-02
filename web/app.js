@@ -305,7 +305,7 @@ populateMembers.addEventListener('click', async function() {
             continue;
         }
 
-        if (member[2] == "Debating") {
+        if (member[3] == "Debate") {
             addDebater('neutral-debater', resolvedName);
         } else {
             addDebater('judge-debater', resolvedName);
@@ -323,8 +323,8 @@ async function getSheetData() {
     return parseCSV(text);
 }
 
-const SHEET_ID = '1RIo3Zv4hGx219aceSZw_Xyhhn_0w1y9gxJRP17H_n7c';
-const GID = '1273919032';
+const SHEET_ID = '1bYVDjQ8WVQDM46jdIwnqZqq0IzwBuDG7KlcGgeRw_UI';
+const GID = '1616502481';
 const SPREADSHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=${GID}`;
 
 function parseCSV(text) {
