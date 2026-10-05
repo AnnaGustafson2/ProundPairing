@@ -7,7 +7,7 @@ CREATE TABLE members (
 
 CREATE TABLE sessions (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    session_date TEXT NOT NULL,         -- store as 'YYYY-MM-DD'
+    session_date TEXT NOT NULL,
     label TEXT
 );
 
