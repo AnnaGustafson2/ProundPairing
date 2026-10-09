@@ -41,6 +41,10 @@ body {
     box-sizing: border-box;
 }
 
+.gold-button.grey {
+    opacity: 0.65;
+}
+
 #utility-buttons {
    margin: 0;
    display: flex;
@@ -170,6 +174,8 @@ h3 {
     transform: translateX(-50%);
     min-height: 3rem;
     min-width: 9rem;
+    padding: 0 0.5rem;
+    box-sizing: border-box;
     border: 1px dashed #999;
     display: flex;
     align-items: center;

@@ -5,6 +5,12 @@ let currentQuery = '';
 let timerID;
 let searchRequestId = 0;
 
+const neutralAdd = document.getElementById('neutral-add');
+const govAdd = document.getElementById('gov-add');
+const oppAdd = document.getElementById('opp-add');
+const judgeAdd = document.getElementById('judge-add');
+const participantsContainer = document.querySelector('.participants-container');
+
 if (memberInputBox) {
     memberInputBox.addEventListener('input', () => {
         clearTimeout(timerID);
@@ -19,6 +25,13 @@ if (memberInputBox) {
                     // (another keystroke, or an Add click) while this was in flight.
                     if (thisRequestId === searchRequestId) {
                         document.getElementById("current-name").textContent = data[0] || "";
+                        
+                        const opacity = data[0] ? "1" : "0.65";
+
+                        govAdd.style.opacity = opacity;
+                        neutralAdd.style.opacity = opacity;
+                        oppAdd.style.opacity = opacity;
+                        judgeAdd.style.opacity = opacity;
                     }
                 });
         }, 300);
@@ -26,11 +39,6 @@ if (memberInputBox) {
 }
 
 /* The following handles the Add Button(s) */
-const neutralAdd = document.getElementById('neutral-add');
-const govAdd = document.getElementById('gov-add');
-const oppAdd = document.getElementById('opp-add');
-const judgeAdd = document.getElementById('judge-add');
-const participantsContainer = document.querySelector('.participants-container');
 
 const hoverConfigs = [
   { element: neutralAdd, color: "#DDABDD" },
@@ -76,6 +84,11 @@ function clearNameInput() {
 }
 
 function addDebater(tag, current_member_name, silent = false) {
+    govAdd.style.opacity = "0.65"; 
+    neutralAdd.style.opacity = "0.65"; 
+    oppAdd.style.opacity = "0.65"; 
+    judgeAdd.style.opacity = "0.65"; 
+
     if (isAlreadyAdded(current_member_name)) {
         if (!silent) {
             alert(`${current_member_name} has already been added.`);
