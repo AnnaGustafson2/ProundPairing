@@ -9,6 +9,7 @@ const neutralAdd = document.getElementById('neutral-add');
 const govAdd = document.getElementById('gov-add');
 const oppAdd = document.getElementById('opp-add');
 const judgeAdd = document.getElementById('judge-add');
+const noPrefAdd = document.getElementById('no-pref-add');
 const participantsContainer = document.querySelector('.participants-container');
 
 if (memberInputBox) {
@@ -32,6 +33,7 @@ if (memberInputBox) {
                         neutralAdd.style.opacity = opacity;
                         oppAdd.style.opacity = opacity;
                         judgeAdd.style.opacity = opacity;
+                        noPrefAdd.style.opacity = opacity;
                     }
                 });
         }, 300);
@@ -45,6 +47,7 @@ const hoverConfigs = [
   { element: govAdd,     color: "#89CFF0" },
   { element: oppAdd,     color: "#FC968C" },
   { element: judgeAdd,     color: "#AFD9AE" },
+  { element: noPrefAdd,     color: "#F2D4A3" },
 ];
 
 hoverConfigs.forEach(config => {
@@ -88,6 +91,7 @@ function addDebater(tag, current_member_name, silent = false) {
     neutralAdd.style.opacity = "0.65"; 
     oppAdd.style.opacity = "0.65"; 
     judgeAdd.style.opacity = "0.65"; 
+    noPrefAdd.style.opacity = "0.65"; 
 
     if (isAlreadyAdded(current_member_name)) {
         if (!silent) {
@@ -169,6 +173,16 @@ if (judgeAdd) {
         const current_member_name = getDebaterName();
         if (current_member_name != null) {
             addDebater('judge-debater', current_member_name);
+        }
+        document.getElementById("current-name").style.backgroundColor = ""; 
+    });
+}
+
+if (noPrefAdd) {
+    noPrefAdd.addEventListener('click', () => {
+        const current_member_name = getDebaterName();
+        if (current_member_name != null) {
+            addDebater('no-pref-debater', current_member_name);
         }
         document.getElementById("current-name").style.backgroundColor = ""; 
     });
@@ -420,8 +434,10 @@ if (populateMembers) {
 
             if (member[3] == "Debate") {
                 addDebater('neutral-debater', resolvedName, true);
-            } else {
+            } else if (member[3] == "Judge") {
                 addDebater('judge-debater', resolvedName, true);
+            } else {
+                addDebater('no-pref-debater', resolvedName, true);
             }
         }
 
