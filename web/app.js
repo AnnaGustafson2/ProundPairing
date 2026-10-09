@@ -292,7 +292,7 @@ if (saveAttendence) {
         if (!confirmed) {
             return;
         }
-        
+
         let attending = [];
         const debaters = roundContainer.querySelectorAll('.draggable-debater');
             for (const debater of debaters) {
@@ -440,13 +440,5 @@ const statistics = document.getElementById("statistics");
 if (statistics) {
     statistics.addEventListener("click", function() {
         window.location.href = "statistics.html"; 
-    });
-}
-
-const pround_pairing = document.getElementById("pround-pairing");
-
-if (pround_pairing) {
-    pround_pairing.addEventListener("click", function() {
-        window.location.href = "index.html"; 
     });
 }
