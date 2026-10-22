@@ -1,0 +1,832 @@
+[
+  {
+    "id": 1,
+    "name": "Anna Gustafson",
+    "experience_level": "Varsity",
+    "years_on_team": 3,
+    "attended": 12,
+    "gender": "GM",
+    "total_sessions": 13,
+    "rate": 0.9230769230769231
+  },
+  {
+    "id": 2,
+    "name": "Jack Beery",
+    "experience_level": "Varsity",
+    "years_on_team": 3,
+    "attended": 11,
+    "gender": "Non-GM",
+    "total_sessions": 13,
+    "rate": 0.8461538461538461
+  },
+  {
+    "id": 13,
+    "name": "Pranav Sasikumar",
+    "experience_level": "Varsity",
+    "years_on_team": 3,
+    "attended": 10,
+    "gender": "Non-GM",
+    "total_sessions": 13,
+    "rate": 0.7692307692307693
+  },
+  {
+    "id": 23,
+    "name": "Suhail Al Eryani",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 9,
+    "gender": "Non-GM",
+    "total_sessions": 13,
+    "rate": 0.6923076923076923
+  },
+  {
+    "id": 3,
+    "name": "Aayush Bhargava",
+    "experience_level": "Varsity",
+    "years_on_team": 4,
+    "attended": 8,
+    "gender": "Non-GM",
+    "total_sessions": 13,
+    "rate": 0.6153846153846154
+  },
+  {
+    "id": 17,
+    "name": "Dheeraj Keshav",
+    "experience_level": "Varsity",
+    "years_on_team": 4,
+    "attended": 8,
+    "gender": "Non-GM",
+    "total_sessions": 13,
+    "rate": 0.6153846153846154
+  },
+  {
+    "id": 14,
+    "name": "Nathan Kovicak",
+    "experience_level": "Varsity",
+    "years_on_team": 2,
+    "attended": 8,
+    "gender": "Non-GM",
+    "total_sessions": 13,
+    "rate": 0.6153846153846154
+  },
+  {
+    "id": 8,
+    "name": "Pranika Singh",
+    "experience_level": "Varsity",
+    "years_on_team": 2,
+    "attended": 8,
+    "gender": "GM",
+    "total_sessions": 13,
+    "rate": 0.6153846153846154
+  },
+  {
+    "id": 7,
+    "name": "Stefano Raffo",
+    "experience_level": "Dino",
+    "years_on_team": 4,
+    "attended": 8,
+    "gender": "Non-GM",
+    "total_sessions": 13,
+    "rate": 0.6153846153846154
+  },
+  {
+    "id": 43,
+    "name": "Jaidon Faircloth-Scott",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 7,
+    "gender": "Non-GM",
+    "total_sessions": 13,
+    "rate": 0.5384615384615384
+  },
+  {
+    "id": 19,
+    "name": "Sanni Korisepati",
+    "experience_level": "Varsity",
+    "years_on_team": 3,
+    "attended": 7,
+    "gender": "GM",
+    "total_sessions": 13,
+    "rate": 0.5384615384615384
+  },
+  {
+    "id": 79,
+    "name": "Tafa Nutakor",
+    "experience_level": "Novice",
+    "years_on_team": 2,
+    "attended": 7,
+    "gender": "GM",
+    "total_sessions": 13,
+    "rate": 0.5384615384615384
+  },
+  {
+    "id": 36,
+    "name": "Angelina Afanasenka",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 6,
+    "gender": "GM",
+    "total_sessions": 13,
+    "rate": 0.46153846153846156
+  },
+  {
+    "id": 81,
+    "name": "Avay Bhandari",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 6,
+    "gender": "Non-GM",
+    "total_sessions": 13,
+    "rate": 0.46153846153846156
+  },
+  {
+    "id": 54,
+    "name": "Jeremy Wong",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 6,
+    "gender": "Non-GM",
+    "total_sessions": 13,
+    "rate": 0.46153846153846156
+  },
+  {
+    "id": 50,
+    "name": "Juha Park",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 6,
+    "gender": "Non-GM",
+    "total_sessions": 13,
+    "rate": 0.46153846153846156
+  },
+  {
+    "id": 72,
+    "name": "Rahul Ray",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 6,
+    "gender": "Non-GM",
+    "total_sessions": 13,
+    "rate": 0.46153846153846156
+  },
+  {
+    "id": 60,
+    "name": "Vihaan Iyer",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 6,
+    "gender": "Non-GM",
+    "total_sessions": 13,
+    "rate": 0.46153846153846156
+  },
+  {
+    "id": 59,
+    "name": "Anya Ottiende",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 5,
+    "gender": "GM",
+    "total_sessions": 13,
+    "rate": 0.38461538461538464
+  },
+  {
+    "id": 61,
+    "name": "Bowen Yan",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 5,
+    "gender": "Non-GM",
+    "total_sessions": 13,
+    "rate": 0.38461538461538464
+  },
+  {
+    "id": 56,
+    "name": "Danielle Keenan",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 5,
+    "gender": "GM",
+    "total_sessions": 13,
+    "rate": 0.38461538461538464
+  },
+  {
+    "id": 12,
+    "name": "Ernest Zhang",
+    "experience_level": "Varsity",
+    "years_on_team": 2,
+    "attended": 5,
+    "gender": "Non-GM",
+    "total_sessions": 13,
+    "rate": 0.38461538461538464
+  },
+  {
+    "id": 75,
+    "name": "Madison Hull",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 5,
+    "gender": "GM",
+    "total_sessions": 13,
+    "rate": 0.38461538461538464
+  },
+  {
+    "id": 49,
+    "name": "Nico Solano",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 5,
+    "gender": "Non-GM",
+    "total_sessions": 13,
+    "rate": 0.38461538461538464
+  },
+  {
+    "id": 65,
+    "name": "Riley Crane",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 5,
+    "gender": "Non-GM",
+    "total_sessions": 13,
+    "rate": 0.38461538461538464
+  },
+  {
+    "id": 20,
+    "name": "Sahithya Venkatesh",
+    "experience_level": "Varsity",
+    "years_on_team": 3,
+    "attended": 5,
+    "gender": "GM",
+    "total_sessions": 13,
+    "rate": 0.38461538461538464
+  },
+  {
+    "id": 4,
+    "name": "Kate Keller",
+    "experience_level": "Varsity",
+    "years_on_team": 2,
+    "attended": 4,
+    "gender": "GM",
+    "total_sessions": 13,
+    "rate": 0.3076923076923077
+  },
+  {
+    "id": 9,
+    "name": "Mahi Khangura",
+    "experience_level": "Varsity",
+    "years_on_team": 3,
+    "attended": 4,
+    "gender": "GM",
+    "total_sessions": 13,
+    "rate": 0.3076923076923077
+  },
+  {
+    "id": 6,
+    "name": "Nitya Matcha",
+    "experience_level": "Varsity",
+    "years_on_team": 2,
+    "attended": 4,
+    "gender": "GM",
+    "total_sessions": 13,
+    "rate": 0.3076923076923077
+  },
+  {
+    "id": 16,
+    "name": "Vasa Syomin",
+    "experience_level": "Varsity",
+    "years_on_team": 3,
+    "attended": 4,
+    "gender": "Non-GM",
+    "total_sessions": 13,
+    "rate": 0.3076923076923077
+  },
+  {
+    "id": 57,
+    "name": "Amudhan Gandhi",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 3,
+    "gender": "Non-GM",
+    "total_sessions": 13,
+    "rate": 0.23076923076923078
+  },
+  {
+    "id": 76,
+    "name": "Atharv Umap",
+    "experience_level": "Novice",
+    "years_on_team": 2,
+    "attended": 3,
+    "gender": "Non-GM",
+    "total_sessions": 13,
+    "rate": 0.23076923076923078
+  },
+  {
+    "id": 32,
+    "name": "Celina Li",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 3,
+    "gender": "GM",
+    "total_sessions": 13,
+    "rate": 0.23076923076923078
+  },
+  {
+    "id": 39,
+    "name": "Christian Once",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 3,
+    "gender": "Non-GM",
+    "total_sessions": 13,
+    "rate": 0.23076923076923078
+  },
+  {
+    "id": 38,
+    "name": "Erin Dorsey",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 3,
+    "gender": "GM",
+    "total_sessions": 13,
+    "rate": 0.23076923076923078
+  },
+  {
+    "id": 10,
+    "name": "Fatima Masood",
+    "experience_level": "Varsity",
+    "years_on_team": 3,
+    "attended": 3,
+    "gender": "GM",
+    "total_sessions": 13,
+    "rate": 0.23076923076923078
+  },
+  {
+    "id": 45,
+    "name": "Isabelle Ortiz",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 3,
+    "gender": "GM",
+    "total_sessions": 13,
+    "rate": 0.23076923076923078
+  },
+  {
+    "id": 55,
+    "name": "Isadora Kaufman",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 3,
+    "gender": "GM",
+    "total_sessions": 13,
+    "rate": 0.23076923076923078
+  },
+  {
+    "id": 78,
+    "name": "Jayr Wynn",
+    "experience_level": "Novice",
+    "years_on_team": 4,
+    "attended": 3,
+    "gender": "Non-GM",
+    "total_sessions": 13,
+    "rate": 0.23076923076923078
+  },
+  {
+    "id": 67,
+    "name": "Joseph Garrison",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 3,
+    "gender": "Non-GM",
+    "total_sessions": 13,
+    "rate": 0.23076923076923078
+  },
+  {
+    "id": 5,
+    "name": "Parth Tailor",
+    "experience_level": "Varsity",
+    "years_on_team": 2,
+    "attended": 3,
+    "gender": "Non-GM",
+    "total_sessions": 13,
+    "rate": 0.23076923076923078
+  },
+  {
+    "id": 53,
+    "name": "Zainab Odusanya",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 3,
+    "gender": "GM",
+    "total_sessions": 13,
+    "rate": 0.23076923076923078
+  },
+  {
+    "id": 37,
+    "name": "Adenike Higgins",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 2,
+    "gender": "GM",
+    "total_sessions": 13,
+    "rate": 0.15384615384615385
+  },
+  {
+    "id": 42,
+    "name": "Grace Cao",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 2,
+    "gender": "GM",
+    "total_sessions": 13,
+    "rate": 0.15384615384615385
+  },
+  {
+    "id": 35,
+    "name": "Lexi Otten",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 2,
+    "gender": "Non-GM",
+    "total_sessions": 13,
+    "rate": 0.15384615384615385
+  },
+  {
+    "id": 25,
+    "name": "Marios Kalpakis",
+    "experience_level": "Varsity",
+    "years_on_team": 2,
+    "attended": 2,
+    "gender": "Non-GM",
+    "total_sessions": 13,
+    "rate": 0.15384615384615385
+  },
+  {
+    "id": 84,
+    "name": "Thomas Dragovich",
+    "experience_level": "Dino",
+    "years_on_team": 5,
+    "attended": 2,
+    "gender": "Non-GM",
+    "total_sessions": 13,
+    "rate": 0.15384615384615385
+  },
+  {
+    "id": 47,
+    "name": "Trevor Hartman",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 2,
+    "gender": "Non-GM",
+    "total_sessions": 13,
+    "rate": 0.15384615384615385
+  },
+  {
+    "id": 24,
+    "name": "Amulya Chennamaneni",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 1,
+    "gender": "GM",
+    "total_sessions": 13,
+    "rate": 0.07692307692307693
+  },
+  {
+    "id": 40,
+    "name": "Ananya Porwal",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 1,
+    "gender": "GM",
+    "total_sessions": 13,
+    "rate": 0.07692307692307693
+  },
+  {
+    "id": 18,
+    "name": "Arav Juneja",
+    "experience_level": "Varsity",
+    "years_on_team": 3,
+    "attended": 1,
+    "gender": "Non-GM",
+    "total_sessions": 13,
+    "rate": 0.07692307692307693
+  },
+  {
+    "id": 58,
+    "name": "Ava Blanke",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 1,
+    "gender": "GM",
+    "total_sessions": 13,
+    "rate": 0.07692307692307693
+  },
+  {
+    "id": 77,
+    "name": "Calvin Chrisfield",
+    "experience_level": "Novice",
+    "years_on_team": 2,
+    "attended": 1,
+    "gender": "Non-GM",
+    "total_sessions": 13,
+    "rate": 0.07692307692307693
+  },
+  {
+    "id": 51,
+    "name": "Chikemka Kingdom-Nwankwoala",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 1,
+    "gender": "GM",
+    "total_sessions": 13,
+    "rate": 0.07692307692307693
+  },
+  {
+    "id": 44,
+    "name": "Fawzan Aslam",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 1,
+    "gender": "Non-GM",
+    "total_sessions": 13,
+    "rate": 0.07692307692307693
+  },
+  {
+    "id": 69,
+    "name": "Gabriel Jodlowsky",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 1,
+    "gender": "Non-GM",
+    "total_sessions": 13,
+    "rate": 0.07692307692307693
+  },
+  {
+    "id": 80,
+    "name": "Harika Akundi",
+    "experience_level": "Novice",
+    "years_on_team": 2,
+    "attended": 1,
+    "gender": "GM",
+    "total_sessions": 13,
+    "rate": 0.07692307692307693
+  },
+  {
+    "id": 68,
+    "name": "Heliany Hernandez",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 1,
+    "gender": "GM",
+    "total_sessions": 13,
+    "rate": 0.07692307692307693
+  },
+  {
+    "id": 29,
+    "name": "Judi Tchoudja",
+    "experience_level": "Dino",
+    "years_on_team": 5,
+    "attended": 1,
+    "gender": "Non-GM",
+    "total_sessions": 13,
+    "rate": 0.07692307692307693
+  },
+  {
+    "id": 74,
+    "name": "Kaitlyn Thomas",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 1,
+    "gender": "GM",
+    "total_sessions": 13,
+    "rate": 0.07692307692307693
+  },
+  {
+    "id": 46,
+    "name": "Katherine Rynes",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 1,
+    "gender": "GM",
+    "total_sessions": 13,
+    "rate": 0.07692307692307693
+  },
+  {
+    "id": 82,
+    "name": "Laquan McKnight",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 1,
+    "gender": "GM",
+    "total_sessions": 13,
+    "rate": 0.07692307692307693
+  },
+  {
+    "id": 66,
+    "name": "Laura Nino",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 1,
+    "gender": "GM",
+    "total_sessions": 13,
+    "rate": 0.07692307692307693
+  },
+  {
+    "id": 41,
+    "name": "Leilani Farmer",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 1,
+    "gender": "GM",
+    "total_sessions": 13,
+    "rate": 0.07692307692307693
+  },
+  {
+    "id": 62,
+    "name": "Leilani Farmer",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 1,
+    "gender": "GM",
+    "total_sessions": 13,
+    "rate": 0.07692307692307693
+  },
+  {
+    "id": 11,
+    "name": "Lucas Maciel",
+    "experience_level": "Varsity",
+    "years_on_team": 2,
+    "attended": 1,
+    "gender": "Non-GM",
+    "total_sessions": 13,
+    "rate": 0.07692307692307693
+  },
+  {
+    "id": 71,
+    "name": "Mia Tanzilli",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 1,
+    "gender": "GM",
+    "total_sessions": 13,
+    "rate": 0.07692307692307693
+  },
+  {
+    "id": 21,
+    "name": "Narein Vignesh",
+    "experience_level": "Varsity",
+    "years_on_team": 3,
+    "attended": 1,
+    "gender": "Non-GM",
+    "total_sessions": 13,
+    "rate": 0.07692307692307693
+  },
+  {
+    "id": 83,
+    "name": "Nethra Naresh",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 1,
+    "gender": "GM",
+    "total_sessions": 13,
+    "rate": 0.07692307692307693
+  },
+  {
+    "id": 73,
+    "name": "Saahil Bhawnani",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 1,
+    "gender": "Non-GM",
+    "total_sessions": 13,
+    "rate": 0.07692307692307693
+  },
+  {
+    "id": 70,
+    "name": "Sudharsna Suresh",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 1,
+    "gender": "GM",
+    "total_sessions": 13,
+    "rate": 0.07692307692307693
+  },
+  {
+    "id": 64,
+    "name": "Abby Yusuf",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 0,
+    "gender": "GM",
+    "total_sessions": 13,
+    "rate": 0.0
+  },
+  {
+    "id": 33,
+    "name": "Ali Mohammed",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 0,
+    "gender": "Non-GM",
+    "total_sessions": 13,
+    "rate": 0.0
+  },
+  {
+    "id": 63,
+    "name": "Anchal Sharma",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 0,
+    "gender": "GM",
+    "total_sessions": 13,
+    "rate": 0.0
+  },
+  {
+    "id": 34,
+    "name": "Corey Majewski",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 0,
+    "gender": "Non-GM",
+    "total_sessions": 13,
+    "rate": 0.0
+  },
+  {
+    "id": 31,
+    "name": "Daniela Cabrera",
+    "experience_level": "Varsity",
+    "years_on_team": 2,
+    "attended": 0,
+    "gender": "GM",
+    "total_sessions": 13,
+    "rate": 0.0
+  },
+  {
+    "id": 28,
+    "name": "Jakob Grant",
+    "experience_level": "Novice",
+    "years_on_team": 2,
+    "attended": 0,
+    "gender": "Non-GM",
+    "total_sessions": 13,
+    "rate": 0.0
+  },
+  {
+    "id": 26,
+    "name": "Jiya Patel",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 0,
+    "gender": "GM",
+    "total_sessions": 13,
+    "rate": 0.0
+  },
+  {
+    "id": 30,
+    "name": "Mazin Nadaf",
+    "experience_level": "Varsity",
+    "years_on_team": 2,
+    "attended": 0,
+    "gender": "Non-GM",
+    "total_sessions": 13,
+    "rate": 0.0
+  },
+  {
+    "id": 52,
+    "name": "Nathan Swaine",
+    "experience_level": "Novice",
+    "years_on_team": 1,
+    "attended": 0,
+    "gender": "Non-GM",
+    "total_sessions": 13,
+    "rate": 0.0
+  },
+  {
+    "id": 15,
+    "name": "Neil Chibber",
+    "experience_level": "Varsity",
+    "years_on_team": 2,
+    "attended": 0,
+    "gender": "Non-GM",
+    "total_sessions": 13,
+    "rate": 0.0
+  },
+  {
+    "id": 27,
+    "name": "Pragna Yalamanchili",
+    "experience_level": "Varsity",
+    "years_on_team": 3,
+    "attended": 0,
+    "gender": "GM",
+    "total_sessions": 13,
+    "rate": 0.0
+  },
+  {
+    "id": 22,
+    "name": "Saanvi Goel",
+    "experience_level": "Varsity",
+    "years_on_team": 2,
+    "attended": 0,
+    "gender": "GM",
+    "total_sessions": 13,
+    "rate": 0.0
+  }
+]

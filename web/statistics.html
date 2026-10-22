@@ -3,30 +3,93 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Pround Pairing — American Parliamentary Debate pairing and attendance management.">
-        <title>Pround Pairing</title>
+        <meta
+            name="description"
+            content="Pround Pairing — American Parliamentary Debate pairing and attendance management."
+        >
+        <title>MPDS Statistics</title>
         <link rel="stylesheet" href="style.css">
     </head>
+
     <body>
         <header>
             <section class="header-bar">
                 <h1>MPDS Statistics</h1>
             </section>
         </header>
+
         <div id="utility-buttons">
-            <button class="gold-button" id="pround-pairing">Pround Pairing</button>
+            <button class="gold-button" id="pround-pairing">
+                Pround Pairing
+            </button>
         </div>
 
-        <div id="tooltip" style="display:none"></div>
-        <div class="statistics-container"> 
-            <div id="controls">
-                <div id="slider"></div>
-                X: <select id="xVariable" class="variable"></select>
-                Y: <select id="yVariable" class="variable"></select>
-                size: <select id="sizeVariable" class="variable"></select>
-            </div>
-            <div id="vis"></div> 
-        </div>
+        <div id="tooltip" style="display: none;"></div>
+
+        <main class="statistics-container">
+
+            <!-- Tournament Pairings Force Graph -->
+            <section id="tournament-section">
+                <h2>Tournament Pairings</h2>
+
+                <label for="colorBy">
+                    Color by
+                    <select id="colorBy"></select>
+                </label>
+
+                <details>
+                    <summary>
+                        Time: <span id="timeLabel"></span>
+                    </summary>
+
+                    <label for="startRange">
+                        Start
+                        <input type="range" id="startRange">
+                    </label>
+
+                    <label for="endRange">
+                        End
+                        <input type="range" id="endRange">
+                    </label>
+                </details>
+
+                <div id="legend"></div>
+                <div id="vis"></div>
+                <div id="stats"></div>
+            </section>
+
+            <!-- Attendance Bar Chart -->
+            <section id="attendance-section">
+                <h2>Attendance</h2>
+
+                <label for="attendance-colorBy">
+                    Color by
+                    <select id="attendance-colorBy"></select>
+                </label>
+
+                <div id="attendance-legend"></div>
+                <div id="attendance-vis"></div>
+                <div id="attendance-stats"></div>
+            </section>
+
+
+            <section class="pairing-chart">
+                <h2>Novice Pairings with Varsity</h2>
+                <div id="novice-pairings-vis"></div>
+            </section>
+
+            <section class="pairing-chart">
+                <h2>Varsity Pairings with Novices</h2>
+                <div id="varsity-pairings-vis"></div>
+                </section>
+            </section>
+
+            <section id="novice-varsity-breakdown">
+                <h2>Novice–Varsity Pairing Breakdown</h2>
+                <div id="novice-varsity-list"></div>
+            </section>
+
+        </main>
 
         <script src="https://d3js.org/d3.v7.js"></script>
         <script src="https://unpkg.com/d3-simple-slider"></script>
