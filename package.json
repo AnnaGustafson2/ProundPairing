@@ -1,0 +1,28 @@
+{
+  "name": "pround-pairing-app",
+  "version": "1.0.0",
+  "description": "A web app for the Maryland Debate Society to manage its roster, build practice rounds with drag-and-drop, and record attendance. A Java/Javalin server provides a small REST API over a SQLite file and serves a plain HTML/CSS/JS frontend. There is no frontend framework and no build step.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnnaGustafson2/ProundPairing.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/AnnaGustafson2/ProundPairing/issues"
+  },
+  "homepage": "https://github.com/AnnaGustafson2/ProundPairing#readme",
+  "devDependencies": {
+    "jest": "^30.5.2",
+    "jest-environment-jsdom": "^30.5.2"
+  }
+}

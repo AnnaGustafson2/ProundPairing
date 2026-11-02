@@ -10,6 +10,7 @@ Build	Maven
 Database	SQLite via sqlite-jdbc 3.43.2.2
 JSON	Jackson 2.15.0 for responses, Gson 2.10.1 for parsing requests
 Frontend	Vanilla JS, HTML, CSS
+Testing Jest 30 + jest-environment-jsdo
 External data	Google Sheets CSV export
 
 ## Running it
@@ -31,16 +32,27 @@ Java changes need a server restart. Changes to web/ files only need a browser re
 ```
 pround-pairing-app/
   pom.xml
+  package.json
+  package-lock.json
   roster.db
   schema.sql
+  .gitignore
+  README.md
   src/main/java/com/pround/pairing/
     App.java         # server setup, all routes, request/response classes
     Database.java    # SQLite connection helper (enables foreign keys)
   web/
+    fonts            # fonts used for styling
     index.html       # main pairing page
     statistics.html  # stats page 
-    app.js           # shared by both pages
+    js/
+        app.js           # shared by both pages
     style.css
+  tests/
+    helpers/
+        loadApp.js
+    manualEntry.test.js
+    
 ```
 
 ## Database
@@ -89,7 +101,7 @@ schema.sql is the source of truth. Re-running it on an existing database fails b
 POST /api/attendance looks up each name in members. If any name doesn’t match exactly, it rolls back, returns 400 with a notFound list, and writes nothing. Otherwise it creates one session plus attendance rows and returns 201 with sessionId.
 
 ## Frontend behavior
-- Add flow: typing in the input triggers a debounced search. The top match appears in #current-name, and the Add / Gov / Opp / Judge buttons add that person as a draggable chip.
+- Add flow: typing in the input triggers a debounced search. The top match appears in #current-name, and the Add / Gov / Opp / Judge / No Preference buttons add that person as a draggable chip.
 - Duplicate prevention: isAlreadyAdded() checks every chip on the page. The manual buttons alert on a duplicate, and the sheet import skips duplicates and lists them in the summary.
 - Rounds: each round has two slots per side plus a judge box. Chips are dragged into landing zones.
 - Sheet import: “Populate from Form” fetches a published Google Sheet as CSV. Names are fuzzy-matched to the roster with Levenshtein distance. Near-matches trigger a confirm(), and unmatched or duplicate names are summarized in one alert at the end.
@@ -101,13 +113,32 @@ Gotchas
 3. app.js is shared across pages, so every element lookup must be null-guarded. An unguarded getElementById(...).addEventListener(...) crashes on any page missing that element, and it silently kills all code below it in the file. This caused several bugs, including the broken back button on the stats page. Guard anything new, including .closest() calls and the hoverConfigs loop.
 4. Static files are served from the filesystem (Location.EXTERNAL, directory web), relative to the directory the server is launched from.
 
+## Testing
+
+Frontend tests use Jest with jsdom. They load the real `web/index.html`, run `web/app.js` against it, and simulate user actions. `fetch`, `alert`, and `confirm` are mocked, so the tests need no server and no database.
+
+```bash
+npm install     # first time only
+npm test
+```
+
+Layout:
+
+```
+jest.config.js
+tests/
+  helpers/loadApp.js     # shared setup (loads HTML, runs app.js)
+  manualEntry.test.js
+```
+
+
 ## Known limitations and decisions to revisit
 - Names are the identifiers. Two members with the same name will collide, and typos fail the save. Moving to member IDs (for example data-id on chips) is the proper fix.
-- Saving twice creates two sessions for the same day. There is no upsert.
 - Roles and round layouts aren’t persisted. Only attendance is stored.
 - Sheet parsing is hardcoded. The sheet ID and GID are in app.js, the name is read from column index 1, and column 3 == "Debate" decides debater versus judge. The first row is dropped as a header. The sheet must be shared as “anyone with the link can view.” The CSV parser splits on newlines, so it breaks if a cell contains one.
 - The fuzzy-match threshold is length / 2. That is quite loose and can match the wrong person for long names. length / 4 is stricter. This was changed deliberately at one point, so decide which you want.
 - No authentication, and it only runs locally. Anyone who can reach port 7070 can read and write data.
+- No CI implementation as of yet
 
 
 ## Initial Wireframe designed using Figma
