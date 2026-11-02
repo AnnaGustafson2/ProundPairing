@@ -28,6 +28,20 @@
 
         <main class="statistics-container">
 
+            <!-- Attendance Bar Chart -->
+            <section id="attendance-section">
+                <h2>Attendance</h2>
+
+                <label for="attendance-colorBy">
+                    Color by
+                    <select id="attendance-colorBy"></select>
+                </label>
+
+                <div id="attendance-legend"></div>
+                <div id="attendance-vis"></div>
+                <div id="attendance-stats"></div>
+            </section>
+
             <!-- Tournament Pairings Force Graph -->
             <section id="tournament-section">
                 <h2>Tournament Pairings</h2>
@@ -58,21 +72,6 @@
                 <div id="stats"></div>
             </section>
 
-            <!-- Attendance Bar Chart -->
-            <section id="attendance-section">
-                <h2>Attendance</h2>
-
-                <label for="attendance-colorBy">
-                    Color by
-                    <select id="attendance-colorBy"></select>
-                </label>
-
-                <div id="attendance-legend"></div>
-                <div id="attendance-vis"></div>
-                <div id="attendance-stats"></div>
-            </section>
-
-
             <section class="pairing-chart">
                 <h2>Novice Pairings with Varsity</h2>
                 <div id="novice-pairings-vis"></div>
@@ -82,11 +81,6 @@
                 <h2>Varsity Pairings with Novices</h2>
                 <div id="varsity-pairings-vis"></div>
                 </section>
-            </section>
-
-            <section id="novice-varsity-breakdown">
-                <h2>Novice–Varsity Pairing Breakdown</h2>
-                <div id="novice-varsity-list"></div>
             </section>
 
         </main>

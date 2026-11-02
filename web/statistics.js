@@ -1,7 +1,6 @@
 const WIDTH = 1200;
 const HEIGHT = 800;
 
-// Chronological order of terms inside a year. Add more seasons if you need them.
 const SEASON_ORDER = { Spring: 0, Summer: 1, Fall: 2 };
 const termKey = (t) => {
   const [season, year] = t.split(" ");
@@ -21,33 +20,22 @@ function dateToTerm(date) {
   return `${season} ${year}`;
 }
 
-// What each option in the "Color by" dropdown reads from a node.
 const COLOR_OPTIONS = {
   experience: { label: "Experience", get: (d) => d.status },
   gender: { label: "Gender", get: (d) => d.gender },
 };
 
-// Same idea for the attendance chart (rows come from the SQLite export).
 const ATTENDANCE_COLOR_OPTIONS = {
   experience: { label: "Experience", get: (d) => d.experience_level },
   gender: { label: "Gender", get: (d) => d.gender || "Unknown" },
 };
 
 /* =====================================================================
-   Force graph (used for both the tournament pairings and practice pairings)
-   prefix: id prefix for this graph's controls ("" or "practice-")
+   Force graph (used for the tournament pairings)
    mount:  selector of the div the SVG is drawn into
    ===================================================================== */
-function createVis(
-  data,
-  {
-    prefix = "",
-    mount = "#vis",
-    noun = "Tournaments",
-    unit = ["tournament", "tournaments"],
-  } = {},
-) {
-  const $ = (id) => `#${prefix}${id}`; // e.g. $("legend") -> "#practice-legend"
+function createVis(data, { mount = "#vis", noun = "Tournaments" } = {}) {
+  const $ = (id) => `#${id}`;
 
   // Copy nodes once so positions persist across filtering.
   const allNodes = data.nodes.map((d) => ({ ...d }));
@@ -193,90 +181,6 @@ function createVis(
       .text((d) => d);
   }
 
-  // ---------- Summary stats ----------
-  function drawStats(nodes) {
-    const sections = [
-      {
-        title: "Gender",
-        get: (d) => d.gender,
-        field: "debated",
-        verb: "attended",
-      },
-      {
-        title: "Experience",
-        get: (d) => d.status,
-        field: "debated",
-        verb: "attended",
-      },
-      {
-        title: "Judging by gender",
-        get: (d) => d.gender,
-        field: "judged",
-        verb: "judged",
-      },
-      {
-        title: "Judging by experience",
-        get: (d) => d.status,
-        field: "judged",
-        verb: "judged",
-      },
-    ];
-
-    const box = d3.select($("stats"));
-    box.selectAll("*").remove();
-    box
-      .style("display", "flex")
-      .style("flex-wrap", "wrap")
-      .style("gap", "32px")
-      .style("margin", "12px 0")
-      .style("font", "14px/1.6 sans-serif");
-
-    const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
-    const pct = (part, whole) =>
-      whole > 0 ? `${Math.round((part / whole) * 100)}%` : "0%";
-
-    sections.forEach(({ title, get, field, verb }) => {
-      // Only count people who actually did this activity in the window.
-      const active = nodes.filter((d) => d[field] > 0);
-      const totals = d3.rollup(
-        active,
-        (v) => ({ people: v.length, tournaments: d3.sum(v, (d) => d[field]) }),
-        get,
-      );
-
-      // Section-wide totals are the denominators for the percentages.
-      const allPeople = d3.sum([...totals.values()], (v) => v.people);
-      const allTournaments = d3.sum([...totals.values()], (v) => v.tournaments);
-
-      const section = box.append("div");
-      section
-        .append("div")
-        .style("font-weight", "600")
-        .style("margin-bottom", "2px")
-        .text(title);
-
-      if (totals.size === 0) {
-        section.append("div").style("opacity", 0.6).text("None in this window");
-        return;
-      }
-
-      [...totals]
-        .sort((a, b) => b[1].tournaments - a[1].tournaments)
-        .forEach(([key, val]) => {
-          const row = section.append("div");
-          row.append("span").style("font-weight", "600").text(`${key}: `);
-          row
-            .append("span")
-            .text(
-              `${plural(val.people, "person", "people")} ` +
-                `(${pct(val.people, allPeople)}) – ` +
-                `${plural(val.tournaments, unit[0], unit[1])} ${verb} ` +
-                `(${pct(val.tournaments, allTournaments)})`,
-            );
-        });
-    });
-  }
-
   // ---------- Time filtering ----------
   function update() {
     hideTooltip();
@@ -355,7 +259,6 @@ function createVis(
 
     // Node area grows with the count (sqrt scale keeps area proportional).
     nodes.forEach((n) => (n.count = counts.get(n.name)));
-    drawStats(nodes);
     const maxCount = d3.max(nodes, (n) => n.count) || 1;
     const radius = d3
       .scaleSqrt()
@@ -551,9 +454,9 @@ function createPairingCharts(data, attendanceData) {
         ),
       )
       .attr("r", 8)
-      .attr("fill", d =>
-  highlightedNames.has(d.name) ? "#F39C35" : "#4F83CC"
-)
+      .attr("fill", (d) =>
+        highlightedNames.has(d.name) ? "#F39C35" : "#4F83CC",
+      )
       .attr("stroke", "#fff")
       .attr("stroke-width", 1.5)
       .on("mouseover", showTooltip)
@@ -637,69 +540,6 @@ function createPairingCharts(data, attendanceData) {
   drawChart("#varsity-pairings-vis", "Varsity");
 }
 
-function createNoviceVarsityBreakdown(data) {
-  const novices = data.nodes.filter((d) => d.status === "Novice");
-  const varsity = new Set(
-    data.nodes
-      .filter((d) => d.status === "Varsity")
-      .map((d) => d.name),
-  );
-
-  // Map each novice to the varsity members they've paired with.
-  const pairings = new Map(
-    novices.map((d) => [d.name, new Map()]),
-  );
-
-  data.links.forEach((link) => {
-    let novice;
-    let varsityName;
-
-    if (pairings.has(link.source) && varsity.has(link.target)) {
-      novice = link.source;
-      varsityName = link.target;
-    } else if (pairings.has(link.target) && varsity.has(link.source)) {
-      novice = link.target;
-      varsityName = link.source;
-    } else {
-      return;
-    }
-
-    const partners = pairings.get(novice);
-        partners.set(
-        varsityName,
-        (partners.get(varsityName) || 0) + 1,
-    );
-  });
-
-  const container = d3.select("#novice-varsity-list");
-  container.selectAll("*").remove();
-
-  novices
-    .slice()
-    .sort((a, b) => a.name.localeCompare(b.name))
-    .forEach((novice) => {
-      const partners = [...pairings.get(novice.name)]
-        .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
-
-      const section = container.append("div").attr("class", "novice-pairing");
-
-      section.append("h3").text(novice.name);
-
-      if (partners.length === 0) {
-        section.append("p").text("No varsity pairings");
-        return;
-      }
-
-      const list = section.append("ul");
-
-      partners.forEach(([name, count]) => {
-        list.append("li").text(
-          `${name}: ${count} ${count === 1 ? "link" : "links"}`,
-        );
-      });
-    });
-}
-
 /* =====================================================================
    Load both graphs
    ===================================================================== */
@@ -716,11 +556,8 @@ function init() {
 
       // Practice Pairings charts
       createPairingCharts(pairingData, attendanceData);
-      createNoviceVarsityBreakdown(pairingData);
     })
-    .catch((error) =>
-      console.error("Error loading pairing charts:", error),
-    );
+    .catch((error) => console.error("Error loading pairing charts:", error));
 }
 
 window.addEventListener("load", init);
@@ -827,87 +664,7 @@ d3.json("./data/attendance.json")
       recolor();
     });
 
-    function drawAttendanceStats() {
-      const groupings = [
-        { label: "gender", get: (d) => d.gender || "Unknown" },
-        { label: "experience", get: (d) => d.experience_level },
-      ];
-      const sections = [
-        ...groupings.map((g) => ({
-          title: `Club by ${g.label}`,
-          get: g.get,
-          kind: "club",
-        })),
-        ...groupings.map((g) => ({
-          title: `Attendance by ${g.label}`,
-          get: g.get,
-          kind: "attendance",
-        })),
-        {
-          title: "Novice attendance by gender",
-          get: (d) => d.gender || "Unknown",
-          kind: "attendance",
-          filter: (d) => d.experience_level === "Novice",
-        },
-      ];
-
-      const box = d3.select("#attendance-stats");
-      box.selectAll("*").remove();
-      box
-        .style("display", "flex")
-        .style("flex-wrap", "wrap")
-        .style("gap", "32px")
-        .style("margin", "12px 0")
-        .style("font", "14px/1.6 sans-serif");
-
-      const pct = (part, whole) =>
-        whole > 0 ? `${Math.round((part / whole) * 100)}%` : "0%";
-      const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
-
-      sections.forEach(({ title, get, kind, filter }) => {
-        // Optional filter limits the section to a subset, e.g. only novices.
-        const subset = filter ? rows.filter(filter) : rows;
-        const allPeople = subset.length;
-        const allAttended = d3.sum(subset, (d) => d.attended);
-
-        const groups = d3.rollup(
-          subset,
-          (v) => ({ people: v.length, attended: d3.sum(v, (d) => d.attended) }),
-          get,
-        );
-
-        const section = box.append("div");
-        section
-          .append("div")
-          .style("font-weight", "600")
-          .style("margin-bottom", "2px")
-          .text(title);
-
-        if (groups.size === 0) {
-          section.append("div").style("opacity", 0.6).text("No members");
-          return;
-        }
-
-        const sortKey = kind === "club" ? "people" : "attended";
-        [...groups]
-          .sort((a, b) => b[1][sortKey] - a[1][sortKey])
-          .forEach(([key, val]) => {
-            const row = section.append("div");
-            row.append("span").style("font-weight", "600").text(`${key}: `);
-            const text =
-              kind === "club"
-                ? `${plural(val.people, "person", "people")} (${pct(val.people, allPeople)})`
-                : `${plural(val.people, "person", "people")} – ` +
-                  `${plural(val.attended, "session", "sessions")} attended ` +
-                  `(${pct(val.attended, allAttended)} of all) – ` +
-                  `${pct(val.attended, val.people * total)} average attendance`;
-            row.append("span").text(text);
-          });
-      });
-    }
-
     recolor();
-    drawAttendanceStats();
   })
   .catch((error) => console.error("Error loading data:", error));
 
