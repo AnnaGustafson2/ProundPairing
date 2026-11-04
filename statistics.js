@@ -46,6 +46,9 @@ function sortYearsDomain(values) {
 const tournamentBin = (n) =>
   n === 0 ? "0" : n <= 2 ? "1–2" : n <= 4 ? "3–4" : "5+";
 
+const attendanceBin = (n) =>
+  n <= 5 ? "0-5" : n <= 10 ? "5-10" : n <= 15 ? "10-15" : "15+";
+
 const ATTENDANCE_COLOR_OPTIONS = {
   years: {
     label: "Years on team",
@@ -57,6 +60,10 @@ const ATTENDANCE_COLOR_OPTIONS = {
   tournaments: {
     label: "Tournaments attended",
     get: (d) => tournamentBin(d.tournaments_attended || 0),
+  },
+  attendance: {
+    label: "Practices attended",
+    get: (d) => attendanceBin(d.attended || 0),
   },
 };
 
