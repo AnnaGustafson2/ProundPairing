@@ -471,3 +471,10 @@ if (statistics) {
         window.location.href = "statistics.html"; 
     });
 }
+
+const tournament_attendance = document.getElementById("tournament-attendance");
+if (tournament_attendance) {
+    tournament_attendance.addEventListener("click", function() {
+        window.location.href = "tournament_attendance.html"; 
+    });
+}
