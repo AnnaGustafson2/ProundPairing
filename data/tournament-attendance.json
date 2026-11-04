@@ -1,0 +1,47 @@
+[
+  {
+    "id": 3,
+    "name": "Aayush Bhargava",
+    "experience_level": "Varsity",
+    "years_on_team": 4,
+    "attended": 1,
+    "total_tournaments": 9,
+    "rate": 0.1111111111111111
+  },
+  {
+    "id": 1,
+    "name": "Anna Gustafson",
+    "experience_level": "Varsity",
+    "years_on_team": 3,
+    "attended": 1,
+    "total_tournaments": 9,
+    "rate": 0.1111111111111111
+  },
+  {
+    "id": 2,
+    "name": "Jack Beery",
+    "experience_level": "Varsity",
+    "years_on_team": 3,
+    "attended": 1,
+    "total_tournaments": 9,
+    "rate": 0.1111111111111111
+  },
+  {
+    "id": 13,
+    "name": "Pranav Sasikumar",
+    "experience_level": "Varsity",
+    "years_on_team": 3,
+    "attended": 1,
+    "total_tournaments": 9,
+    "rate": 0.1111111111111111
+  },
+  {
+    "id": 8,
+    "name": "Pranika Singh",
+    "experience_level": "Varsity",
+    "years_on_team": 2,
+    "attended": 1,
+    "total_tournaments": 9,
+    "rate": 0.1111111111111111
+  }
+]

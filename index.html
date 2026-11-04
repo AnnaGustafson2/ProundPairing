@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Pround Pairing — American Parliamentary Debate pairing and attendance management.">
+        <title>Pround Pairing</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <section class="header-bar">
+                <h1>MPDS Pround Pairing</h1>
+            </section>
+        </header>
+
+        <div id="utility-buttons">
+            <button class="gold-button" id="populate-add">Populate from Form</button>
+            <button class="gold-button" id="auto-sort" style="display: none">Sort Into Rounds</button>
+            <button class="gold-button" id="save-attendance">Save Attendance</button>
+            <button class="gold-button" id="statistics">Statistics</button>
+        </div>
+        
+        <section id="member-container">
+            <form>
+                <label for="member-names">Enter Member Names:</label>
+                <input type="text" id="member-names" name="member-names">
+            </form>
+            <p id="current-name"></p>
+            <div id="add-buttons-container">
+                <div id="add-row-one">
+                    <button class="gold-button grey" id="neutral-add">Add as Debater</button>
+                    <button class="gold-button grey" id="gov-add">Add as GOV</button>
+                </div>
+                <div id="add-row-two">
+                    <button class="gold-button grey" id="judge-add">Add as Judge</button>
+                    <button class="gold-button grey" id="opp-add">Add as OPP</button>
+                    <button class="gold-button grey" id="no-pref-add">Add</button>
+                </div>
+            </div>
+        </section>
+        
+        <section id="dragging-container">
+            <h2>Participants</h2>
+            <h3 style="display:none">Drag debaters together to form teams</h3>
+            <section class="participants-container"></section>
+
+            <h2>Round(s)</h2>
+            <h3>Drop debaters into a rounds</h3>
+            <section class="rounds-container">
+                <div class="round">
+                    <div class="side-one">
+                        <div class="debater-landing-zone"></div>
+                        <div class="debater-landing-zone"></div>
+                    </div>
+                    <div class="debater-landing-zone judge-box"></div>
+                    <div class="side-two">
+                        <div class="debater-landing-zone"></div>
+                        <div class="debater-landing-zone"></div>
+                    </div>
+                    <button class="delete-round-button" aria-label="Remove Round">x</button>
+                </div>
+            </section>
+        
+        </section>
+        <div id="add-round-container">
+            <button class="gold-button" id="add-round">Add New Round</button>
+        </div>
+        <script src="app.js"></script>
+    </body>
+</html>

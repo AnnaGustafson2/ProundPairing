@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Pround Pairing — American Parliamentary Debate pairing and attendance management."
+    />
+    <title>MPDS Statistics</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header>
+      <section class="header-bar">
+        <h1>MPDS Statistics</h1>
+      </section>
+    </header>
+
+    <div id="utility-buttons">
+      <button class="gold-button" id="pround-pairing">Pround Pairing</button>
+    </div>
+
+    <div id="tooltip" style="display: none"></div>
+
+    <nav class="tabs">
+      <button class="tab active" data-tab="attendance-tab">Attendance</button>
+      <button class="tab" data-tab="pairings-tab">Pairings</button>
+    </nav>
+    <main class="statistics-container">
+      <div id="attendance-tab" class="tab-panel">
+        <section id="attendance-section">
+          <h2>Attendance</h2>
+          <label for="attendance-colorBy">
+            Color by
+            <select id="attendance-colorBy"></select>
+          </label>
+          <div id="attendance-legend"></div>
+          <div id="attendance-vis"></div>
+          <div id="attendance-stats"></div>
+        </section>
+
+        <section id="tournament-attendance-section">
+          <h2>Tournament Attendance</h2>
+          <label for="tournament-attendance-colorBy">
+            Color by
+            <select id="tournament-attendance-colorBy"></select>
+          </label>
+          <div id="tournament-attendance-legend"></div>
+          <div id="tournament-attendance-vis"></div>
+          <div id="tournament-attendance-stats"></div>
+        </section>
+
+        <section id="comparison-section">
+          <h2>Practice vs Tournament Attendance</h2>
+          <div id="comparison-legend"></div>
+          <div id="comparison-vis"></div>
+        </section>
+      </div>
+
+      <div id="pairings-tab" class="tab-panel" hidden>
+        <section id="tournament-section">
+          <h2>Tournament Pairings</h2>
+          <label for="colorBy"
+            >Color by
+            <select id="colorBy"></select
+          ></label>
+          <details>
+            <summary>Time: <span id="timeLabel"></span></summary>
+            <label for="startRange"
+              >Start <input type="range" id="startRange"
+            /></label>
+            <label for="endRange"
+              >End <input type="range" id="endRange"
+            /></label>
+          </details>
+          <div id="legend"></div>
+          <div id="vis"></div>
+          <div id="stats"></div>
+        </section>
+
+        <section class="pairing-chart">
+          <h2>Novice Pairings with Varsity</h2>
+          <div id="novice-pairings-vis"></div>
+        </section>
+
+        <section class="pairing-chart">
+          <h2>Varsity Pairings with Novices</h2>
+          <div id="varsity-pairings-vis"></div>
+        </section>
+      </div>
+    </main>
+
+    <script src="https://d3js.org/d3.v7.js"></script>
+    <script src="https://unpkg.com/d3-simple-slider"></script>
+    <script src="statistics.js"></script>
+  </body>
+</html>
