@@ -13,7 +13,8 @@ def export(event_table, attend_table, event_col, total_key, out_path):
         dict(r)
         for r in conn.execute(f"""
             SELECT m.id, m.name, m.experience_level, m.start_year,
-                   COUNT(a.{event_col}) AS attended
+                (SELECT COUNT(*) FROM tournament_attendance ta WHERE ta.member_id = m.id) AS tournaments_attended,
+                COUNT(a.{event_col}) AS attended
             FROM members m
             LEFT JOIN {attend_table} a ON a.member_id = m.id
             GROUP BY m.id
@@ -29,3 +30,7 @@ def export(event_table, attend_table, event_col, total_key, out_path):
     with open(out_path, "w") as f:
         json.dump(rows, f, indent=2)
     print(f"{out_path}: {len(rows)} members, {total} {event_table}.")
+
+if __name__ == "__main__":
+    export("sessions", "attendance", "session_id", "total_sessions", "data/attendance.json")
+    export("tournaments", "tournament_attendance", "tournament_id", "total_tournaments", "data/tournament-attendance.json")

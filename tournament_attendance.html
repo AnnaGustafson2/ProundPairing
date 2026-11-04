@@ -5,21 +5,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Pround Pairing — American Parliamentary Debate pairing and attendance management."
+      content="Pround Pairing — American Parliamentary Debate tournament attendance and pairings management."
     />
-    <title>MDS Pround Pairing</title>
+    <title>MDS Tournament Attendance & Pairings</title>
     <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
     <header>
       <section class="header-bar">
-        <h1>MDS Statistics</h1>
+        <h1>MDS Tournament Entry</h1>
       </section>
     </header>
 
     <div id="utility-buttons">
+      <button class="gold-button" id="save-tournament">Save Tournament Data</button>
       <button class="gold-button" id="pround-pairing">Pround Pairing</button>
+      <button class="gold-button" id="statistics">Statistics</button>
+    </div>
+
+    <!-- Tournament Metadata Form -->
+    <section class="tournament-meta-section">
+      <div class="tournament-form-grid">
+        <div class="tournament-form-group">
+          <label for="tournament-select">Select / Load Tournament:</label>
+          <select id="tournament-select">
+            <option value="">-- Create New Tournament --</option>
+          </select>
+        </div>
+        <div class="tournament-form-group">
+          <label for="tournament-name">Tournament Name *</label>
+          <input type="text" id="tournament-name" placeholder="e.g. Drexel, CMU, Yale..." required />
+        </div>
+        <div class="tournament-form-group">
+          <label for="tournament-date">Date *</label>
+          <input type="date" id="tournament-date" required />
+        </div>
+        <div class="tournament-form-group">
+          <label for="tournament-description">Special Description / Notes</label>
+          <input type="text" id="tournament-description" placeholder="e.g. Pro-Ams, Novice Nationals (optional)" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Member Lookup and Add Section -->
+    <section id="member-container">
+      <form onsubmit="return false;">
+        <label for="member-names">Enter Member Names:</label>
+        <input type="text" id="member-names" name="member-names" autocomplete="off" />
+      </form>
+      <p id="current-name"></p>
+      <div id="add-buttons-container">
+        <div id="add-row-one">
+          <button class="gold-button grey" id="debater-add">Add as Debater</button>
+          <button class="gold-button grey" id="judge-add">Add as Judge</button>
+        </div>
+        <div id="add-row-two">
+          <button class="gold-button grey" id="attendee-add">Add Attendee</button>
+          <button class="gold-button grey" id="clear-member">Clear</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dragging Container for Attendees and Teams -->
+    <section id="dragging-container">
+      <h2>Tournament Attendees (<span id="attendee-count">0</span>)</h2>
+      <h3>Drag debaters into teams below to form pairs</h3>
+      <section class="participants-container" id="tournament-participants"></section>
+
+      <h2>Tournament Pairings (Teams)</h2>
+      <h3>Drop 1 or 2 debaters into each team slot</h3>
+      <section class="teams-container" id="tournament-teams">
+        <div class="team-card">
+          <div class="team-card-header">
+            <span>Team 1</span>
+            <button type="button" class="delete-team-button" aria-label="Remove Team">x</button>
+          </div>
+          <div class="team-card-slots">
+            <div class="debater-landing-zone" data-placeholder="Partner 1"></div>
+            <div class="debater-landing-zone" data-placeholder="Partner 2"></div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <div style="display: flex; justify-content: center; padding: 1.5rem 0 3rem 0;">
+      <button class="gold-button" id="add-team">Add New Team / Pair</button>
     </div>
 
     <script src="tournament_attendance.js"></script>

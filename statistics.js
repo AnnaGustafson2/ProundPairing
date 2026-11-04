@@ -1,138 +1,28 @@
 const WIDTH = 1200;
 const HEIGHT = 800;
-/* =====================================================================
-   Reusable attendance bar chart
-   ===================================================================== */
-function createAttendanceChart({
-  file,       // JSON file to load
-  prefix,     // id prefix in the HTML, e.g. "attendance" or "tournament-attendance"
-  totalKey,   // field holding the total number of events
-  noun,       // "sessions" or "tournaments", used in labels and tooltips
-}) {
-  d3.json(file)
-    .then((rows) => {
-      const total = rows.length ? rows[0][totalKey] : 0;
-      const margin = { top: 20, right: 30, bottom: 36, left: 150 };
-      const width = 900;
-      const height = rows.length * 22 + margin.top + margin.bottom;
-      let colorBy = "experience";
-
-      const svg = d3
-        .select(`#${prefix}-vis`)
-        .append("svg")
-        .attr("viewBox", [0, 0, width, height])
-        .attr("style", "width: 100%; max-width: 100%; height: auto;");
-      const x = d3
-        .scaleLinear()
-        .domain([0, Math.max(1, total)])
-        .range([margin.left, width - margin.right]);
-      const y = d3
-        .scaleBand()
-        .domain(rows.map((d) => d.name))
-        .range([margin.top, height - margin.bottom])
-        .padding(0.15);
-      const color = d3.scaleOrdinal(d3.schemeCategory10);
-
-      const bars = svg
-        .append("g")
-        .selectAll("rect")
-        .data(rows)
-        .join("rect")
-        .attr("x", x(0))
-        .attr("y", (d) => y(d.name))
-        .attr("width", (d) => x(d.attended) - x(0))
-        .attr("height", y.bandwidth());
-      bars
-        .append("title")
-        .text(
-          (d) =>
-            `${d.name}\n${d.attended} of ${d[totalKey]} ${noun} ` +
-            `(${Math.round(d.rate * 100)}%)\n${d.experience_level}, ` +
-            `${d.years_on_team} yr on team`,
-        );
-
-      svg
-        .append("g")
-        .attr("transform", `translate(${margin.left},0)`)
-        .call(d3.axisLeft(y).tickSize(0))
-        .select(".domain")
-        .remove();
-      svg
-        .append("g")
-        .attr("transform", `translate(0,${height - margin.bottom})`)
-        .call(
-          d3.axisBottom(x).ticks(Math.min(total, 10)).tickFormat(d3.format("d")),
-        );
-      svg
-        .append("text")
-        .attr("x", width - margin.right)
-        .attr("y", height - 4)
-        .attr("text-anchor", "end")
-        .attr("font-size", 12)
-        .text(`${noun[0].toUpperCase() + noun.slice(1)} attended (out of ${total})`);
-
-      function recolor() {
-        const get = ATTENDANCE_COLOR_OPTIONS[colorBy].get;
-        color.domain([...new Set(rows.map(get))].sort());
-        bars.attr("fill", (d) => color(get(d)));
-
-        const items = d3
-          .select(`#${prefix}-legend`)
-          .selectAll("span.legend-item")
-          .data(color.domain(), (d) => d)
-          .join("span")
-          .attr("class", "legend-item")
-          .style("margin-right", "12px");
-        items.selectAll("*").remove();
-        items
-          .append("span")
-          .style("display", "inline-block")
-          .style("width", "10px")
-          .style("height", "10px")
-          .style("border-radius", "50%")
-          .style("margin-right", "4px")
-          .style("background", (d) => color(d));
-        items.append("span").text((d) => d);
-      }
-
-      d3.select(`#${prefix}-colorBy`)
-        .selectAll("option")
-        .data(Object.entries(ATTENDANCE_COLOR_OPTIONS))
-        .join("option")
-        .attr("value", ([key]) => key)
-        .text(([, opt]) => opt.label);
-      d3.select(`#${prefix}-colorBy`).on("change", function () {
-        colorBy = this.value;
-        recolor();
-      });
-
-      recolor();
-    })
-    .catch((error) => console.error(`Error loading ${file}:`, error));
-}
-
-createAttendanceChart({
-  file: "./data/attendance.json",
-  prefix: "attendance",
-  totalKey: "total_sessions",
-  noun: "sessions",
-});
-
-createAttendanceChart({
-  file: "./data/tournament-attendance.json",
-  prefix: "tournament-attendance",
-  totalKey: "total_tournaments",
-  noun: "tournaments",
-});
 
 const SEASON_ORDER = { Spring: 0, Summer: 1, Fall: 2 };
 const termKey = (t) => {
+  if (!t) return 0;
   const [season, year] = t.split(" ");
-  return +year * 3 + (SEASON_ORDER[season] ?? 0);
+  return (+year || 2026) * 3 + (SEASON_ORDER[season] ?? 0);
 };
 
 function dateToTerm(date) {
-  const [month, day, year] = date.split("/").map(Number);
+  if (!date) return "Fall 2026";
+  let month = 9;
+  let year = 2026;
+  if (date.includes("-")) {
+    const parts = date.split("-").map(Number);
+    year = parts[0];
+    month = parts[1];
+  } else if (date.includes("/")) {
+    const parts = date.split("/").map(Number);
+    month = parts[0];
+    year = parts[2];
+  } else {
+    return date;
+  }
 
   const season =
     month >= 1 && month <= 5
@@ -144,164 +34,367 @@ function dateToTerm(date) {
   return `${season} ${year}`;
 }
 
-const COLOR_OPTIONS = {
-  experience: { label: "Experience", get: (d) => d.status },
-  gender: { label: "Gender", get: (d) => d.gender },
-};
+function sortYearsDomain(values) {
+  return [...new Set(values)].sort((a, b) => {
+    const na = parseInt(a, 10);
+    const nb = parseInt(b, 10);
+    if (!isNaN(na) && !isNaN(nb)) return na - nb;
+    return String(a).localeCompare(String(b));
+  });
+}
+
+const tournamentBin = (n) =>
+  n === 0 ? "0" : n <= 2 ? "1–2" : n <= 4 ? "3–4" : "5+";
 
 const ATTENDANCE_COLOR_OPTIONS = {
-  experience: { label: "Experience", get: (d) => d.experience_level },
-  years: { label: "Years on team", get: (d) => `${d.years_on_team} yr` },
+  years: {
+    label: "Years on team",
+    get: (d) => {
+      const yrs = d.years_on_team ?? (d.start_year ? 2026 - d.start_year + 1 : null);
+      return yrs ? `${yrs} yr` : "Unknown";
+    },
+  },
+  tournaments: {
+    label: "Tournaments attended",
+    get: (d) => tournamentBin(d.tournaments_attended || 0),
+  },
 };
+
+const COLOR_OPTIONS = {
+  years: {
+    label: "Years on team",
+    get: (d) => {
+      const yrs = d.years_on_team ?? (d.start_year ? 2026 - d.start_year + 1 : null);
+      return yrs ? `${yrs} yr` : "Unknown";
+    },
+  },
+  experience: { label: "Experience", get: (d) => d.status || d.experience_level || "Unknown" },
+  gender: { label: "Gender", get: (d) => d.gender || "Unknown" },
+};
+
+/* =====================================================================
+   Reusable attendance bar chart
+   ===================================================================== */
+async function createAttendanceChart({
+  apiEndpoint,
+  file,       // fallback JSON file to load
+  prefix,     // id prefix in the HTML, e.g. "attendance" or "tournament-attendance"
+  totalKey,   // field holding the total number of events
+  noun,       // "sessions" or "tournaments", used in labels and tooltips
+}) {
+  let rows = [];
+  if (apiEndpoint) {
+    try {
+      const res = await fetch(apiEndpoint);
+      if (res.ok) {
+        rows = await res.json();
+      }
+    } catch (e) {}
+  }
+  if (!rows || rows.length === 0) {
+    try {
+      rows = await d3.json(file);
+    } catch (e) {
+      console.error(`Error loading ${file}:`, e);
+      return;
+    }
+  }
+
+  const total = rows.length ? rows[0][totalKey] || rows[0].total_sessions || rows[0].total_tournaments || 0 : 0;
+  const margin = { top: 20, right: 30, bottom: 36, left: 150 };
+  const width = 900;
+  const height = rows.length * 22 + margin.top + margin.bottom;
+  let colorBy = "years";
+
+  const svg = d3
+    .select(`#${prefix}-vis`)
+    .append("svg")
+    .attr("viewBox", [0, 0, width, height])
+    .attr("style", "width: 100%; max-width: 100%; height: auto;");
+  const x = d3
+    .scaleLinear()
+    .domain([0, Math.max(1, total)])
+    .range([margin.left, width - margin.right]);
+  const y = d3
+    .scaleBand()
+    .domain(rows.map((d) => d.name))
+    .range([margin.top, height - margin.bottom])
+    .padding(0.15);
+  const color = d3.scaleOrdinal(d3.schemeCategory10);
+
+  const bars = svg
+    .append("g")
+    .selectAll("rect")
+    .data(rows)
+    .join("rect")
+    .attr("x", x(0))
+    .attr("y", (d) => y(d.name))
+    .attr("width", (d) => x(d.attended) - x(0))
+    .attr("height", y.bandwidth());
+
+  bars
+    .append("title")
+    .text(
+      (d) =>
+        `${d.name}\n${d.attended} of ${d[totalKey] || total} ${noun} ` +
+        `(${Math.round((d.rate || (total > 0 ? d.attended / total : 0)) * 100)}%)\n` +
+        (d.experience_level ? `${d.experience_level}, ` : "") +
+        `${d.years_on_team ?? (d.start_year ? 2026 - d.start_year + 1 : '?')} yr on team`,
+    );
+
+  svg
+    .append("g")
+    .attr("transform", `translate(${margin.left},0)`)
+    .call(d3.axisLeft(y).tickSize(0))
+    .select(".domain")
+    .remove();
+  svg
+    .append("g")
+    .attr("transform", `translate(0,${height - margin.bottom})`)
+    .call(
+      d3.axisBottom(x).ticks(Math.min(total, 10)).tickFormat(d3.format("d")),
+    );
+  svg
+    .append("text")
+    .attr("x", width - margin.right)
+    .attr("y", height - 4)
+    .attr("text-anchor", "end")
+    .attr("font-size", 12)
+    .text(`${noun[0].toUpperCase() + noun.slice(1)} attended (out of ${total})`);
+
+  function recolor() {
+    const get = ATTENDANCE_COLOR_OPTIONS[colorBy].get;
+    const domain = sortYearsDomain(rows.map(get));
+    color.domain(domain);
+    bars.attr("fill", (d) => color(get(d)));
+
+    const items = d3
+      .select(`#${prefix}-legend`)
+      .selectAll("span.legend-item")
+      .data(color.domain(), (d) => d)
+      .join("span")
+      .attr("class", "legend-item")
+      .style("margin-right", "12px");
+    items.selectAll("*").remove();
+    items
+      .append("span")
+      .style("display", "inline-block")
+      .style("width", "10px")
+      .style("height", "10px")
+      .style("border-radius", "50%")
+      .style("margin-right", "4px")
+      .style("background", (d) => color(d));
+    items.append("span").text((d) => d);
+  }
+
+  const select = d3.select(`#${prefix}-colorBy`);
+  if (!select.empty()) {
+    select
+      .selectAll("option")
+      .data(Object.entries(ATTENDANCE_COLOR_OPTIONS))
+      .join("option")
+      .attr("value", ([key]) => key)
+      .text(([, opt]) => opt.label);
+    select.property("value", colorBy);
+    select.on("change", function () {
+      colorBy = this.value;
+      recolor();
+    });
+  }
+
+  recolor();
+}
+
+createAttendanceChart({
+  apiEndpoint: "/api/statistics/attendance",
+  file: "./data/attendance.json",
+  prefix: "attendance",
+  totalKey: "total_sessions",
+  noun: "sessions",
+});
+
+createAttendanceChart({
+  apiEndpoint: "/api/statistics/tournament-attendance",
+  file: "./data/tournament-attendance.json",
+  prefix: "tournament-attendance",
+  totalKey: "total_tournaments",
+  noun: "tournaments",
+});
 
 /* =====================================================================
    Dumbell Chart to compare attendance and tournament attendance
    ===================================================================== */
-function createComparisonChart() {
-  Promise.all([
-    d3.json("./data/attendance.json"),
-    d3.json("./data/tournament-attendance.json"),
-  ])
-    .then(([practice, tourney]) => {
-      // Merge on member id. Missing from a file means 0% for that event type
-      // (because never-attenders were cut from the export).
-      const byId = new Map();
-      practice.forEach((d) =>
-        byId.set(d.id, { ...d, practice: d.rate, tournament: 0 }),
-      );
-      tourney.forEach((d) => {
-        if (byId.has(d.id)) byId.get(d.id).tournament = d.rate;
-        else byId.set(d.id, { ...d, practice: 0, tournament: d.rate });
-      });
-      const rows = [...byId.values()].sort(
-        (a, b) =>
-          b.practice - a.practice ||
-          b.tournament - a.tournament ||
-          a.name.localeCompare(b.name),
-      );
+async function createComparisonChart() {
+  let practice = [];
+  let tourney = [];
+  try {
+    const resP = await fetch("/api/statistics/attendance");
+    if (resP.ok) practice = await resP.json();
+  } catch (e) {}
+  if (!practice.length) {
+    practice = await d3.json("./data/attendance.json").catch(() => []);
+  }
 
-      const margin = { top: 20, right: 30, bottom: 36, left: 150 };
-      const width = 900;
-      const height = rows.length * 22 + margin.top + margin.bottom;
+  try {
+    const resT = await fetch("/api/statistics/tournament-attendance");
+    if (resT.ok) tourney = await resT.json();
+  } catch (e) {}
+  if (!tourney.length) {
+    tourney = await d3.json("./data/tournament-attendance.json").catch(() => []);
+  }
 
-      const svg = d3
-        .select("#comparison-vis")
-        .append("svg")
-        .attr("viewBox", [0, 0, width, height])
-        .attr("style", "width: 100%; max-width: 100%; height: auto;");
+  const byId = new Map();
+  practice.forEach((d) =>
+    byId.set(d.id || d.name, { ...d, practice: d.rate, tournament: 0 }),
+  );
+  tourney.forEach((d) => {
+    const key = d.id || d.name;
+    if (byId.has(key)) byId.get(key).tournament = d.rate;
+    else byId.set(key, { ...d, practice: 0, tournament: d.rate });
+  });
+  const rows = [...byId.values()].sort(
+    (a, b) =>
+      b.practice - a.practice ||
+      b.tournament - a.tournament ||
+      a.name.localeCompare(b.name),
+  );
 
-      const x = d3
-        .scaleLinear()
-        .domain([0, 1])
-        .range([margin.left, width - margin.right]);
-      const y = d3
-        .scaleBand()
-        .domain(rows.map((d) => d.name))
-        .range([margin.top, height - margin.bottom])
-        .padding(0.15);
+  const margin = { top: 20, right: 30, bottom: 36, left: 150 };
+  const width = 900;
+  const height = rows.length * 22 + margin.top + margin.bottom;
 
-      const PRACTICE = "#4F83CC";
-      const TOURNAMENT = "#F39C35";
+  const svg = d3
+    .select("#comparison-vis")
+    .append("svg")
+    .attr("viewBox", [0, 0, width, height])
+    .attr("style", "width: 100%; max-width: 100%; height: auto;");
 
-      // Light gridlines
-      svg
-        .append("g")
-        .attr("stroke", "#ddd")
-        .selectAll("line")
-        .data(x.ticks(5))
-        .join("line")
-        .attr("x1", (d) => x(d))
-        .attr("x2", (d) => x(d))
-        .attr("y1", margin.top)
-        .attr("y2", height - margin.bottom);
+  const x = d3
+    .scaleLinear()
+    .domain([0, 1])
+    .range([margin.left, width - margin.right]);
+  const y = d3
+    .scaleBand()
+    .domain(rows.map((d) => d.name))
+    .range([margin.top, height - margin.bottom])
+    .padding(0.15);
 
-      const row = svg
-        .append("g")
-        .selectAll("g")
-        .data(rows)
-        .join("g")
-        .attr("transform", (d) => `translate(0,${y(d.name) + y.bandwidth() / 2})`);
+  const PRACTICE = "#4F83CC";
+  const TOURNAMENT = "#F39C35";
 
-      row
-        .append("line")
-        .attr("x1", (d) => x(Math.min(d.practice, d.tournament)))
-        .attr("x2", (d) => x(Math.max(d.practice, d.tournament)))
-        .attr("stroke", "#999")
-        .attr("stroke-width", 2);
-      row
-        .append("circle")
-        .attr("cx", (d) => x(d.practice))
-        .attr("r", 5)
-        .attr("fill", PRACTICE);
-      row
-        .append("circle")
-        .attr("cx", (d) => x(d.tournament))
-        .attr("r", 5)
-        .attr("fill", TOURNAMENT);
+  // Light gridlines
+  svg
+    .append("g")
+    .attr("stroke", "#ddd")
+    .selectAll("line")
+    .data(x.ticks(5))
+    .join("line")
+    .attr("x1", (d) => x(d))
+    .attr("x2", (d) => x(d))
+    .attr("y1", margin.top)
+    .attr("y2", height - margin.bottom);
 
-      row.append("title").text(
-        (d) =>
-          `${d.name}\nPractice: ${Math.round(d.practice * 100)}%` +
-          `\nTournaments: ${Math.round(d.tournament * 100)}%`,
-      );
+  const row = svg
+    .append("g")
+    .selectAll("g")
+    .data(rows)
+    .join("g")
+    .attr("transform", (d) => `translate(0,${y(d.name) + y.bandwidth() / 2})`);
 
-      svg
-        .append("g")
-        .attr("transform", `translate(${margin.left},0)`)
-        .call(d3.axisLeft(y).tickSize(0))
-        .select(".domain")
-        .remove();
-      svg
-        .append("g")
-        .attr("transform", `translate(0,${height - margin.bottom})`)
-        .call(d3.axisBottom(x).ticks(5).tickFormat(d3.format(".0%")));
+  row
+    .append("line")
+    .attr("x1", (d) => x(Math.min(d.practice, d.tournament)))
+    .attr("x2", (d) => x(Math.max(d.practice, d.tournament)))
+    .attr("stroke", "#999")
+    .attr("stroke-width", 2);
+  row
+    .append("circle")
+    .attr("cx", (d) => x(d.practice))
+    .attr("r", 5)
+    .attr("fill", PRACTICE);
+  row
+    .append("circle")
+    .attr("cx", (d) => x(d.tournament))
+    .attr("r", 5)
+    .attr("fill", TOURNAMENT);
 
-      // Legend
-      const items = d3
-        .select("#comparison-legend")
-        .selectAll("span.legend-item")
-        .data([
-          ["Practice", PRACTICE],
-          ["Tournaments", TOURNAMENT],
-        ])
-        .join("span")
-        .attr("class", "legend-item")
-        .style("margin-right", "12px");
-      items
-        .append("span")
-        .style("display", "inline-block")
-        .style("width", "10px")
-        .style("height", "10px")
-        .style("border-radius", "50%")
-        .style("margin-right", "4px")
-        .style("background", (d) => d[1]);
-      items.append("span").text((d) => d[0]);
-    })
-    .catch((error) => console.error("Error loading comparison:", error));
+  row.append("title").text(
+    (d) =>
+      `${d.name}\nPractice: ${Math.round(d.practice * 100)}%` +
+      `\nTournaments: ${Math.round(d.tournament * 100)}%`,
+  );
+
+  svg
+    .append("g")
+    .attr("transform", `translate(${margin.left},0)`)
+    .call(d3.axisLeft(y).tickSize(0))
+    .select(".domain")
+    .remove();
+  svg
+    .append("g")
+    .attr("transform", `translate(0,${height - margin.bottom})`)
+    .call(d3.axisBottom(x).ticks(5).tickFormat(d3.format(".0%")));
+
+  // Legend
+  const items = d3
+    .select("#comparison-legend")
+    .selectAll("span.legend-item")
+    .data([
+      ["Practice", PRACTICE],
+      ["Tournaments", TOURNAMENT],
+    ])
+    .join("span")
+    .attr("class", "legend-item")
+    .style("margin-right", "12px");
+  items
+    .append("span")
+    .style("display", "inline-block")
+    .style("width", "10px")
+    .style("height", "10px")
+    .style("border-radius", "50%")
+    .style("margin-right", "4px")
+    .style("background", (d) => d[1]);
+  items.append("span").text((d) => d[0]);
 }
 
 createComparisonChart();
 
 /* =====================================================================
    Force graph (used for the tournament pairings)
-   mount:  selector of the div the SVG is drawn into
    ===================================================================== */
 function createVis(data, { mount = "#vis", noun = "Tournaments" } = {}) {
   const $ = (id) => `#${id}`;
 
   // Copy nodes once so positions persist across filtering.
-  const allNodes = data.nodes.map((d) => ({ ...d }));
-  // Normalize tournament and practice links to the same format.
-  const allLinks = data.links.map((d) => ({
+  const allNodes = (data.nodes || []).map((d) => ({ ...d }));
+
+  // Normalize tournament links to consistent format.
+  const allLinks = (data.links || []).map((d) => ({
     ...d,
     year: d.year || dateToTerm(d.date),
     label: d.tournament || d.date || d.year,
   }));
+
+  const allJudging = (data.judging || []).map((d) => ({
+    ...d,
+    year: d.year || (d.date ? dateToTerm(d.date) : "Fall 2026"),
+  }));
+
+  const allAttendance = (data.attendance || []).map((d) => ({
+    ...d,
+    year: d.year || (d.date ? dateToTerm(d.date) : "Fall 2026"),
+  }));
+
   // Sorted, de-duplicated list of terms (e.g. "Summer 2026", "Fall 2026").
-  const terms = [
-    ...new Set([...allLinks, ...(data.judging || [])].map((l) => l.year)),
-  ].sort((a, b) => termKey(a) - termKey(b));
-  const state = { colorBy: "experience", start: 0, end: terms.length - 1 };
+  const termSet = new Set();
+  allLinks.forEach((l) => l.year && termSet.add(l.year));
+  allJudging.forEach((j) => j.year && termSet.add(j.year));
+  allAttendance.forEach((a) => a.year && termSet.add(a.year));
+
+  const terms = [...termSet].sort((a, b) => termKey(a) - termKey(b));
+  if (terms.length === 0) terms.push("Fall 2026");
+
+  const state = { colorBy: "years", start: 0, end: Math.max(0, terms.length - 1) };
 
   // ---------- SVG ----------
   const svg = d3
@@ -343,8 +436,16 @@ function createVis(data, { mount = "#vis", noun = "Tournaments" } = {}) {
     tooltip.selectAll("*").remove();
     tooltip.append("div").style("font-weight", "600").text(d.name);
     tooltip.append("div").text(`${noun}: ${d.count}`);
-    if (d.judged > 0) {
-      tooltip.append("div").text(`Debated ${d.debated}, judged ${d.judged}`);
+    const parts = [];
+    if (d.debated > 0) parts.push(`Debated ${d.debated}`);
+    if (d.judged > 0) parts.push(`Judged ${d.judged}`);
+    if (d.attendedOnly > 0) parts.push(`Attended ${d.attendedOnly}`);
+    if (parts.length > 0) {
+      tooltip.append("div").text(parts.join(", "));
+    }
+    const yrs = d.years_on_team ?? (d.start_year ? 2026 - d.start_year + 1 : null);
+    if (yrs) {
+      tooltip.append("div").text(`${yrs} yr on team`);
     }
     tooltip.style("opacity", 1);
     moveTooltip(event);
@@ -401,7 +502,8 @@ function createVis(data, { mount = "#vis", noun = "Tournaments" } = {}) {
   function recolor() {
     const get = COLOR_OPTIONS[state.colorBy].get;
     // Domain comes from all nodes so colors stay stable while filtering by time.
-    color.domain([...new Set(allNodes.map(get))].sort());
+    const domain = sortYearsDomain(allNodes.map(get));
+    color.domain(domain);
     node.attr("fill", (d) => color(get(d)));
     drawLegend();
   }
@@ -452,24 +554,40 @@ function createVis(data, { mount = "#vis", noun = "Tournaments" } = {}) {
     });
     const links = [...pairs.values()];
 
-    // Events debated per person in the selected window = their link events.
-    // Judging in the window also counts, but never creates a link.
+    // Debates in window
     const debated = new Map();
     links.forEach((l) => {
       [l.source, l.target].forEach((name) =>
         debated.set(name, (debated.get(name) || 0) + l.events.length),
       );
     });
+
+    // Judging in window
     const judged = new Map();
-    (data.judging || []).forEach((j) => {
+    allJudging.forEach((j) => {
       const k = termKey(j.year);
       if (k < lo || k > hi) return;
       judged.set(j.name, (judged.get(j.name) || 0) + 1);
     });
+
+    // Attendance in window
+    const attendedOnly = new Map();
+    allAttendance.forEach((a) => {
+      const k = termKey(a.year);
+      if (k < lo || k > hi) return;
+      attendedOnly.set(a.name, (attendedOnly.get(a.name) || 0) + 1);
+    });
+
+    // Counts for all members with ANY attendance or activity in window
     const counts = new Map();
-    new Set([...debated.keys(), ...judged.keys()]).forEach((name) =>
-      counts.set(name, (debated.get(name) || 0) + (judged.get(name) || 0)),
-    );
+    const allActiveNames = new Set([...debated.keys(), ...judged.keys(), ...attendedOnly.keys()]);
+    allActiveNames.forEach((name) => {
+      const dCount = debated.get(name) || 0;
+      const jCount = judged.get(name) || 0;
+      const aCount = attendedOnly.get(name) || 0;
+      // Total tournament events
+      counts.set(name, Math.max(dCount + jCount, aCount));
+    });
 
     // Line thickness grows with the number of pairings between two people.
     const maxLink = d3.max(links, (d) => d.events.length) || 1;
@@ -478,12 +596,13 @@ function createVis(data, { mount = "#vis", noun = "Tournaments" } = {}) {
       .domain([1, Math.max(2, maxLink)])
       .range([1.5, 10]);
 
-    // Show anyone with activity in the window (judges with no pairings
-    // still appear, just unlinked).
+    // Show all members who have attended in the time frame!
     const nodes = allNodes.filter((n) => counts.has(n.name));
     nodes.forEach((n) => {
       n.debated = debated.get(n.name) || 0;
       n.judged = judged.get(n.name) || 0;
+      n.attendedOnly = Math.max(0, (attendedOnly.get(n.name) || 0) - (n.debated + n.judged));
+      n.count = counts.get(n.name) || (n.debated + n.judged + n.attendedOnly);
     });
 
     link = linkLayer
@@ -510,19 +629,18 @@ function createVis(data, { mount = "#vis", noun = "Tournaments" } = {}) {
       );
 
     // Node area grows with the count (sqrt scale keeps area proportional).
-    nodes.forEach((n) => (n.count = counts.get(n.name)));
     const maxCount = d3.max(nodes, (n) => n.count) || 1;
     const radius = d3
       .scaleSqrt()
       .domain([1, Math.max(2, maxCount)])
-      .range([5, 20]);
+      .range([6, 22]);
     node.attr("r", (d) => radius(d.count));
     nodes.forEach((n) => (n.r = radius(n.count)));
 
     // Stop bigger nodes from overlapping.
     simulation.force(
       "collide",
-      d3.forceCollide().radius((d) => radius(d.count) + 2),
+      d3.forceCollide().radius((d) => radius(d.count) + 3),
     );
 
     simulation.nodes(nodes);
@@ -550,30 +668,33 @@ function createVis(data, { mount = "#vis", noun = "Tournaments" } = {}) {
 
   // ---------- Controls ----------
   // Color dropdown
-  d3.select($("colorBy"))
-    .selectAll("option")
-    .data(Object.entries(COLOR_OPTIONS))
-    .join("option")
-    .attr("value", ([key]) => key)
-    .text(([, opt]) => opt.label);
+  const colorSelect = d3.select($("colorBy"));
+  if (!colorSelect.empty()) {
+    colorSelect
+      .selectAll("option")
+      .data(Object.entries(COLOR_OPTIONS))
+      .join("option")
+      .attr("value", ([key]) => key)
+      .text(([, opt]) => opt.label);
 
-  d3.select($("colorBy"))
-    .property("value", state.colorBy)
-    .on("change", function () {
-      state.colorBy = this.value;
-      recolor(); // no need to rebuild the graph, just recolor
-    });
+    colorSelect
+      .property("value", state.colorBy)
+      .on("change", function () {
+        state.colorBy = this.value;
+        recolor();
+      });
+  }
 
   // Time sliders (indexes into the sorted `terms` array)
   const startSlider = d3.select($("startRange"));
   const endSlider = d3.select($("endRange"));
-  const max = terms.length - 1;
+  const max = Math.max(0, terms.length - 1);
 
-  [startSlider, endSlider].forEach((s) =>
-    s.attr("min", 0).attr("max", max).attr("step", 1),
-  );
-  startSlider.property("value", state.start);
-  endSlider.property("value", state.end);
+  [startSlider, endSlider].forEach((s) => {
+    if (!s.empty()) s.attr("min", 0).attr("max", max).attr("step", 1);
+  });
+  if (!startSlider.empty()) startSlider.property("value", state.start);
+  if (!endSlider.empty()) endSlider.property("value", state.end);
 
   function updateTimeLabel() {
     const text =
@@ -583,29 +704,34 @@ function createVis(data, { mount = "#vis", noun = "Tournaments" } = {}) {
     d3.select($("timeLabel")).text(text);
   }
 
-  startSlider.on("input", function () {
-    state.start = +this.value;
-    if (state.start > state.end) {
-      state.end = state.start; // push the other handle along
-      endSlider.property("value", state.end);
-    }
-    updateTimeLabel();
-    update();
-  });
+  if (!startSlider.empty()) {
+    startSlider.on("input", function () {
+      state.start = +this.value;
+      if (state.start > state.end) {
+        state.end = state.start;
+        endSlider.property("value", state.end);
+      }
+      updateTimeLabel();
+      update();
+    });
+  }
 
-  endSlider.on("input", function () {
-    state.end = +this.value;
-    if (state.end < state.start) {
-      state.start = state.end;
-      startSlider.property("value", state.start);
-    }
-    updateTimeLabel();
-    update();
-  });
+  if (!endSlider.empty()) {
+    endSlider.on("input", function () {
+      state.end = +this.value;
+      if (state.end < state.start) {
+        state.start = state.end;
+        startSlider.property("value", state.start);
+      }
+      updateTimeLabel();
+      update();
+    });
+  }
 
   updateTimeLabel();
   update();
 }
+
 const highlightedNames = new Set([
   "Amudhan Gandhi",
   "Juha Park",
@@ -621,39 +747,38 @@ function createPairingCharts(data, attendanceData) {
   const width = 1200;
   const height = 700;
 
+  if (!data || !data.nodes) return;
+
   // Count cross-level pairings and distinct practices attended.
   const counts = new Map(data.nodes.map((d) => [d.name, { pairings: 0 }]));
-
   const nodesByName = new Map(data.nodes.map((d) => [d.name, d]));
 
   // Get practice attendance directly from the attendance data.
   const attendanceByName = new Map(
-    attendanceData.map((d) => [d.name, d.attended]),
+    (attendanceData || []).map((d) => [d.name, d.attended]),
   );
 
-  data.links.forEach((link) => {
+  (data.links || []).forEach((link) => {
     const source = nodesByName.get(link.source);
     const target = nodesByName.get(link.target);
 
     if (!source || !target) return;
 
     // Count only novice-varsity pairings.
-    if (source.status !== target.status) {
-      counts.get(source.name).pairings++;
-      counts.get(target.name).pairings++;
+    if (source.status && target.status && source.status !== target.status) {
+      if (counts.has(source.name)) counts.get(source.name).pairings++;
+      if (counts.has(target.name)) counts.get(target.name).pairings++;
     }
   });
 
-  const genderColor = d3
-    .scaleOrdinal()
-    .domain(["GM", "Non-GM"])
-    .range(["#4F83CC", "#F39C35"]);
-
   function drawChart(selector, status) {
+    const container = d3.select(selector);
+    if (container.empty()) return;
+
     const people = data.nodes
       .filter((d) => d.status === status)
       .map((d) => {
-        const stats = counts.get(d.name);
+        const stats = counts.get(d.name) || { pairings: 0 };
         const attended = attendanceByName.get(d.name) || 0;
 
         return {
@@ -664,8 +789,7 @@ function createPairingCharts(data, attendanceData) {
         };
       });
 
-    const svg = d3
-      .select(selector)
+    const svg = container
       .append("svg")
       .attr("viewBox", [0, 0, width, height])
       .style("width", "100%")
@@ -682,7 +806,46 @@ function createPairingCharts(data, attendanceData) {
 
     const JITTER_RANGE = 50;
 
-    const circles = svg
+    // Tooltip for the ratio charts.
+    const tooltip = d3
+      .select("body")
+      .append("div")
+      .attr("class", "ratio-tooltip")
+      .style("position", "absolute")
+      .style("pointer-events", "none")
+      .style("opacity", 0)
+      .style("background", "rgba(30, 30, 30, 0.92)")
+      .style("color", "#fff")
+      .style("padding", "6px 10px")
+      .style("border-radius", "4px")
+      .style("font", "13px/1.4 sans-serif")
+      .style("z-index", 10);
+
+    function showTooltip(event, d) {
+      tooltip.selectAll("*").remove();
+      tooltip.append("div").style("font-weight", "600").text(d.name);
+      if (d.gender) tooltip.append("div").text(`Gender: ${d.gender}`);
+      tooltip.append("div").text(`Cross-level pairings: ${d.pairings}`);
+      tooltip.append("div").text(`Practices attended: ${d.attended}`);
+      tooltip
+        .append("div")
+        .text(`Pairings per practice: ${d.ratio.toFixed(2)}`);
+
+      tooltip.style("opacity", 1);
+      moveTooltip(event);
+    }
+
+    function moveTooltip(event) {
+      tooltip
+        .style("left", event.pageX + 14 + "px")
+        .style("top", event.pageY + 14 + "px");
+    }
+
+    function hideTooltip() {
+      tooltip.style("opacity", 0);
+    }
+
+    svg
       .append("g")
       .selectAll("circle")
       .data(people)
@@ -739,53 +902,6 @@ function createPairingCharts(data, attendanceData) {
       .attr("y", 25)
       .attr("text-anchor", "middle")
       .text("Number of Practices Attended");
-    // Gender legend.
-    const legend = svg.append("g").attr("transform", "translate(20, 25)");
-
-    // Tooltip for the ratio charts.
-    const tooltip = d3
-      .select("body")
-      .append("div")
-      .attr("class", "ratio-tooltip")
-      .style("position", "absolute")
-      .style("pointer-events", "none")
-      .style("opacity", 0)
-      .style("background", "rgba(30, 30, 30, 0.92)")
-      .style("color", "#fff")
-      .style("padding", "6px 10px")
-      .style("border-radius", "4px")
-      .style("font", "13px/1.4 sans-serif")
-      .style("z-index", 10);
-
-    function showTooltip(event, d) {
-      tooltip.selectAll("*").remove();
-      tooltip.append("div").style("font-weight", "600").text(d.name);
-      tooltip.append("div").text(`Gender: ${d.gender}`);
-      tooltip.append("div").text(`Experience: ${d.status}`);
-      tooltip.append("div").text(`Cross-level pairings: ${d.pairings}`);
-      tooltip.append("div").text(`Practices attended: ${d.attended}`);
-      tooltip
-        .append("div")
-        .text(`Pairings per practice: ${d.ratio.toFixed(2)}`);
-
-      tooltip.style("opacity", 1);
-      moveTooltip(event);
-    }
-
-    function moveTooltip(event) {
-      tooltip
-        .style("left", event.pageX + 14 + "px")
-        .style("top", event.pageY + 14 + "px");
-    }
-
-    function hideTooltip() {
-      tooltip.style("opacity", 0);
-    }
-
-    circles
-      .on("mouseover", showTooltip)
-      .on("mousemove", moveTooltip)
-      .on("mouseout", hideTooltip);
   }
 
   drawChart("#novice-pairings-vis", "Novice");
@@ -793,23 +909,74 @@ function createPairingCharts(data, attendanceData) {
 }
 
 /* =====================================================================
-   Load both graphs
+   Load all graphs
    ===================================================================== */
+async function init() {
+  let tournamentData = null;
+  let pairingData = null;
+  let attendanceData = null;
+  let members = [];
 
-function init() {
-  Promise.all([
-    d3.json("./data/pairings.json"),
-    d3.json("./data/practice-parings.json"),
-    d3.json("./data/attendance.json"),
-  ])
-    .then(([tournamentData, pairingData, attendanceData]) => {
-      // Tournament Pairings graph
-      createVis(tournamentData);
+  try {
+    const resTourn = await fetch("/api/statistics/pairings");
+    if (resTourn.ok) tournamentData = await resTourn.json();
+  } catch (e) {}
 
-      // Practice Pairings charts
-      createPairingCharts(pairingData, attendanceData);
-    })
-    .catch((error) => console.error("Error loading pairing charts:", error));
+  if (!tournamentData) {
+    tournamentData = await d3.json("./data/pairings.json").catch(() => ({ nodes: [], links: [], judging: [] }));
+  }
+
+  pairingData = await d3.json("./data/practice-parings.json").catch(() => ({ nodes: [], links: [] }));
+
+  try {
+    const resAtt = await fetch("/api/statistics/attendance");
+    if (resAtt.ok) attendanceData = await resAtt.json();
+  } catch (e) {}
+
+  if (!attendanceData) {
+    attendanceData = await d3.json("./data/attendance.json").catch(() => []);
+  }
+
+  try {
+    const resMem = await fetch("/api/members");
+    if (resMem.ok) members = await resMem.json();
+  } catch (e) {}
+
+  // Map member names to roster metadata
+  const memberMap = new Map();
+  if (Array.isArray(members)) {
+    members.forEach((m) => memberMap.set(m.name, m));
+  }
+  if (Array.isArray(attendanceData)) {
+    attendanceData.forEach((m) => {
+      if (!memberMap.has(m.name)) {
+        memberMap.set(m.name, m);
+      }
+    });
+  }
+
+  // Ensure all nodes in tournament pairings have start_year and years_on_team
+  if (tournamentData && tournamentData.nodes) {
+    tournamentData.nodes.forEach((n) => {
+      const m = memberMap.get(n.name);
+      if (m) {
+        if (n.start_year == null) n.start_year = m.start_year;
+        if (n.years_on_team == null) {
+          n.years_on_team = m.years_on_team ?? (m.start_year ? 2026 - m.start_year + 1 : null);
+        }
+        if (!n.status && m.experience_level) n.status = m.experience_level;
+      }
+      if (n.years_on_team == null) {
+        n.years_on_team = n.status === "Varsity" ? 2 : 1;
+      }
+    });
+  }
+
+  // Draw tournament pairings force graph
+  createVis(tournamentData);
+
+  // Draw practice pairings charts
+  createPairingCharts(pairingData, attendanceData);
 }
 
 function initTabs() {
@@ -827,14 +994,21 @@ function initTabs() {
   const initial = location.hash.slice(1);
   show([...panels].some((p) => p.id === initial) ? initial : panels[0].id);
 }
-initTabs();
 
+initTabs();
 window.addEventListener("load", init);
 
-/* Back button handling */
+/* Navigation button handling */
 const pround_pairing = document.getElementById("pround-pairing");
 if (pround_pairing) {
   pround_pairing.addEventListener("click", function () {
     window.location.href = "index.html";
+  });
+}
+
+const tournament_attendance_btn = document.getElementById("tournament-attendance");
+if (tournament_attendance_btn) {
+  tournament_attendance_btn.addEventListener("click", function () {
+    window.location.href = "tournament_attendance.html";
   });
 }

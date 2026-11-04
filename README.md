@@ -58,8 +58,34 @@ schema.sql is the source of truth. Re-running it on an existing database fails b
 |---|---|---|
 | `GET` | `/api/health` | Confirms the server and database connection are working. |
 | `GET` | `/api/members/search?q=` | Performs a prefix search on member names. Returns a maximum of 5 results as a list of name strings. |
-| `GET` | `/api/members` | Returns the full roster, including `id`, `name`, and `experienceLevel`. |
+| `GET` | `/api/members` | Returns the full roster, including `id`, `name`, `experience_level`, `start_year`, and `years_on_team`. |
 | `POST` | `/api/attendance` | Records an attendance session. Accepts a request body containing `date`, `label`, and `names[]`. |
+| `GET` | `/api/tournaments` | Lists all tournaments with date, special description, attendee counts, and team pair counts. |
+| `GET` | `/api/tournaments/{id}` | Returns details of a tournament including attendee roster and paired teams. |
+| `POST` | `/api/tournaments` | Saves a tournament, special description, attendance, and pairings. |
+| `GET` | `/api/statistics/attendance` | Returns dynamic practice attendance statistics calculated from SQLite. |
+| `GET` | `/api/statistics/tournament-attendance` | Returns dynamic tournament attendance statistics calculated from SQLite. |
+| `GET` | `/api/statistics/pairings` | Returns tournament pairings network data (nodes, links, judging, attendance) with years on team. |
+
+### `POST /api/tournaments`
+
+**Request body:**
+
+```json
+{
+  "id": 1, // optional, for updating existing
+  "name": "Drexel",
+  "date": "2026-09-04",
+  "description": "Optional note",
+  "attendees": ["Jack Beery", "Pranika Singh", "Pranav Sasikumar"],
+  "pairs": [
+    { "partner1": "Jack Beery", "partner2": "Pranika Singh" }
+  ]
+}
+```
+
+Transactionally records the tournament, updates `tournament_descriptions`, inserts attendees into `tournament_attendance`, and records pairings in `tournament_partners`.
+
 
 ### `POST /api/attendance`
 

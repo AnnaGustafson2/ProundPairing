@@ -315,3 +315,130 @@ h3 {
   width: 100%;
   min-width: 0;
 }
+
+/* For Tournament Attendance & Pairings Page */
+.tournament-meta-section {
+  max-width: 64rem;
+  margin: 1.5rem auto 0.5rem auto;
+  padding: 1rem 1.5rem;
+  background-color: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.tournament-form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+.tournament-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.tournament-form-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.tournament-form-group input,
+.tournament-form-group select {
+  padding: 0.5rem 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+.tournament-form-group input:focus,
+.tournament-form-group select:focus {
+  outline: none;
+  border-color: #9D2235;
+}
+
+.teams-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.team-card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border: 1px solid #373737;
+  border-radius: 6px;
+  padding: 1rem;
+  min-width: 20rem;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+.team-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.team-card-slots {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.team-card-slots .debater-landing-zone {
+  flex: 1;
+  min-width: 8.5rem;
+  min-height: 3.2rem;
+  border: 1px dashed #999;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: #fdfdfd;
+}
+
+.team-card-slots .debater-landing-zone.hover {
+  background-color: #eef6fc;
+  border-color: #4F83CC;
+}
+
+.team-card-slots .debater-landing-zone:empty::before {
+  content: attr(data-placeholder);
+  color: #aaa;
+  font-size: 0.75rem;
+  pointer-events: none;
+}
+
+.delete-team-button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 200;
+  color: #9D2235;
+  padding: 0 0.3rem;
+}
+
+.debater-tag {
+  font-size: 0.65rem;
+  color: #555;
+  margin-left: 0.25rem;
+  font-weight: normal;
+}
