@@ -21,7 +21,7 @@ public class App {
 
         Javalin app = Javalin.create(config -> {
             config.staticFiles.add(staticFiles -> {
-                staticFiles.directory = "web";
+                staticFiles.directory = ".";
                 staticFiles.location = io.javalin.http.staticfiles.Location.EXTERNAL;
             });
         }).start(7070);
