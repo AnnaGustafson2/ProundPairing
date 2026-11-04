@@ -27,7 +27,7 @@ CREATE TABLE tournaments (
 
 CREATE TABLE tournament_descriptions (
     tournament_id INTEGER NOT NULL REFERENCES tournaments(id),
-    special_description TEXT,
+    special_description TEXT NOT NULL,
     PRIMARY KEY (tournament_id, special_description)
 );
 
@@ -45,32 +45,32 @@ CREATE TABLE tournament_partners (
     CHECK (partner_two_id IS NULL OR partner_one_id <> partner_two_id),
     UNIQUE (tournament_id, partner_one_id),
     UNIQUE (tournament_id, partner_two_id)
-
-    CREATE TRIGGER tournament_partners_unique_member_insert
-    BEFORE INSERT ON tournament_partners
-    WHEN EXISTS (
-        SELECT 1 FROM tournament_partners p
-        WHERE p.tournament_id = NEW.tournament_id
-        AND (p.partner_one_id IN (NEW.partner_one_id, NEW.partner_two_id)
-            OR p.partner_two_id IN (NEW.partner_one_id, NEW.partner_two_id))
-    )
-    BEGIN
-        SELECT RAISE(ABORT, 'member is already paired in this tournament');
-    END;
-
-    CREATE TRIGGER tournament_partners_unique_member_update
-    BEFORE UPDATE OF tournament_id, partner_one_id, partner_two_id ON tournament_partners
-    WHEN EXISTS (
-        SELECT 1 FROM tournament_partners p
-        WHERE p.id <> NEW.id
-        AND p.tournament_id = NEW.tournament_id
-        AND (p.partner_one_id IN (NEW.partner_one_id, NEW.partner_two_id)
-            OR p.partner_two_id IN (NEW.partner_one_id, NEW.partner_two_id))
-    )
-    BEGIN
-        SELECT RAISE(ABORT, 'member is already paired in this tournament');
-    END;
 );
+
+CREATE TRIGGER tournament_partners_unique_member_insert
+BEFORE INSERT ON tournament_partners
+WHEN EXISTS (
+    SELECT 1 FROM tournament_partners p
+    WHERE p.tournament_id = NEW.tournament_id
+    AND (p.partner_one_id IN (NEW.partner_one_id, NEW.partner_two_id)
+        OR p.partner_two_id IN (NEW.partner_one_id, NEW.partner_two_id))
+)
+BEGIN
+    SELECT RAISE(ABORT, 'member is already paired in this tournament');
+END;
+
+CREATE TRIGGER tournament_partners_unique_member_update
+BEFORE UPDATE OF tournament_id, partner_one_id, partner_two_id ON tournament_partners
+WHEN EXISTS (
+    SELECT 1 FROM tournament_partners p
+    WHERE p.id <> NEW.id
+    AND p.tournament_id = NEW.tournament_id
+    AND (p.partner_one_id IN (NEW.partner_one_id, NEW.partner_two_id)
+        OR p.partner_two_id IN (NEW.partner_one_id, NEW.partner_two_id))
+)
+BEGIN
+    SELECT RAISE(ABORT, 'member is already paired in this tournament');
+END;
 
 CREATE TABLE partners (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -79,33 +79,36 @@ CREATE TABLE partners (
     partner_two_id INTEGER REFERENCES members(id),
     CHECK (partner_two_id IS NULL OR partner_one_id <> partner_two_id),
     UNIQUE (session_id, partner_one_id),
-    UNIQUE (session_id, partner_two_id)
-
-    CREATE TRIGGER partners_unique_member_insert
-    BEFORE INSERT ON partners
-    WHEN EXISTS (
-        SELECT 1 FROM partners p
-        WHERE p.session_id = NEW.session_id
-        AND (p.partner_one_id IN (NEW.partner_one_id, NEW.partner_two_id)
-            OR p.partner_two_id IN (NEW.partner_one_id, NEW.partner_two_id))
-    )
-    BEGIN
-        SELECT RAISE(ABORT, 'member is already paired in this session');
-    END;
-
-    CREATE TRIGGER partners_unique_member_update
-    BEFORE UPDATE OF session_id, partner_one_id, partner_two_id ON partners
-    WHEN EXISTS (
-        SELECT 1 FROM partners p
-        WHERE p.id <> NEW.id
-        AND p.session_id = NEW.session_id
-        AND (p.partner_one_id IN (NEW.partner_one_id, NEW.partner_two_id)
-            OR p.partner_two_id IN (NEW.partner_one_id, NEW.partner_two_id))
-    )
-    BEGIN
-        SELECT RAISE(ABORT, 'member is already paired in this session');
-    END;
+    UNIQUE (session_id, partner_two_id),
+    UNIQUE (id, session_id),
+    FOREIGN KEY (session_id, partner_one_id) REFERENCES attendance(session_id, member_id),
+    FOREIGN KEY (session_id, partner_two_id) REFERENCES attendance(session_id, member_id)
 );
+
+CREATE TRIGGER partners_unique_member_insert
+BEFORE INSERT ON partners
+WHEN EXISTS (
+    SELECT 1 FROM partners p
+    WHERE p.session_id = NEW.session_id
+    AND (p.partner_one_id IN (NEW.partner_one_id, NEW.partner_two_id)
+        OR p.partner_two_id IN (NEW.partner_one_id, NEW.partner_two_id))
+)
+BEGIN
+    SELECT RAISE(ABORT, 'member is already paired in this session');
+END;
+
+CREATE TRIGGER partners_unique_member_update
+BEFORE UPDATE OF session_id, partner_one_id, partner_two_id ON partners
+WHEN EXISTS (
+    SELECT 1 FROM partners p
+    WHERE p.id <> NEW.id
+    AND p.session_id = NEW.session_id
+    AND (p.partner_one_id IN (NEW.partner_one_id, NEW.partner_two_id)
+        OR p.partner_two_id IN (NEW.partner_one_id, NEW.partner_two_id))
+)
+BEGIN
+    SELECT RAISE(ABORT, 'member is already paired in this session');
+END;
 
 CREATE TABLE rounds (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -115,5 +118,53 @@ CREATE TABLE rounds (
     judge_id INTEGER REFERENCES members(id),
     CHECK (team_one_id <> team_two_id),
     FOREIGN KEY (team_one_id, session_id) REFERENCES partners(id, session_id),
-    FOREIGN KEY (team_two_id, session_id) REFERENCES partners(id, session_id)
+    FOREIGN KEY (team_two_id, session_id) REFERENCES partners(id, session_id),
+    FOREIGN KEY (session_id, judge_id) REFERENCES attendance(session_id, member_id)
 );
+
+CREATE TRIGGER rounds_judge_not_debater_insert
+BEFORE INSERT ON rounds
+WHEN NEW.judge_id IS NOT NULL AND EXISTS (
+    SELECT 1 FROM partners p
+    WHERE p.id IN (NEW.team_one_id, NEW.team_two_id)
+    AND NEW.judge_id IN (p.partner_one_id, p.partner_two_id)
+)
+BEGIN
+    SELECT RAISE(ABORT, 'judge cannot be a debater in the same round');
+END;
+
+CREATE TRIGGER rounds_judge_not_debater_update
+BEFORE UPDATE OF team_one_id, team_two_id, judge_id ON rounds
+WHEN NEW.judge_id IS NOT NULL AND EXISTS (
+    SELECT 1 FROM partners p
+    WHERE p.id IN (NEW.team_one_id, NEW.team_two_id)
+    AND NEW.judge_id IN (p.partner_one_id, p.partner_two_id)
+)
+BEGIN
+    SELECT RAISE(ABORT, 'judge cannot be a debater in the same round');
+END;
+
+CREATE TRIGGER rounds_team_once_insert
+BEFORE INSERT ON rounds
+WHEN EXISTS (
+    SELECT 1 FROM rounds r
+    WHERE r.session_id = NEW.session_id
+    AND (r.team_one_id IN (NEW.team_one_id, NEW.team_two_id)
+        OR r.team_two_id IN (NEW.team_one_id, NEW.team_two_id))
+)
+BEGIN
+    SELECT RAISE(ABORT, 'team is already in a round this session');
+END;
+
+CREATE TRIGGER rounds_team_once_update
+BEFORE UPDATE OF session_id, team_one_id, team_two_id ON rounds
+WHEN EXISTS (
+    SELECT 1 FROM rounds r
+    WHERE r.id <> NEW.id
+    AND r.session_id = NEW.session_id
+    AND (r.team_one_id IN (NEW.team_one_id, NEW.team_two_id)
+        OR r.team_two_id IN (NEW.team_one_id, NEW.team_two_id))
+)
+BEGIN
+    SELECT RAISE(ABORT, 'team is already in a round this session');
+END;
