@@ -21,6 +21,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.LinkedHashMap;
 
 public class App {
 
@@ -185,11 +186,12 @@ public class App {
 
     static void getTournaments(Context ctx) {
         String sql = """
-            SELECT t.id, t.name, t.tournament_date, td.special_description,
-                   (SELECT COUNT(*) FROM tournament_attendance ta WHERE ta.tournament_id = t.id) AS attendee_count,
-                   (SELECT COUNT(*) FROM tournament_partners tp WHERE tp.tournament_id = t.id) AS pair_count
+            SELECT t.id, t.name, t.tournament_date,
+                (SELECT group_concat(special_description, ', ')
+                    FROM tournament_descriptions td WHERE td.tournament_id = t.id) AS descriptions,
+                (SELECT COUNT(*) FROM tournament_attendance ta WHERE ta.tournament_id = t.id) AS attendee_count,
+                (SELECT COUNT(*) FROM tournament_partners tp WHERE tp.tournament_id = t.id) AS pair_count
             FROM tournaments t
-            LEFT JOIN tournament_descriptions td ON td.tournament_id = t.id
             ORDER BY t.tournament_date DESC, t.name
         """;
         List<TournamentSummaryDTO> list = new ArrayList<>();
@@ -202,7 +204,7 @@ public class App {
                 item.id = rs.getLong("id");
                 item.name = rs.getString("name");
                 item.date = rs.getString("tournament_date");
-                item.description = rs.getString("special_description");
+                item.description = rs.getString("descriptions");
                 item.attendeeCount = rs.getInt("attendee_count");
                 item.pairCount = rs.getInt("pair_count");
                 list.add(item);
@@ -225,7 +227,7 @@ public class App {
         try (Connection conn = Database.connect()) {
             TournamentDetailDTO detail = new TournamentDetailDTO();
 
-            String tourneySql = "SELECT t.id, t.name, t.tournament_date, td.special_description FROM tournaments t LEFT JOIN tournament_descriptions td ON td.tournament_id = t.id WHERE t.id = ?";
+            String tourneySql = "SELECT id, name, tournament_date FROM tournaments WHERE id = ?";
             try (PreparedStatement ps = conn.prepareStatement(tourneySql)) {
                 ps.setLong(1, id);
                 try (ResultSet rs = ps.executeQuery()) {
@@ -233,13 +235,23 @@ public class App {
                         detail.id = rs.getLong("id");
                         detail.name = rs.getString("name");
                         detail.date = rs.getString("tournament_date");
-                        detail.description = rs.getString("special_description");
                     } else {
                         ctx.status(404).json(new HealthResponse("error", "Tournament not found"));
                         return;
                     }
                 }
             }
+
+            String descSql = "SELECT special_description FROM tournament_descriptions WHERE tournament_id = ? ORDER BY rowid";
+            try (PreparedStatement ps = conn.prepareStatement(descSql)) {
+                ps.setLong(1, id);
+                try (ResultSet rs = ps.executeQuery()) {
+                    while (rs.next()) {
+                        detail.descriptions.add(rs.getString("special_description"));
+                    }
+                }
+            }
+            detail.description = String.join(", ", detail.descriptions);
 
             // Attendees
             String attSql = """
@@ -444,19 +456,32 @@ public class App {
             }
 
             // Handle special description
+            Map<String, String> descMap = new LinkedHashMap<>();
+            List<String> rawDescs = body.descriptions != null
+                    ? body.descriptions
+                    : (body.description != null ? List.of(body.description) : List.of());
+            for (String raw : rawDescs) {
+                if (raw == null) continue;
+                for (String part : raw.split(",")) {
+                    String d = part.trim();
+                    if (!d.isEmpty()) descMap.putIfAbsent(d.toLowerCase(), d);
+                }
+            }
+            
             String delDesc = "DELETE FROM tournament_descriptions WHERE tournament_id = ?";
             try (PreparedStatement stmt = conn.prepareStatement(delDesc)) {
                 stmt.setLong(1, tournamentId);
                 stmt.executeUpdate();
             }
 
-            if (body.description != null && !body.description.isBlank()) {
-                String insDesc = "INSERT INTO tournament_descriptions (tournament_id, special_description) VALUES (?, ?)";
-                try (PreparedStatement stmt = conn.prepareStatement(insDesc)) {
+            String insDesc = "INSERT INTO tournament_descriptions (tournament_id, special_description) VALUES (?, ?)";
+            try (PreparedStatement stmt = conn.prepareStatement(insDesc)) {
+                for (String d : descMap.values()) {
                     stmt.setLong(1, tournamentId);
-                    stmt.setString(2, body.description.trim());
-                    stmt.executeUpdate();
+                    stmt.setString(2, d);
+                    stmt.addBatch();
                 }
+                stmt.executeBatch();
             }
 
             // Clear previous pairings & attendance for this tournament to cleanly replace with current submission
@@ -811,6 +836,7 @@ public class App {
         public String name;
         public String date;
         public String description;
+        public List<String> descriptions;
         public List<String> attendees;
         public List<PairDTO> pairs;
     }
@@ -846,6 +872,7 @@ public class App {
         public String name;
         public String date;
         public String description;
+        public List<String> descriptions = new ArrayList<>();
         public List<MemberDTO> attendees = new ArrayList<>();
         public List<PairDetailDTO> pairs = new ArrayList<>();
     }
