@@ -1,0 +1,10 @@
+# JavaScript dependencies
+node_modules/
+
+# Maven build output
+target/
+
+# OS and editor files
+.DS_Store
+.idea/
+.vscode/
