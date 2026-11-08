@@ -4,10 +4,10 @@
     "name": "Anna Gustafson",
     "experience_level": "Varsity",
     "start_year": 2024,
-    "tournaments_attended": 4,
-    "attended": 14,
-    "total_sessions": 15,
-    "rate": 0.9333333333333333,
+    "tournaments_attended": 5,
+    "attended": 16,
+    "total_sessions": 17,
+    "rate": 0.9411764705882353,
     "years_on_team": 3
   },
   {
@@ -15,10 +15,10 @@
     "name": "Jack Beery",
     "experience_level": "Varsity",
     "start_year": 2024,
-    "tournaments_attended": 8,
-    "attended": 13,
-    "total_sessions": 15,
-    "rate": 0.8666666666666667,
+    "tournaments_attended": 9,
+    "attended": 15,
+    "total_sessions": 17,
+    "rate": 0.8823529411764706,
     "years_on_team": 3
   },
   {
@@ -27,9 +27,9 @@
     "experience_level": "Varsity",
     "start_year": 2024,
     "tournaments_attended": 8,
-    "attended": 12,
-    "total_sessions": 15,
-    "rate": 0.8,
+    "attended": 14,
+    "total_sessions": 17,
+    "rate": 0.8235294117647058,
     "years_on_team": 3
   },
   {
@@ -38,9 +38,9 @@
     "experience_level": "Novice",
     "start_year": 2026,
     "tournaments_attended": 4,
-    "attended": 11,
-    "total_sessions": 15,
-    "rate": 0.7333333333333333,
+    "attended": 13,
+    "total_sessions": 17,
+    "rate": 0.7647058823529411,
     "years_on_team": 1
   },
   {
@@ -49,9 +49,9 @@
     "experience_level": "Varsity",
     "start_year": 2023,
     "tournaments_attended": 6,
-    "attended": 10,
-    "total_sessions": 15,
-    "rate": 0.6666666666666666,
+    "attended": 12,
+    "total_sessions": 17,
+    "rate": 0.7058823529411765,
     "years_on_team": 4
   },
   {
@@ -59,10 +59,10 @@
     "name": "Dheeraj Keshav",
     "experience_level": "Varsity",
     "start_year": 2023,
-    "tournaments_attended": 4,
-    "attended": 10,
-    "total_sessions": 15,
-    "rate": 0.6666666666666666,
+    "tournaments_attended": 5,
+    "attended": 11,
+    "total_sessions": 17,
+    "rate": 0.6470588235294118,
     "years_on_team": 4
   },
   {
@@ -71,9 +71,9 @@
     "experience_level": "Novice",
     "start_year": 2026,
     "tournaments_attended": 2,
-    "attended": 9,
-    "total_sessions": 15,
-    "rate": 0.6,
+    "attended": 10,
+    "total_sessions": 17,
+    "rate": 0.5882352941176471,
     "years_on_team": 1
   },
   {
@@ -81,10 +81,10 @@
     "name": "Nathan Kovicak",
     "experience_level": "Varsity",
     "start_year": 2025,
-    "tournaments_attended": 4,
-    "attended": 9,
-    "total_sessions": 15,
-    "rate": 0.6,
+    "tournaments_attended": 5,
+    "attended": 10,
+    "total_sessions": 17,
+    "rate": 0.5882352941176471,
     "years_on_team": 2
   },
   {
@@ -93,31 +93,9 @@
     "experience_level": "Varsity",
     "start_year": 2025,
     "tournaments_attended": 6,
-    "attended": 9,
-    "total_sessions": 15,
-    "rate": 0.6,
-    "years_on_team": 2
-  },
-  {
-    "id": 7,
-    "name": "Stefano Raffo",
-    "experience_level": "Dino",
-    "start_year": 2023,
-    "tournaments_attended": 2,
-    "attended": 9,
-    "total_sessions": 15,
-    "rate": 0.6,
-    "years_on_team": 4
-  },
-  {
-    "id": 79,
-    "name": "Tafa Nutakor",
-    "experience_level": "Novice",
-    "start_year": 2025,
-    "tournaments_attended": 2,
-    "attended": 9,
-    "total_sessions": 15,
-    "rate": 0.6,
+    "attended": 10,
+    "total_sessions": 17,
+    "rate": 0.5882352941176471,
     "years_on_team": 2
   },
   {
@@ -125,10 +103,10 @@
     "name": "Rahul Ray",
     "experience_level": "Novice",
     "start_year": 2026,
-    "tournaments_attended": 1,
-    "attended": 8,
-    "total_sessions": 15,
-    "rate": 0.5333333333333333,
+    "tournaments_attended": 2,
+    "attended": 10,
+    "total_sessions": 17,
+    "rate": 0.5882352941176471,
     "years_on_team": 1
   },
   {
@@ -137,10 +115,32 @@
     "experience_level": "Varsity",
     "start_year": 2024,
     "tournaments_attended": 2,
-    "attended": 8,
-    "total_sessions": 15,
-    "rate": 0.5333333333333333,
+    "attended": 10,
+    "total_sessions": 17,
+    "rate": 0.5882352941176471,
     "years_on_team": 3
+  },
+  {
+    "id": 7,
+    "name": "Stefano Raffo",
+    "experience_level": "Dino",
+    "start_year": 2023,
+    "tournaments_attended": 3,
+    "attended": 10,
+    "total_sessions": 17,
+    "rate": 0.5882352941176471,
+    "years_on_team": 4
+  },
+  {
+    "id": 79,
+    "name": "Tafa Nutakor",
+    "experience_level": "Novice",
+    "start_year": 2025,
+    "tournaments_attended": 2,
+    "attended": 10,
+    "total_sessions": 17,
+    "rate": 0.5882352941176471,
+    "years_on_team": 2
   },
   {
     "id": 36,
@@ -148,9 +148,42 @@
     "experience_level": "Novice",
     "start_year": 2026,
     "tournaments_attended": 2,
-    "attended": 7,
-    "total_sessions": 15,
-    "rate": 0.4666666666666667,
+    "attended": 8,
+    "total_sessions": 17,
+    "rate": 0.47058823529411764,
+    "years_on_team": 1
+  },
+  {
+    "id": 61,
+    "name": "Bowen Yan",
+    "experience_level": "Novice",
+    "start_year": 2026,
+    "tournaments_attended": 3,
+    "attended": 8,
+    "total_sessions": 17,
+    "rate": 0.47058823529411764,
+    "years_on_team": 1
+  },
+  {
+    "id": 12,
+    "name": "Ernest Zhang",
+    "experience_level": "Varsity",
+    "start_year": 2025,
+    "tournaments_attended": 3,
+    "attended": 8,
+    "total_sessions": 17,
+    "rate": 0.47058823529411764,
+    "years_on_team": 2
+  },
+  {
+    "id": 50,
+    "name": "Juha Park",
+    "experience_level": "Novice",
+    "start_year": 2026,
+    "tournaments_attended": 4,
+    "attended": 8,
+    "total_sessions": 17,
+    "rate": 0.47058823529411764,
     "years_on_team": 1
   },
   {
@@ -160,30 +193,8 @@
     "start_year": 2026,
     "tournaments_attended": 0,
     "attended": 7,
-    "total_sessions": 15,
-    "rate": 0.4666666666666667,
-    "years_on_team": 1
-  },
-  {
-    "id": 50,
-    "name": "Juha Park",
-    "experience_level": "Novice",
-    "start_year": 2026,
-    "tournaments_attended": 3,
-    "attended": 7,
-    "total_sessions": 15,
-    "rate": 0.4666666666666667,
-    "years_on_team": 1
-  },
-  {
-    "id": 61,
-    "name": "Bowen Yan",
-    "experience_level": "Novice",
-    "start_year": 2026,
-    "tournaments_attended": 2,
-    "attended": 6,
-    "total_sessions": 15,
-    "rate": 0.4,
+    "total_sessions": 17,
+    "rate": 0.4117647058823529,
     "years_on_team": 1
   },
   {
@@ -192,21 +203,10 @@
     "experience_level": "Novice",
     "start_year": 2026,
     "tournaments_attended": 1,
-    "attended": 6,
-    "total_sessions": 15,
-    "rate": 0.4,
+    "attended": 7,
+    "total_sessions": 17,
+    "rate": 0.4117647058823529,
     "years_on_team": 1
-  },
-  {
-    "id": 12,
-    "name": "Ernest Zhang",
-    "experience_level": "Varsity",
-    "start_year": 2025,
-    "tournaments_attended": 2,
-    "attended": 6,
-    "total_sessions": 15,
-    "rate": 0.4,
-    "years_on_team": 2
   },
   {
     "id": 54,
@@ -214,20 +214,42 @@
     "experience_level": "Novice",
     "start_year": 2026,
     "tournaments_attended": 1,
-    "attended": 6,
-    "total_sessions": 15,
-    "rate": 0.4,
+    "attended": 7,
+    "total_sessions": 17,
+    "rate": 0.4117647058823529,
     "years_on_team": 1
+  },
+  {
+    "id": 75,
+    "name": "Madison Hull",
+    "experience_level": "Novice",
+    "start_year": 2026,
+    "tournaments_attended": 2,
+    "attended": 7,
+    "total_sessions": 17,
+    "rate": 0.4117647058823529,
+    "years_on_team": 1
+  },
+  {
+    "id": 9,
+    "name": "Mahi Khangura",
+    "experience_level": "Varsity",
+    "start_year": 2024,
+    "tournaments_attended": 4,
+    "attended": 7,
+    "total_sessions": 17,
+    "rate": 0.4117647058823529,
+    "years_on_team": 3
   },
   {
     "id": 49,
     "name": "Nico Solano",
     "experience_level": "Novice",
     "start_year": 2026,
-    "tournaments_attended": 1,
-    "attended": 6,
-    "total_sessions": 15,
-    "rate": 0.4,
+    "tournaments_attended": 2,
+    "attended": 7,
+    "total_sessions": 17,
+    "rate": 0.4117647058823529,
     "years_on_team": 1
   },
   {
@@ -235,11 +257,33 @@
     "name": "Vasa Syomin",
     "experience_level": "Varsity",
     "start_year": 2024,
+    "tournaments_attended": 2,
+    "attended": 7,
+    "total_sessions": 17,
+    "rate": 0.4117647058823529,
+    "years_on_team": 3
+  },
+  {
+    "id": 78,
+    "name": "Jayr Wynn",
+    "experience_level": "Novice",
+    "start_year": 2023,
     "tournaments_attended": 1,
     "attended": 6,
-    "total_sessions": 15,
-    "rate": 0.4,
-    "years_on_team": 3
+    "total_sessions": 17,
+    "rate": 0.35294117647058826,
+    "years_on_team": 4
+  },
+  {
+    "id": 65,
+    "name": "Riley Crane",
+    "experience_level": "Novice",
+    "start_year": 2026,
+    "tournaments_attended": 2,
+    "attended": 6,
+    "total_sessions": 17,
+    "rate": 0.35294117647058826,
+    "years_on_team": 1
   },
   {
     "id": 60,
@@ -248,8 +292,8 @@
     "start_year": 2026,
     "tournaments_attended": 2,
     "attended": 6,
-    "total_sessions": 15,
-    "rate": 0.4,
+    "total_sessions": 17,
+    "rate": 0.35294117647058826,
     "years_on_team": 1
   },
   {
@@ -259,64 +303,31 @@
     "start_year": 2026,
     "tournaments_attended": 2,
     "attended": 5,
-    "total_sessions": 15,
-    "rate": 0.3333333333333333,
+    "total_sessions": 17,
+    "rate": 0.29411764705882354,
     "years_on_team": 1
   },
   {
-    "id": 78,
-    "name": "Jayr Wynn",
-    "experience_level": "Novice",
-    "start_year": 2023,
-    "tournaments_attended": 0,
-    "attended": 5,
-    "total_sessions": 15,
-    "rate": 0.3333333333333333,
-    "years_on_team": 4
-  },
-  {
-    "id": 75,
-    "name": "Madison Hull",
+    "id": 67,
+    "name": "Joseph Garrison",
     "experience_level": "Novice",
     "start_year": 2026,
-    "tournaments_attended": 1,
-    "attended": 5,
-    "total_sessions": 15,
-    "rate": 0.3333333333333333,
-    "years_on_team": 1
-  },
-  {
-    "id": 9,
-    "name": "Mahi Khangura",
-    "experience_level": "Varsity",
-    "start_year": 2024,
     "tournaments_attended": 3,
     "attended": 5,
-    "total_sessions": 15,
-    "rate": 0.3333333333333333,
-    "years_on_team": 3
+    "total_sessions": 17,
+    "rate": 0.29411764705882354,
+    "years_on_team": 1
   },
   {
     "id": 6,
     "name": "Nitya Matcha",
     "experience_level": "Varsity",
     "start_year": 2025,
-    "tournaments_attended": 1,
-    "attended": 5,
-    "total_sessions": 15,
-    "rate": 0.3333333333333333,
-    "years_on_team": 2
-  },
-  {
-    "id": 65,
-    "name": "Riley Crane",
-    "experience_level": "Novice",
-    "start_year": 2026,
     "tournaments_attended": 2,
     "attended": 5,
-    "total_sessions": 15,
-    "rate": 0.3333333333333333,
-    "years_on_team": 1
+    "total_sessions": 17,
+    "rate": 0.29411764705882354,
+    "years_on_team": 2
   },
   {
     "id": 20,
@@ -325,9 +336,20 @@
     "start_year": 2024,
     "tournaments_attended": 1,
     "attended": 5,
-    "total_sessions": 15,
-    "rate": 0.3333333333333333,
+    "total_sessions": 17,
+    "rate": 0.29411764705882354,
     "years_on_team": 3
+  },
+  {
+    "id": 57,
+    "name": "Amudhan Gandhi",
+    "experience_level": "Novice",
+    "start_year": 2026,
+    "tournaments_attended": 1,
+    "attended": 4,
+    "total_sessions": 17,
+    "rate": 0.23529411764705882,
+    "years_on_team": 1
   },
   {
     "id": 38,
@@ -336,20 +358,20 @@
     "start_year": 2026,
     "tournaments_attended": 3,
     "attended": 4,
-    "total_sessions": 15,
-    "rate": 0.26666666666666666,
+    "total_sessions": 17,
+    "rate": 0.23529411764705882,
     "years_on_team": 1
   },
   {
-    "id": 67,
-    "name": "Joseph Garrison",
-    "experience_level": "Novice",
-    "start_year": 2026,
-    "tournaments_attended": 2,
+    "id": 10,
+    "name": "Fatima Masood",
+    "experience_level": "Varsity",
+    "start_year": 2024,
+    "tournaments_attended": 1,
     "attended": 4,
-    "total_sessions": 15,
-    "rate": 0.26666666666666666,
-    "years_on_team": 1
+    "total_sessions": 17,
+    "rate": 0.23529411764705882,
+    "years_on_team": 3
   },
   {
     "id": 4,
@@ -358,8 +380,19 @@
     "start_year": 2025,
     "tournaments_attended": 0,
     "attended": 4,
-    "total_sessions": 15,
-    "rate": 0.26666666666666666,
+    "total_sessions": 17,
+    "rate": 0.23529411764705882,
+    "years_on_team": 2
+  },
+  {
+    "id": 25,
+    "name": "Marios Kalpakis",
+    "experience_level": "Varsity",
+    "start_year": 2025,
+    "tournaments_attended": 1,
+    "attended": 4,
+    "total_sessions": 17,
+    "rate": 0.23529411764705882,
     "years_on_team": 2
   },
   {
@@ -369,19 +402,8 @@
     "start_year": 2026,
     "tournaments_attended": 2,
     "attended": 4,
-    "total_sessions": 15,
-    "rate": 0.26666666666666666,
-    "years_on_team": 1
-  },
-  {
-    "id": 57,
-    "name": "Amudhan Gandhi",
-    "experience_level": "Novice",
-    "start_year": 2026,
-    "tournaments_attended": 1,
-    "attended": 3,
-    "total_sessions": 15,
-    "rate": 0.2,
+    "total_sessions": 17,
+    "rate": 0.23529411764705882,
     "years_on_team": 1
   },
   {
@@ -391,8 +413,8 @@
     "start_year": 2025,
     "tournaments_attended": 0,
     "attended": 3,
-    "total_sessions": 15,
-    "rate": 0.2,
+    "total_sessions": 17,
+    "rate": 0.17647058823529413,
     "years_on_team": 2
   },
   {
@@ -402,8 +424,8 @@
     "start_year": 2026,
     "tournaments_attended": 0,
     "attended": 3,
-    "total_sessions": 15,
-    "rate": 0.2,
+    "total_sessions": 17,
+    "rate": 0.17647058823529413,
     "years_on_team": 1
   },
   {
@@ -413,20 +435,9 @@
     "start_year": 2026,
     "tournaments_attended": 1,
     "attended": 3,
-    "total_sessions": 15,
-    "rate": 0.2,
+    "total_sessions": 17,
+    "rate": 0.17647058823529413,
     "years_on_team": 1
-  },
-  {
-    "id": 10,
-    "name": "Fatima Masood",
-    "experience_level": "Varsity",
-    "start_year": 2024,
-    "tournaments_attended": 1,
-    "attended": 3,
-    "total_sessions": 15,
-    "rate": 0.2,
-    "years_on_team": 3
   },
   {
     "id": 45,
@@ -435,8 +446,8 @@
     "start_year": 2026,
     "tournaments_attended": 1,
     "attended": 3,
-    "total_sessions": 15,
-    "rate": 0.2,
+    "total_sessions": 17,
+    "rate": 0.17647058823529413,
     "years_on_team": 1
   },
   {
@@ -446,8 +457,8 @@
     "start_year": 2026,
     "tournaments_attended": 2,
     "attended": 3,
-    "total_sessions": 15,
-    "rate": 0.2,
+    "total_sessions": 17,
+    "rate": 0.17647058823529413,
     "years_on_team": 1
   },
   {
@@ -457,8 +468,8 @@
     "start_year": 2025,
     "tournaments_attended": 2,
     "attended": 3,
-    "total_sessions": 15,
-    "rate": 0.2,
+    "total_sessions": 17,
+    "rate": 0.17647058823529413,
     "years_on_team": 2
   },
   {
@@ -466,10 +477,10 @@
     "name": "Thomas Dragovich",
     "experience_level": "Dino",
     "start_year": 2022,
-    "tournaments_attended": 1,
+    "tournaments_attended": 2,
     "attended": 3,
-    "total_sessions": 15,
-    "rate": 0.2,
+    "total_sessions": 17,
+    "rate": 0.17647058823529413,
     "years_on_team": 5
   },
   {
@@ -479,8 +490,8 @@
     "start_year": 2026,
     "tournaments_attended": 0,
     "attended": 2,
-    "total_sessions": 15,
-    "rate": 0.13333333333333333,
+    "total_sessions": 17,
+    "rate": 0.11764705882352941,
     "years_on_team": 1
   },
   {
@@ -490,9 +501,20 @@
     "start_year": 2026,
     "tournaments_attended": 2,
     "attended": 2,
-    "total_sessions": 15,
-    "rate": 0.13333333333333333,
+    "total_sessions": 17,
+    "rate": 0.11764705882352941,
     "years_on_team": 1
+  },
+  {
+    "id": 29,
+    "name": "Judi Tchoudja",
+    "experience_level": "Dino",
+    "start_year": 2022,
+    "tournaments_attended": 0,
+    "attended": 2,
+    "total_sessions": 17,
+    "rate": 0.11764705882352941,
+    "years_on_team": 5
   },
   {
     "id": 35,
@@ -501,20 +523,9 @@
     "start_year": 2026,
     "tournaments_attended": 3,
     "attended": 2,
-    "total_sessions": 15,
-    "rate": 0.13333333333333333,
+    "total_sessions": 17,
+    "rate": 0.11764705882352941,
     "years_on_team": 1
-  },
-  {
-    "id": 25,
-    "name": "Marios Kalpakis",
-    "experience_level": "Varsity",
-    "start_year": 2025,
-    "tournaments_attended": 1,
-    "attended": 2,
-    "total_sessions": 15,
-    "rate": 0.13333333333333333,
-    "years_on_team": 2
   },
   {
     "id": 47,
@@ -523,8 +534,8 @@
     "start_year": 2026,
     "tournaments_attended": 1,
     "attended": 2,
-    "total_sessions": 15,
-    "rate": 0.13333333333333333,
+    "total_sessions": 17,
+    "rate": 0.11764705882352941,
     "years_on_team": 1
   },
   {
@@ -534,8 +545,8 @@
     "start_year": 2026,
     "tournaments_attended": 0,
     "attended": 1,
-    "total_sessions": 15,
-    "rate": 0.06666666666666667,
+    "total_sessions": 17,
+    "rate": 0.058823529411764705,
     "years_on_team": 1
   },
   {
@@ -545,8 +556,8 @@
     "start_year": 2026,
     "tournaments_attended": 0,
     "attended": 1,
-    "total_sessions": 15,
-    "rate": 0.06666666666666667,
+    "total_sessions": 17,
+    "rate": 0.058823529411764705,
     "years_on_team": 1
   },
   {
@@ -556,8 +567,8 @@
     "start_year": 2024,
     "tournaments_attended": 0,
     "attended": 1,
-    "total_sessions": 15,
-    "rate": 0.06666666666666667,
+    "total_sessions": 17,
+    "rate": 0.058823529411764705,
     "years_on_team": 3
   },
   {
@@ -567,8 +578,8 @@
     "start_year": 2026,
     "tournaments_attended": 0,
     "attended": 1,
-    "total_sessions": 15,
-    "rate": 0.06666666666666667,
+    "total_sessions": 17,
+    "rate": 0.058823529411764705,
     "years_on_team": 1
   },
   {
@@ -578,8 +589,8 @@
     "start_year": 2025,
     "tournaments_attended": 0,
     "attended": 1,
-    "total_sessions": 15,
-    "rate": 0.06666666666666667,
+    "total_sessions": 17,
+    "rate": 0.058823529411764705,
     "years_on_team": 2
   },
   {
@@ -589,8 +600,8 @@
     "start_year": 2026,
     "tournaments_attended": 0,
     "attended": 1,
-    "total_sessions": 15,
-    "rate": 0.06666666666666667,
+    "total_sessions": 17,
+    "rate": 0.058823529411764705,
     "years_on_team": 1
   },
   {
@@ -600,8 +611,8 @@
     "start_year": 2026,
     "tournaments_attended": 0,
     "attended": 1,
-    "total_sessions": 15,
-    "rate": 0.06666666666666667,
+    "total_sessions": 17,
+    "rate": 0.058823529411764705,
     "years_on_team": 1
   },
   {
@@ -611,8 +622,8 @@
     "start_year": 2026,
     "tournaments_attended": 0,
     "attended": 1,
-    "total_sessions": 15,
-    "rate": 0.06666666666666667,
+    "total_sessions": 17,
+    "rate": 0.058823529411764705,
     "years_on_team": 1
   },
   {
@@ -622,8 +633,8 @@
     "start_year": 2025,
     "tournaments_attended": 0,
     "attended": 1,
-    "total_sessions": 15,
-    "rate": 0.06666666666666667,
+    "total_sessions": 17,
+    "rate": 0.058823529411764705,
     "years_on_team": 2
   },
   {
@@ -633,20 +644,9 @@
     "start_year": 2026,
     "tournaments_attended": 0,
     "attended": 1,
-    "total_sessions": 15,
-    "rate": 0.06666666666666667,
+    "total_sessions": 17,
+    "rate": 0.058823529411764705,
     "years_on_team": 1
-  },
-  {
-    "id": 29,
-    "name": "Judi Tchoudja",
-    "experience_level": "Dino",
-    "start_year": 2022,
-    "tournaments_attended": 0,
-    "attended": 1,
-    "total_sessions": 15,
-    "rate": 0.06666666666666667,
-    "years_on_team": 5
   },
   {
     "id": 74,
@@ -655,8 +655,8 @@
     "start_year": 2026,
     "tournaments_attended": 0,
     "attended": 1,
-    "total_sessions": 15,
-    "rate": 0.06666666666666667,
+    "total_sessions": 17,
+    "rate": 0.058823529411764705,
     "years_on_team": 1
   },
   {
@@ -666,8 +666,8 @@
     "start_year": 2026,
     "tournaments_attended": 0,
     "attended": 1,
-    "total_sessions": 15,
-    "rate": 0.06666666666666667,
+    "total_sessions": 17,
+    "rate": 0.058823529411764705,
     "years_on_team": 1
   },
   {
@@ -677,8 +677,8 @@
     "start_year": 2026,
     "tournaments_attended": 0,
     "attended": 1,
-    "total_sessions": 15,
-    "rate": 0.06666666666666667,
+    "total_sessions": 17,
+    "rate": 0.058823529411764705,
     "years_on_team": 1
   },
   {
@@ -688,8 +688,8 @@
     "start_year": 2026,
     "tournaments_attended": 1,
     "attended": 1,
-    "total_sessions": 15,
-    "rate": 0.06666666666666667,
+    "total_sessions": 17,
+    "rate": 0.058823529411764705,
     "years_on_team": 1
   },
   {
@@ -699,8 +699,8 @@
     "start_year": 2026,
     "tournaments_attended": 0,
     "attended": 1,
-    "total_sessions": 15,
-    "rate": 0.06666666666666667,
+    "total_sessions": 17,
+    "rate": 0.058823529411764705,
     "years_on_team": 1
   },
   {
@@ -710,8 +710,8 @@
     "start_year": 2026,
     "tournaments_attended": 0,
     "attended": 1,
-    "total_sessions": 15,
-    "rate": 0.06666666666666667,
+    "total_sessions": 17,
+    "rate": 0.058823529411764705,
     "years_on_team": 1
   },
   {
@@ -721,8 +721,8 @@
     "start_year": 2025,
     "tournaments_attended": 0,
     "attended": 1,
-    "total_sessions": 15,
-    "rate": 0.06666666666666667,
+    "total_sessions": 17,
+    "rate": 0.058823529411764705,
     "years_on_team": 2
   },
   {
@@ -732,8 +732,8 @@
     "start_year": 2026,
     "tournaments_attended": 0,
     "attended": 1,
-    "total_sessions": 15,
-    "rate": 0.06666666666666667,
+    "total_sessions": 17,
+    "rate": 0.058823529411764705,
     "years_on_team": 1
   },
   {
@@ -743,8 +743,8 @@
     "start_year": 2024,
     "tournaments_attended": 2,
     "attended": 1,
-    "total_sessions": 15,
-    "rate": 0.06666666666666667,
+    "total_sessions": 17,
+    "rate": 0.058823529411764705,
     "years_on_team": 3
   },
   {
@@ -754,8 +754,8 @@
     "start_year": 2026,
     "tournaments_attended": 0,
     "attended": 1,
-    "total_sessions": 15,
-    "rate": 0.06666666666666667,
+    "total_sessions": 17,
+    "rate": 0.058823529411764705,
     "years_on_team": 1
   },
   {
@@ -765,8 +765,8 @@
     "start_year": 2026,
     "tournaments_attended": 0,
     "attended": 1,
-    "total_sessions": 15,
-    "rate": 0.06666666666666667,
+    "total_sessions": 17,
+    "rate": 0.058823529411764705,
     "years_on_team": 1
   },
   {
@@ -776,8 +776,8 @@
     "start_year": 2026,
     "tournaments_attended": 0,
     "attended": 1,
-    "total_sessions": 15,
-    "rate": 0.06666666666666667,
+    "total_sessions": 17,
+    "rate": 0.058823529411764705,
     "years_on_team": 1
   }
 ]

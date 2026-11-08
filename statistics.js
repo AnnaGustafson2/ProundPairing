@@ -44,10 +44,20 @@ function sortYearsDomain(values) {
 }
 
 const tournamentBin = (n) =>
-  n === 0 ? "0" : n <= 2 ? "1–2" : n <= 4 ? "3–4" : "5+";
+  n === 0 ? "0" : n <= 3 ? "1–3" : n <= 6 ? "4–6" : n <= 9 ? "7–9" : "10+"; 
 
 const attendanceBin = (n) =>
-  n <= 5 ? "0-5" : n <= 10 ? "5-10" : n <= 15 ? "10-15" : "15+";
+  n <= 5 ? "0–5" : n <= 10 ? "6–10" : n <= 15 ? "11–15" : "16+";          
+async function loadStat(apiEndpoint, file) {
+  try {
+    const res = await fetch(apiEndpoint);
+    if (res.ok) {
+      const j = await res.json();
+      if (j && j.length) return j;
+    }
+  } catch (e) {}
+  return d3.json(file).catch(() => []);
+}
 
 const ATTENDANCE_COLOR_OPTIONS = {
   years: {
@@ -59,11 +69,11 @@ const ATTENDANCE_COLOR_OPTIONS = {
   },
   tournaments: {
     label: "Tournaments attended",
-    get: (d) => tournamentBin(d.tournaments_attended || 0),
+    get: (d) => tournamentBin(d.tournaments_attended ?? 0),
   },
   attendance: {
     label: "Practices attended",
-    get: (d) => attendanceBin(d.attended || 0),
+    get: (d) => attendanceBin(d.practices_attended ?? 0),
   },
 };
 
@@ -111,8 +121,19 @@ async function createAttendanceChart({
   const margin = { top: 20, right: 30, bottom: 36, left: 150 };
   const width = 900;
   const height = rows.length * 22 + margin.top + margin.bottom;
-  let colorBy = "attendance";
-
+  let colorBy = prefix === "tournament-attendance" ? "tournaments" : "attendance";
+    // Pull both counts onto every row so the color options work on either chart
+  const [practiceRows, tourneyRows] = await Promise.all([
+    loadStat("/api/statistics/attendance", "./data/attendance.json"),
+    loadStat("/api/statistics/tournament-attendance", "./data/tournament-attendance.json"),
+  ]);
+  const keyOf = (d) => d.id || d.name;
+  const practiceBy = new Map(practiceRows.map((d) => [keyOf(d), d.attended]));
+  const tourneyBy = new Map(tourneyRows.map((d) => [keyOf(d), d.attended]));
+  rows.forEach((d) => {
+    d.practices_attended = practiceBy.get(keyOf(d)) ?? 0;
+    d.tournaments_attended = tourneyBy.get(keyOf(d)) ?? 0;
+  });
   const svg = d3
     .select(`#${prefix}-vis`)
     .append("svg")

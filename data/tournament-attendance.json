@@ -4,10 +4,10 @@
     "name": "Jack Beery",
     "experience_level": "Varsity",
     "start_year": 2024,
-    "tournaments_attended": 8,
-    "attended": 8,
-    "total_tournaments": 9,
-    "rate": 0.8888888888888888,
+    "tournaments_attended": 9,
+    "attended": 9,
+    "total_tournaments": 10,
+    "rate": 0.9,
     "years_on_team": 3
   },
   {
@@ -17,8 +17,8 @@
     "start_year": 2024,
     "tournaments_attended": 8,
     "attended": 8,
-    "total_tournaments": 9,
-    "rate": 0.8888888888888888,
+    "total_tournaments": 10,
+    "rate": 0.8,
     "years_on_team": 3
   },
   {
@@ -28,8 +28,8 @@
     "start_year": 2023,
     "tournaments_attended": 6,
     "attended": 6,
-    "total_tournaments": 9,
-    "rate": 0.6666666666666666,
+    "total_tournaments": 10,
+    "rate": 0.6,
     "years_on_team": 4
   },
   {
@@ -39,8 +39,8 @@
     "start_year": 2025,
     "tournaments_attended": 6,
     "attended": 6,
-    "total_tournaments": 9,
-    "rate": 0.6666666666666666,
+    "total_tournaments": 10,
+    "rate": 0.6,
     "years_on_team": 2
   },
   {
@@ -48,10 +48,10 @@
     "name": "Anna Gustafson",
     "experience_level": "Varsity",
     "start_year": 2024,
-    "tournaments_attended": 4,
-    "attended": 4,
-    "total_tournaments": 9,
-    "rate": 0.4444444444444444,
+    "tournaments_attended": 5,
+    "attended": 5,
+    "total_tournaments": 10,
+    "rate": 0.5,
     "years_on_team": 3
   },
   {
@@ -59,10 +59,10 @@
     "name": "Dheeraj Keshav",
     "experience_level": "Varsity",
     "start_year": 2023,
-    "tournaments_attended": 4,
-    "attended": 4,
-    "total_tournaments": 9,
-    "rate": 0.4444444444444444,
+    "tournaments_attended": 5,
+    "attended": 5,
+    "total_tournaments": 10,
+    "rate": 0.5,
     "years_on_team": 4
   },
   {
@@ -70,11 +70,33 @@
     "name": "Nathan Kovicak",
     "experience_level": "Varsity",
     "start_year": 2025,
+    "tournaments_attended": 5,
+    "attended": 5,
+    "total_tournaments": 10,
+    "rate": 0.5,
+    "years_on_team": 2
+  },
+  {
+    "id": 50,
+    "name": "Juha Park",
+    "experience_level": "Novice",
+    "start_year": 2026,
     "tournaments_attended": 4,
     "attended": 4,
-    "total_tournaments": 9,
-    "rate": 0.4444444444444444,
-    "years_on_team": 2
+    "total_tournaments": 10,
+    "rate": 0.4,
+    "years_on_team": 1
+  },
+  {
+    "id": 9,
+    "name": "Mahi Khangura",
+    "experience_level": "Varsity",
+    "start_year": 2024,
+    "tournaments_attended": 4,
+    "attended": 4,
+    "total_tournaments": 10,
+    "rate": 0.4,
+    "years_on_team": 3
   },
   {
     "id": 23,
@@ -83,8 +105,19 @@
     "start_year": 2026,
     "tournaments_attended": 4,
     "attended": 4,
-    "total_tournaments": 9,
-    "rate": 0.4444444444444444,
+    "total_tournaments": 10,
+    "rate": 0.4,
+    "years_on_team": 1
+  },
+  {
+    "id": 61,
+    "name": "Bowen Yan",
+    "experience_level": "Novice",
+    "start_year": 2026,
+    "tournaments_attended": 3,
+    "attended": 3,
+    "total_tournaments": 10,
+    "rate": 0.3,
     "years_on_team": 1
   },
   {
@@ -94,19 +127,30 @@
     "start_year": 2026,
     "tournaments_attended": 3,
     "attended": 3,
-    "total_tournaments": 9,
-    "rate": 0.3333333333333333,
+    "total_tournaments": 10,
+    "rate": 0.3,
     "years_on_team": 1
   },
   {
-    "id": 50,
-    "name": "Juha Park",
+    "id": 12,
+    "name": "Ernest Zhang",
+    "experience_level": "Varsity",
+    "start_year": 2025,
+    "tournaments_attended": 3,
+    "attended": 3,
+    "total_tournaments": 10,
+    "rate": 0.3,
+    "years_on_team": 2
+  },
+  {
+    "id": 67,
+    "name": "Joseph Garrison",
     "experience_level": "Novice",
     "start_year": 2026,
     "tournaments_attended": 3,
     "attended": 3,
-    "total_tournaments": 9,
-    "rate": 0.3333333333333333,
+    "total_tournaments": 10,
+    "rate": 0.3,
     "years_on_team": 1
   },
   {
@@ -116,20 +160,20 @@
     "start_year": 2026,
     "tournaments_attended": 3,
     "attended": 3,
-    "total_tournaments": 9,
-    "rate": 0.3333333333333333,
+    "total_tournaments": 10,
+    "rate": 0.3,
     "years_on_team": 1
   },
   {
-    "id": 9,
-    "name": "Mahi Khangura",
-    "experience_level": "Varsity",
-    "start_year": 2024,
+    "id": 7,
+    "name": "Stefano Raffo",
+    "experience_level": "Dino",
+    "start_year": 2023,
     "tournaments_attended": 3,
     "attended": 3,
-    "total_tournaments": 9,
-    "rate": 0.3333333333333333,
-    "years_on_team": 3
+    "total_tournaments": 10,
+    "rate": 0.3,
+    "years_on_team": 4
   },
   {
     "id": 36,
@@ -138,8 +182,8 @@
     "start_year": 2026,
     "tournaments_attended": 2,
     "attended": 2,
-    "total_tournaments": 9,
-    "rate": 0.2222222222222222,
+    "total_tournaments": 10,
+    "rate": 0.2,
     "years_on_team": 1
   },
   {
@@ -149,31 +193,9 @@
     "start_year": 2026,
     "tournaments_attended": 2,
     "attended": 2,
-    "total_tournaments": 9,
-    "rate": 0.2222222222222222,
+    "total_tournaments": 10,
+    "rate": 0.2,
     "years_on_team": 1
-  },
-  {
-    "id": 61,
-    "name": "Bowen Yan",
-    "experience_level": "Novice",
-    "start_year": 2026,
-    "tournaments_attended": 2,
-    "attended": 2,
-    "total_tournaments": 9,
-    "rate": 0.2222222222222222,
-    "years_on_team": 1
-  },
-  {
-    "id": 12,
-    "name": "Ernest Zhang",
-    "experience_level": "Varsity",
-    "start_year": 2025,
-    "tournaments_attended": 2,
-    "attended": 2,
-    "total_tournaments": 9,
-    "rate": 0.2222222222222222,
-    "years_on_team": 2
   },
   {
     "id": 42,
@@ -182,8 +204,8 @@
     "start_year": 2026,
     "tournaments_attended": 2,
     "attended": 2,
-    "total_tournaments": 9,
-    "rate": 0.2222222222222222,
+    "total_tournaments": 10,
+    "rate": 0.2,
     "years_on_team": 1
   },
   {
@@ -193,8 +215,8 @@
     "start_year": 2026,
     "tournaments_attended": 2,
     "attended": 2,
-    "total_tournaments": 9,
-    "rate": 0.2222222222222222,
+    "total_tournaments": 10,
+    "rate": 0.2,
     "years_on_team": 1
   },
   {
@@ -204,19 +226,19 @@
     "start_year": 2026,
     "tournaments_attended": 2,
     "attended": 2,
-    "total_tournaments": 9,
-    "rate": 0.2222222222222222,
+    "total_tournaments": 10,
+    "rate": 0.2,
     "years_on_team": 1
   },
   {
-    "id": 67,
-    "name": "Joseph Garrison",
+    "id": 75,
+    "name": "Madison Hull",
     "experience_level": "Novice",
     "start_year": 2026,
     "tournaments_attended": 2,
     "attended": 2,
-    "total_tournaments": 9,
-    "rate": 0.2222222222222222,
+    "total_tournaments": 10,
+    "rate": 0.2,
     "years_on_team": 1
   },
   {
@@ -226,9 +248,31 @@
     "start_year": 2024,
     "tournaments_attended": 2,
     "attended": 2,
-    "total_tournaments": 9,
-    "rate": 0.2222222222222222,
+    "total_tournaments": 10,
+    "rate": 0.2,
     "years_on_team": 3
+  },
+  {
+    "id": 49,
+    "name": "Nico Solano",
+    "experience_level": "Novice",
+    "start_year": 2026,
+    "tournaments_attended": 2,
+    "attended": 2,
+    "total_tournaments": 10,
+    "rate": 0.2,
+    "years_on_team": 1
+  },
+  {
+    "id": 6,
+    "name": "Nitya Matcha",
+    "experience_level": "Varsity",
+    "start_year": 2025,
+    "tournaments_attended": 2,
+    "attended": 2,
+    "total_tournaments": 10,
+    "rate": 0.2,
+    "years_on_team": 2
   },
   {
     "id": 5,
@@ -237,9 +281,20 @@
     "start_year": 2025,
     "tournaments_attended": 2,
     "attended": 2,
-    "total_tournaments": 9,
-    "rate": 0.2222222222222222,
+    "total_tournaments": 10,
+    "rate": 0.2,
     "years_on_team": 2
+  },
+  {
+    "id": 72,
+    "name": "Rahul Ray",
+    "experience_level": "Novice",
+    "start_year": 2026,
+    "tournaments_attended": 2,
+    "attended": 2,
+    "total_tournaments": 10,
+    "rate": 0.2,
+    "years_on_team": 1
   },
   {
     "id": 65,
@@ -248,8 +303,8 @@
     "start_year": 2026,
     "tournaments_attended": 2,
     "attended": 2,
-    "total_tournaments": 9,
-    "rate": 0.2222222222222222,
+    "total_tournaments": 10,
+    "rate": 0.2,
     "years_on_team": 1
   },
   {
@@ -259,20 +314,9 @@
     "start_year": 2024,
     "tournaments_attended": 2,
     "attended": 2,
-    "total_tournaments": 9,
-    "rate": 0.2222222222222222,
+    "total_tournaments": 10,
+    "rate": 0.2,
     "years_on_team": 3
-  },
-  {
-    "id": 7,
-    "name": "Stefano Raffo",
-    "experience_level": "Dino",
-    "start_year": 2023,
-    "tournaments_attended": 2,
-    "attended": 2,
-    "total_tournaments": 9,
-    "rate": 0.2222222222222222,
-    "years_on_team": 4
   },
   {
     "id": 79,
@@ -281,9 +325,31 @@
     "start_year": 2025,
     "tournaments_attended": 2,
     "attended": 2,
-    "total_tournaments": 9,
-    "rate": 0.2222222222222222,
+    "total_tournaments": 10,
+    "rate": 0.2,
     "years_on_team": 2
+  },
+  {
+    "id": 84,
+    "name": "Thomas Dragovich",
+    "experience_level": "Dino",
+    "start_year": 2022,
+    "tournaments_attended": 2,
+    "attended": 2,
+    "total_tournaments": 10,
+    "rate": 0.2,
+    "years_on_team": 5
+  },
+  {
+    "id": 16,
+    "name": "Vasa Syomin",
+    "experience_level": "Varsity",
+    "start_year": 2024,
+    "tournaments_attended": 2,
+    "attended": 2,
+    "total_tournaments": 10,
+    "rate": 0.2,
+    "years_on_team": 3
   },
   {
     "id": 60,
@@ -292,8 +358,8 @@
     "start_year": 2026,
     "tournaments_attended": 2,
     "attended": 2,
-    "total_tournaments": 9,
-    "rate": 0.2222222222222222,
+    "total_tournaments": 10,
+    "rate": 0.2,
     "years_on_team": 1
   },
   {
@@ -303,8 +369,8 @@
     "start_year": 2026,
     "tournaments_attended": 2,
     "attended": 2,
-    "total_tournaments": 9,
-    "rate": 0.2222222222222222,
+    "total_tournaments": 10,
+    "rate": 0.2,
     "years_on_team": 1
   },
   {
@@ -314,8 +380,8 @@
     "start_year": 2026,
     "tournaments_attended": 1,
     "attended": 1,
-    "total_tournaments": 9,
-    "rate": 0.1111111111111111,
+    "total_tournaments": 10,
+    "rate": 0.1,
     "years_on_team": 1
   },
   {
@@ -325,8 +391,8 @@
     "start_year": 2026,
     "tournaments_attended": 1,
     "attended": 1,
-    "total_tournaments": 9,
-    "rate": 0.1111111111111111,
+    "total_tournaments": 10,
+    "rate": 0.1,
     "years_on_team": 1
   },
   {
@@ -336,8 +402,8 @@
     "start_year": 2025,
     "tournaments_attended": 1,
     "attended": 1,
-    "total_tournaments": 9,
-    "rate": 0.1111111111111111,
+    "total_tournaments": 10,
+    "rate": 0.1,
     "years_on_team": 2
   },
   {
@@ -347,8 +413,8 @@
     "start_year": 2026,
     "tournaments_attended": 1,
     "attended": 1,
-    "total_tournaments": 9,
-    "rate": 0.1111111111111111,
+    "total_tournaments": 10,
+    "rate": 0.1,
     "years_on_team": 1
   },
   {
@@ -358,8 +424,8 @@
     "start_year": 2024,
     "tournaments_attended": 1,
     "attended": 1,
-    "total_tournaments": 9,
-    "rate": 0.1111111111111111,
+    "total_tournaments": 10,
+    "rate": 0.1,
     "years_on_team": 3
   },
   {
@@ -369,9 +435,20 @@
     "start_year": 2026,
     "tournaments_attended": 1,
     "attended": 1,
-    "total_tournaments": 9,
-    "rate": 0.1111111111111111,
+    "total_tournaments": 10,
+    "rate": 0.1,
     "years_on_team": 1
+  },
+  {
+    "id": 78,
+    "name": "Jayr Wynn",
+    "experience_level": "Novice",
+    "start_year": 2023,
+    "tournaments_attended": 1,
+    "attended": 1,
+    "total_tournaments": 10,
+    "rate": 0.1,
+    "years_on_team": 4
   },
   {
     "id": 54,
@@ -380,8 +457,8 @@
     "start_year": 2026,
     "tournaments_attended": 1,
     "attended": 1,
-    "total_tournaments": 9,
-    "rate": 0.1111111111111111,
+    "total_tournaments": 10,
+    "rate": 0.1,
     "years_on_team": 1
   },
   {
@@ -391,19 +468,8 @@
     "start_year": 2026,
     "tournaments_attended": 1,
     "attended": 1,
-    "total_tournaments": 9,
-    "rate": 0.1111111111111111,
-    "years_on_team": 1
-  },
-  {
-    "id": 75,
-    "name": "Madison Hull",
-    "experience_level": "Novice",
-    "start_year": 2026,
-    "tournaments_attended": 1,
-    "attended": 1,
-    "total_tournaments": 9,
-    "rate": 0.1111111111111111,
+    "total_tournaments": 10,
+    "rate": 0.1,
     "years_on_team": 1
   },
   {
@@ -413,42 +479,9 @@
     "start_year": 2025,
     "tournaments_attended": 1,
     "attended": 1,
-    "total_tournaments": 9,
-    "rate": 0.1111111111111111,
+    "total_tournaments": 10,
+    "rate": 0.1,
     "years_on_team": 2
-  },
-  {
-    "id": 49,
-    "name": "Nico Solano",
-    "experience_level": "Novice",
-    "start_year": 2026,
-    "tournaments_attended": 1,
-    "attended": 1,
-    "total_tournaments": 9,
-    "rate": 0.1111111111111111,
-    "years_on_team": 1
-  },
-  {
-    "id": 6,
-    "name": "Nitya Matcha",
-    "experience_level": "Varsity",
-    "start_year": 2025,
-    "tournaments_attended": 1,
-    "attended": 1,
-    "total_tournaments": 9,
-    "rate": 0.1111111111111111,
-    "years_on_team": 2
-  },
-  {
-    "id": 72,
-    "name": "Rahul Ray",
-    "experience_level": "Novice",
-    "start_year": 2026,
-    "tournaments_attended": 1,
-    "attended": 1,
-    "total_tournaments": 9,
-    "rate": 0.1111111111111111,
-    "years_on_team": 1
   },
   {
     "id": 20,
@@ -457,20 +490,9 @@
     "start_year": 2024,
     "tournaments_attended": 1,
     "attended": 1,
-    "total_tournaments": 9,
-    "rate": 0.1111111111111111,
+    "total_tournaments": 10,
+    "rate": 0.1,
     "years_on_team": 3
-  },
-  {
-    "id": 84,
-    "name": "Thomas Dragovich",
-    "experience_level": "Dino",
-    "start_year": 2022,
-    "tournaments_attended": 1,
-    "attended": 1,
-    "total_tournaments": 9,
-    "rate": 0.1111111111111111,
-    "years_on_team": 5
   },
   {
     "id": 47,
@@ -479,19 +501,8 @@
     "start_year": 2026,
     "tournaments_attended": 1,
     "attended": 1,
-    "total_tournaments": 9,
-    "rate": 0.1111111111111111,
+    "total_tournaments": 10,
+    "rate": 0.1,
     "years_on_team": 1
-  },
-  {
-    "id": 16,
-    "name": "Vasa Syomin",
-    "experience_level": "Varsity",
-    "start_year": 2024,
-    "tournaments_attended": 1,
-    "attended": 1,
-    "total_tournaments": 9,
-    "rate": 0.1111111111111111,
-    "years_on_team": 3
   }
 ]
