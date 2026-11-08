@@ -111,7 +111,7 @@ async function createAttendanceChart({
   const margin = { top: 20, right: 30, bottom: 36, left: 150 };
   const width = 900;
   const height = rows.length * 22 + margin.top + margin.bottom;
-  let colorBy = "years";
+  let colorBy = "attendance";
 
   const svg = d3
     .select(`#${prefix}-vis`)

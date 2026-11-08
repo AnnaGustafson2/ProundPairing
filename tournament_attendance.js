@@ -199,7 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Button hover effects on #current-name
   const hoverConfigs = [
-    { element: debaterAdd, color: "#89CFF0" },
+    { element: debaterAdd, color: "#DDABDD" },
     { element: judgeAdd, color: "#AFD9AE" },
     { element: attendeeAdd, color: "#F2D4A3" },
   ];
