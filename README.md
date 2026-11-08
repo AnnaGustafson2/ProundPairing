@@ -17,6 +17,25 @@ External data	Google Sheets CSV export
 From the project root (pround-pairing-app/, the folder containing pom.xml):
 
 ```bash
+## Overview
+
+A web app for the Maryland Debate Society to manage its roster, build practice rounds with drag-and-drop, and record attendance. A Java/Javalin server provides a small REST API over a SQLite file and serves a plain HTML/CSS/JS frontend. There is no frontend framework and no build step.
+
+## Stack
+Layer	Tool / version
+Language	Java 17+ (compiles to 17, has run on newer JDKs)
+Web framework	Javalin 5.6.3 (on Jetty)
+Build	Maven
+Database	SQLite via sqlite-jdbc 3.43.2.2
+JSON	Jackson 2.15.0 for responses, Gson 2.10.1 for parsing requests
+Frontend	Vanilla JS, HTML, CSS
+External data	Google Sheets CSV export
+
+## Running it
+
+From the project root (pround-pairing-app/, the folder containing pom.xml):
+
+```bash
 mvn clean compile
 mvn compile exec:java -Dexec.mainClass="com.pround.pairing.App"
 ```
