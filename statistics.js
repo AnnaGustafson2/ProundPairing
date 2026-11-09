@@ -939,23 +939,34 @@ function createPairingCharts(data, attendanceData) {
 /* =====================================================================
    Load all graphs
    ===================================================================== */
+async function loadPairings(file, apiFallback) {
+  let data = await d3.json(file).catch(() => null);
+
+  if ((!data || !data.nodes || data.nodes.length === 0) && apiFallback) {
+    try {
+      const res = await fetch(apiFallback);
+      if (res.ok) data = await res.json();
+    } catch (e) {}
+  }
+
+  return data && data.nodes
+    ? data
+    : { nodes: [], links: [], judging: [], attendance: [] };
+}
+
 async function init() {
-  let tournamentData = null;
-  let pairingData = null;
   let attendanceData = null;
   let members = [];
 
+  const [tournamentData, pairingData] = await Promise.all([
+    loadPairings("./data/tournament-pairings.json", "/api/statistics/pairings"),
+    loadPairings("./data/practice-pairings.json"),
+  ]);
+
   try {
-    const resTourn = await fetch("/api/statistics/pairings");
-    if (resTourn.ok) tournamentData = await resTourn.json();
+    const resAtt = await fetch("/api/statistics/attendance");
+    if (resAtt.ok) attendanceData = await resAtt.json();
   } catch (e) {}
-
-  if (!tournamentData) {
-    tournamentData = await d3.json("./data/pairings.json").catch(() => ({ nodes: [], links: [], judging: [] }));
-  }
-
-  pairingData = await d3.json("./data/practice-parings.json").catch(() => ({ nodes: [], links: [] }));
-
   try {
     const resAtt = await fetch("/api/statistics/attendance");
     if (resAtt.ok) attendanceData = await resAtt.json();

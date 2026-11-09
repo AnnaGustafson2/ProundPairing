@@ -113,31 +113,41 @@ END;
 CREATE TABLE rounds (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     session_id INTEGER NOT NULL REFERENCES sessions(id),
-    team_one_id INTEGER NOT NULL,
-    team_two_id INTEGER NOT NULL,
-    judge_id INTEGER REFERENCES members(id),
-    CHECK (team_one_id <> team_two_id),
+    team_one_id INTEGER,
+    team_two_id INTEGER,
+    CHECK (team_one_id IS NULL OR team_two_id IS NULL OR team_one_id <> team_two_id),
+    UNIQUE (id, session_id),
     FOREIGN KEY (team_one_id, session_id) REFERENCES partners(id, session_id),
-    FOREIGN KEY (team_two_id, session_id) REFERENCES partners(id, session_id),
+    FOREIGN KEY (team_two_id, session_id) REFERENCES partners(id, session_id)
+);
+
+CREATE TABLE round_judges (
+    round_id INTEGER NOT NULL,
+    session_id INTEGER NOT NULL,
+    judge_id INTEGER NOT NULL REFERENCES members(id),
+    PRIMARY KEY (round_id, judge_id),
+    FOREIGN KEY (round_id, session_id) REFERENCES rounds(id, session_id),
     FOREIGN KEY (session_id, judge_id) REFERENCES attendance(session_id, member_id)
 );
 
-CREATE TRIGGER rounds_judge_not_debater_insert
-BEFORE INSERT ON rounds
-WHEN NEW.judge_id IS NOT NULL AND EXISTS (
-    SELECT 1 FROM partners p
-    WHERE p.id IN (NEW.team_one_id, NEW.team_two_id)
+CREATE TRIGGER round_judges_not_debater_insert
+BEFORE INSERT ON round_judges
+WHEN EXISTS (
+    SELECT 1 FROM rounds r
+    JOIN partners p ON p.id IN (r.team_one_id, r.team_two_id)
+    WHERE r.id = NEW.round_id
     AND NEW.judge_id IN (p.partner_one_id, p.partner_two_id)
 )
 BEGIN
     SELECT RAISE(ABORT, 'judge cannot be a debater in the same round');
 END;
 
-CREATE TRIGGER rounds_judge_not_debater_update
-BEFORE UPDATE OF team_one_id, team_two_id, judge_id ON rounds
-WHEN NEW.judge_id IS NOT NULL AND EXISTS (
-    SELECT 1 FROM partners p
-    WHERE p.id IN (NEW.team_one_id, NEW.team_two_id)
+CREATE TRIGGER round_judges_not_debater_update
+BEFORE UPDATE OF round_id, judge_id ON round_judges
+WHEN EXISTS (
+    SELECT 1 FROM rounds r
+    JOIN partners p ON p.id IN (r.team_one_id, r.team_two_id)
+    WHERE r.id = NEW.round_id
     AND NEW.judge_id IN (p.partner_one_id, p.partner_two_id)
 )
 BEGIN

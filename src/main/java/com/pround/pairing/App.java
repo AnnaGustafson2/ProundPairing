@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 
 public class App {
 
@@ -36,6 +37,11 @@ public class App {
                 staticFiles.location = io.javalin.http.staticfiles.Location.EXTERNAL;
             });
         }).start(7070);
+
+        app.exception(Exception.class, (e, ctx) -> {
+            e.printStackTrace();
+            ctx.status(500).json(new HealthResponse("error", e.toString()));
+        });
 
         // Confirms Javalin + SQLite are wired up correctly.
         app.get("/api/health", ctx -> {
@@ -96,6 +102,8 @@ public class App {
             }
         });
 
+        app.get("/api/attendance", App::getSessions);
+        app.get("/api/attendance/{id}", App::getSessionDetails);
         app.post("/api/attendance", App::saveAttendance);
 
         // Tournament endpoints
@@ -110,35 +118,186 @@ public class App {
 
         System.out.println("Server running at http://localhost:7070");
     }
+    static void getSessions(Context ctx) {
+    String sql = """
+        SELECT s.id, s.session_date, s.label,
+               (SELECT COUNT(*) FROM attendance a WHERE a.session_id = s.id) AS attendee_count
+        FROM sessions s
+        ORDER BY s.session_date DESC, s.id DESC
+    """;
+    List<SessionSummaryDTO> list = new ArrayList<>();
+    try (Connection conn = Database.connect();
+         PreparedStatement stmt = conn.prepareStatement(sql);
+         ResultSet rs = stmt.executeQuery()) {
+        while (rs.next()) {
+            SessionSummaryDTO item = new SessionSummaryDTO();
+            item.id = rs.getLong("id");
+            item.date = rs.getString("session_date");
+            item.label = rs.getString("label");
+            item.attendeeCount = rs.getInt("attendee_count");
+            list.add(item);
+        }
+        ctx.json(list);
+    } catch (SQLException e) {
+        ctx.status(500).json(new HealthResponse("error", e.getMessage()));
+    }
+}
 
-    static void saveAttendance(Context ctx) {
-        AttendanceRequest body = gson.fromJson(ctx.body(), AttendanceRequest.class);
+static void getSessionDetails(Context ctx) {
+    long id;
+    try {
+        id = Long.parseLong(ctx.pathParam("id"));
+    } catch (NumberFormatException e) {
+        ctx.status(400).json(new HealthResponse("error", "Invalid session id"));
+        return;
+    }
 
-        if (body == null || body.date == null || body.names == null || body.names.isEmpty()) {
-            ctx.status(400).json(new HealthResponse("error", "date and names are required"));
-            return;
+    try (Connection conn = Database.connect()) {
+        SessionDetailDTO detail = new SessionDetailDTO();
+
+        try (PreparedStatement ps = conn.prepareStatement(
+                "SELECT id, session_date, label FROM sessions WHERE id = ?")) {
+            ps.setLong(1, id);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (!rs.next()) {
+                    ctx.status(404).json(new HealthResponse("error", "Practice not found"));
+                    return;
+                }
+                detail.id = rs.getLong("id");
+                detail.date = rs.getString("session_date");
+                detail.label = rs.getString("label");
+            }
         }
 
-        try (Connection conn = Database.connect()) {
-            conn.setAutoCommit(false);
+        // member id -> name for everyone who attended
+        Map<Integer, String> nameById = new LinkedHashMap<>();
+        String attSql = """
+            SELECT m.id, m.name
+            FROM attendance a
+            JOIN members m ON m.id = a.member_id
+            WHERE a.session_id = ?
+            ORDER BY m.name
+        """;
+        try (PreparedStatement ps = conn.prepareStatement(attSql)) {
+            ps.setLong(1, id);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) nameById.put(rs.getInt("id"), rs.getString("name"));
+            }
+        }
 
-            List<Integer> matchedIds = new ArrayList<>();
+        // round id -> judge member ids, in the order they were saved
+        Map<Long, List<Integer>> judgesByRound = new HashMap<>();
+        try (PreparedStatement ps = conn.prepareStatement(
+                "SELECT round_id, judge_id FROM round_judges WHERE session_id = ? ORDER BY rowid")) {
+            ps.setLong(1, id);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    judgesByRound.computeIfAbsent(rs.getLong("round_id"), k -> new ArrayList<>())
+                                 .add(rs.getInt("judge_id"));
+                }
+            }
+        }
+
+        String roundSql = """
+            SELECT r.id,
+                t1.partner_one_id AS a1, t1.partner_two_id AS a2,
+                t2.partner_one_id AS b1, t2.partner_two_id AS b2
+            FROM rounds r
+            LEFT JOIN partners t1 ON t1.id = r.team_one_id
+            LEFT JOIN partners t2 ON t2.id = r.team_two_id
+            WHERE r.session_id = ?
+            ORDER BY r.id
+        """;
+        Set<Integer> judgeIds = new HashSet<>();
+        try (PreparedStatement ps = conn.prepareStatement(roundSql)) {
+            ps.setLong(1, id);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    RoundDTO r = new RoundDTO();
+                    addName(r.side1, nameById, rs, "a1");
+                    addName(r.side1, nameById, rs, "a2");
+                    addName(r.side2, nameById, rs, "b1");
+                    addName(r.side2, nameById, rs, "b2");
+
+                    for (int judgeId : judgesByRound.getOrDefault(rs.getLong("id"), List.of())) {
+                        judgeIds.add(judgeId);
+                        r.judges.add(nameById.get(judgeId));
+                    }
+                    detail.rounds.add(r);
+                }
+            }
+        }
+
+        for (Map.Entry<Integer, String> e : nameById.entrySet()) {
+            SessionAttendeeDTO a = new SessionAttendeeDTO();
+            a.name = e.getValue();
+            a.role = judgeIds.contains(e.getKey()) ? "Judge" : "Debate";
+            detail.attendees.add(a);
+        }
+
+        ctx.json(detail);
+    } catch (SQLException e) {
+        ctx.status(500).json(new HealthResponse("error", e.getMessage()));
+    }
+}
+
+static void addName(List<String> out, Map<Integer, String> nameById, ResultSet rs, String col)
+        throws SQLException {
+    int memberId = rs.getInt(col);
+    if (!rs.wasNull()) out.add(nameById.get(memberId));
+}
+static void saveAttendance(Context ctx) {
+    AttendanceRequest body = gson.fromJson(ctx.body(), AttendanceRequest.class);
+
+    if (body == null || body.date == null || body.rounds == null || body.rounds.isEmpty()) {
+        ctx.status(400).json(new HealthResponse("error", "date and at least one round are required"));
+        return;
+    }
+
+    // Normalize missing fields, then ignore rounds with nobody in them
+    for (RoundDTO r : body.rounds) {
+        if (r.side1 == null) r.side1 = new ArrayList<>();
+        if (r.side2 == null) r.side2 = new ArrayList<>();
+        if (r.judges == null) r.judges = new ArrayList<>();
+    }
+    body.rounds.removeIf(r -> r.side1.isEmpty() && r.side2.isEmpty() && r.judges.isEmpty());
+    if (body.rounds.isEmpty()) {
+        ctx.status(400).json(new HealthResponse("error", "Place at least one person in a round"));
+        return;
+    }
+
+    Set<String> allNames = new LinkedHashSet<>();
+    for (int i = 0; i < body.rounds.size(); i++) {
+        RoundDTO r = body.rounds.get(i);
+        if (r.side1.size() > 2 || r.side2.size() > 2) {
+            ctx.status(400).json(new HealthResponse("error", "Round " + (i + 1) + ": each side holds at most 2 debaters"));
+            return;
+        }
+        for (String s : r.side1) allNames.add(s.trim());
+        for (String s : r.judges) allNames.add(s.trim());
+        for (String s : r.side2) allNames.add(s.trim());
+    }
+
+    try (Connection conn = Database.connect()) {
+        // Must be set per connection, and BEFORE the transaction starts (it's a no-op inside one)
+        try (Statement s = conn.createStatement()) {
+            s.execute("PRAGMA foreign_keys = ON");
+        }
+        conn.setAutoCommit(false);
+
+        try {
+            // Resolve names -> member ids
+            Map<String, Integer> nameToId = new HashMap<>();
             List<String> notFound = new ArrayList<>();
-
-            String lookupSql = "SELECT id FROM members WHERE name = ?";
-            try (PreparedStatement stmt = conn.prepareStatement(lookupSql)) {
-                for (String name : body.names) {
-                    stmt.setString(1, name.trim());
+            try (PreparedStatement stmt = conn.prepareStatement("SELECT id FROM members WHERE name = ?")) {
+                for (String name : allNames) {
+                    stmt.setString(1, name);
                     try (ResultSet rs = stmt.executeQuery()) {
-                        if (rs.next()) {
-                            matchedIds.add(rs.getInt("id"));
-                        } else {
-                            notFound.add(name);
-                        }
+                        if (rs.next()) nameToId.put(name, rs.getInt("id"));
+                        else notFound.add(name);
                     }
                 }
             }
-
             if (!notFound.isEmpty()) {
                 conn.rollback();
                 AttendanceResponse response = new AttendanceResponse();
@@ -147,22 +306,44 @@ public class App {
                 return;
             }
 
+            // Session row
             long sessionId;
-            String insertSession = "INSERT INTO sessions (session_date, label) VALUES (?, ?)";
-            try (PreparedStatement stmt = conn.prepareStatement(insertSession)) {
-                stmt.setString(1, body.date);
-                stmt.setString(2, body.label);
-                stmt.executeUpdate();
-            }
-            try (Statement idStmt = conn.createStatement();
-                 ResultSet keys = idStmt.executeQuery("SELECT last_insert_rowid()")) {
-                keys.next();
-                sessionId = keys.getLong(1);
+            boolean updating = body.id != null && body.id > 0;
+            if (updating) {
+                sessionId = body.id;
+                try (PreparedStatement stmt = conn.prepareStatement(
+                        "UPDATE sessions SET session_date = ?, label = ? WHERE id = ?")) {
+                    stmt.setString(1, body.date);
+                    stmt.setString(2, body.label);
+                    stmt.setLong(3, sessionId);
+                    if (stmt.executeUpdate() == 0) {
+                        conn.rollback();
+                        ctx.status(404).json(new HealthResponse("error", "Practice not found"));
+                        return;
+                    }
+                }
+                // Child-first order because of the foreign keys
+                for (String table : new String[] {"round_judges", "rounds", "partners", "attendance"}) {
+                    try (PreparedStatement stmt = conn.prepareStatement(
+                            "DELETE FROM " + table + " WHERE session_id = ?")) {
+                        stmt.setLong(1, sessionId);
+                        stmt.executeUpdate();
+                    }
+                }
+            } else {
+                try (PreparedStatement stmt = conn.prepareStatement(
+                        "INSERT INTO sessions (session_date, label) VALUES (?, ?)")) {
+                    stmt.setString(1, body.date);
+                    stmt.setString(2, body.label);
+                    stmt.executeUpdate();
+                }
+                sessionId = lastInsertId(conn);
             }
 
-            String insertAttendance = "INSERT INTO attendance (session_id, member_id) VALUES (?, ?)";
-            try (PreparedStatement stmt = conn.prepareStatement(insertAttendance)) {
-                for (int memberId : matchedIds) {
+            // Attendance first: partners and rounds reference it
+            try (PreparedStatement stmt = conn.prepareStatement(
+                    "INSERT INTO attendance (session_id, member_id) VALUES (?, ?)")) {
+                for (int memberId : new HashSet<>(nameToId.values())) {
                     stmt.setLong(1, sessionId);
                     stmt.setInt(2, memberId);
                     stmt.addBatch();
@@ -170,20 +351,72 @@ public class App {
                 stmt.executeBatch();
             }
 
-            conn.commit();
+            // Teams, rounds and judges, inserted in on-screen order so ORDER BY id restores it
+            try (PreparedStatement teamStmt = conn.prepareStatement(
+                    "INSERT INTO partners (session_id, partner_one_id, partner_two_id) VALUES (?, ?, ?)");
+            PreparedStatement roundStmt = conn.prepareStatement(
+                    "INSERT INTO rounds (session_id, team_one_id, team_two_id) VALUES (?, ?, ?)");
+            PreparedStatement judgeStmt = conn.prepareStatement(
+                    "INSERT INTO round_judges (round_id, session_id, judge_id) VALUES (?, ?, ?)")) {
 
-            // Sync static json file
+            for (RoundDTO r : body.rounds) {
+                Long team1 = insertTeam(conn, teamStmt, sessionId, nameToId, r.side1);
+                Long team2 = insertTeam(conn, teamStmt, sessionId, nameToId, r.side2);
+
+                roundStmt.setLong(1, sessionId);
+                if (team1 != null) roundStmt.setLong(2, team1); else roundStmt.setNull(2, java.sql.Types.INTEGER);
+                if (team2 != null) roundStmt.setLong(3, team2); else roundStmt.setNull(3, java.sql.Types.INTEGER);
+                roundStmt.executeUpdate();
+                long roundId = lastInsertId(conn);
+
+                for (String judge : r.judges) {
+                    judgeStmt.setLong(1, roundId);
+                    judgeStmt.setLong(2, sessionId);
+                    judgeStmt.setInt(3, nameToId.get(judge.trim()));
+                    judgeStmt.executeUpdate();
+                }
+            }
+        }
+
+            conn.commit();
             syncJsonFiles(conn);
 
             AttendanceResponse response = new AttendanceResponse();
             response.sessionId = sessionId;
-            ctx.status(201).json(response);
+            ctx.status(updating ? 200 : 201).json(response);
 
         } catch (SQLException e) {
-            ctx.status(500).json(new HealthResponse("error", e.getMessage()));
+            conn.rollback(); // nothing half-written if a trigger or FK fails
+            // The triggers raise readable messages, e.g. "member is already paired in this session"
+            ctx.status(400).json(new HealthResponse("error", e.getMessage()));
         }
-    }
 
+    } catch (SQLException e) {
+        ctx.status(500).json(new HealthResponse("error", e.getMessage()));
+    }
+}
+
+static Long insertTeam(Connection conn, PreparedStatement stmt, long sessionId,
+                       Map<String, Integer> nameToId, List<String> side) throws SQLException {
+    if (side.isEmpty()) return null;
+    stmt.setLong(1, sessionId);
+    stmt.setInt(2, nameToId.get(side.get(0).trim()));
+    if (side.size() > 1) {
+        stmt.setInt(3, nameToId.get(side.get(1).trim()));
+    } else {
+        stmt.setNull(3, java.sql.Types.INTEGER);
+    }
+    stmt.executeUpdate();
+    return lastInsertId(conn);
+}
+
+static long lastInsertId(Connection conn) throws SQLException {
+    try (Statement s = conn.createStatement();
+         ResultSet rs = s.executeQuery("SELECT last_insert_rowid()")) {
+        rs.next();
+        return rs.getLong(1);
+    }
+}
     static void getTournaments(Context ctx) {
         String sql = """
             SELECT t.id, t.name, t.tournament_date,
@@ -821,14 +1054,24 @@ public class App {
     }
 
     public static class AttendanceRequest {
+        public Long id;
         public String date;
         public String label;
-        public List<String> names;
+        public List<RoundDTO> rounds;
     }
 
-    public static class AttendanceResponse {
-        public Long sessionId;
-        public List<String> notFound;
+    public static class RoundDTO {
+        public List<String> side1 = new ArrayList<>();
+        public List<String> judges = new ArrayList<>();
+        public List<String> side2 = new ArrayList<>();
+    }
+
+    public static class SessionDetailDTO {
+        public long id;
+        public String date;
+        public String label;
+        public List<RoundDTO> rounds = new ArrayList<>();
+        public List<SessionAttendeeDTO> attendees = new ArrayList<>();
     }
 
     public static class TournamentRequest {
@@ -938,5 +1181,21 @@ public class App {
         public String tournament;
         public String year;
         public String date;
+    }
+
+    public static class SessionSummaryDTO {
+        public long id;
+        public String date;
+        public String label;
+        public int attendeeCount;
+    }
+    public static class AttendanceResponse {
+        public Long sessionId;
+        public List<String> notFound;
+    }
+
+    public static class SessionAttendeeDTO {
+        public String name;
+        public String role;
     }
 }

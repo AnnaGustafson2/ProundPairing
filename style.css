@@ -53,6 +53,55 @@ body {
    gap: 1rem;
    padding: 1rem 1rem 0rem 1rem;
 }
+/* For the Session Select Section */
+#session-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+#practice-select,
+#practice-date,
+#practice-label {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    font-family: inherit;
+    font-weight: 200;
+    font-size: 0.9rem;
+    background-color: #FFFFFF;
+    color: #000000;
+    box-sizing: border-box;
+    min-height: 2.5rem;
+}
+
+#practice-select {
+    min-width: 12rem;
+    cursor: pointer;
+}
+
+#practice-date {
+    min-width: 10rem;
+}
+
+#practice-label {
+    min-width: 14rem;
+}
+
+#practice-select:focus,
+#practice-date:focus,
+#practice-label:focus {
+    outline: none;
+    border-color: #9D2235;
+    box-shadow: 0 0 0 2px rgba(157, 34, 53, 0.2);
+}
+
+#practice-label::placeholder {
+    color: #aaa;
+}
 
 /* For the Input Section */
 label {

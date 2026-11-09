@@ -1,0 +1,2691 @@
+{
+  "nodes": [
+    {
+      "name": "Aayush Bhargava",
+      "status": "Varsity",
+      "start_year": 2023,
+      "years_on_team": 4
+    },
+    {
+      "name": "Adenike Higgins",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    },
+    {
+      "name": "Amudhan Gandhi",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    },
+    {
+      "name": "Amulya Chennamaneni",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    },
+    {
+      "name": "Ananya Porwal",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    },
+    {
+      "name": "Angelina Afanasenka",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    },
+    {
+      "name": "Anna Gustafson",
+      "status": "Varsity",
+      "start_year": 2024,
+      "years_on_team": 3
+    },
+    {
+      "name": "Anya Ottiende",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    },
+    {
+      "name": "Arav Juneja",
+      "status": "Varsity",
+      "start_year": 2024,
+      "years_on_team": 3
+    },
+    {
+      "name": "Atharv Umap",
+      "status": "Novice",
+      "start_year": 2025,
+      "years_on_team": 2
+    },
+    {
+      "name": "Ava Blanke",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    },
+    {
+      "name": "Avay Bhandari",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    },
+    {
+      "name": "Bowen Yan",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    },
+    {
+      "name": "Calvin Chrisfield",
+      "status": "Novice",
+      "start_year": 2025,
+      "years_on_team": 2
+    },
+    {
+      "name": "Celina Li",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    },
+    {
+      "name": "Chikemka Kingdom-Nwankwoala",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    },
+    {
+      "name": "Christian Once",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    },
+    {
+      "name": "Danielle Keenan",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    },
+    {
+      "name": "Dheeraj Keshav",
+      "status": "Varsity",
+      "start_year": 2023,
+      "years_on_team": 4
+    },
+    {
+      "name": "Erin Dorsey",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    },
+    {
+      "name": "Ernest Zhang",
+      "status": "Varsity",
+      "start_year": 2025,
+      "years_on_team": 2
+    },
+    {
+      "name": "Fatima Masood",
+      "status": "Varsity",
+      "start_year": 2024,
+      "years_on_team": 3
+    },
+    {
+      "name": "Fawzan Aslam",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    },
+    {
+      "name": "Gabriel Jodlowsky",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    },
+    {
+      "name": "Grace Cao",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    },
+    {
+      "name": "Harika Akundi",
+      "status": "Novice",
+      "start_year": 2025,
+      "years_on_team": 2
+    },
+    {
+      "name": "Heliany Hernandez",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    },
+    {
+      "name": "Isabelle Ortiz",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    },
+    {
+      "name": "Isadora Kaufman",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    },
+    {
+      "name": "Jack Beery",
+      "status": "Varsity",
+      "start_year": 2024,
+      "years_on_team": 3
+    },
+    {
+      "name": "Jaidon Faircloth-Scott",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    },
+    {
+      "name": "Jayr Wynn",
+      "status": "Novice",
+      "start_year": 2023,
+      "years_on_team": 4
+    },
+    {
+      "name": "Jeremy Wong",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    },
+    {
+      "name": "Joseph Garrison",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    },
+    {
+      "name": "Judi Tchoudja",
+      "status": "Dino",
+      "start_year": 2022,
+      "years_on_team": 5
+    },
+    {
+      "name": "Juha Park",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    },
+    {
+      "name": "Kaitlyn Thomas",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    },
+    {
+      "name": "Kate Keller",
+      "status": "Varsity",
+      "start_year": 2025,
+      "years_on_team": 2
+    },
+    {
+      "name": "Katherine Rynes",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    },
+    {
+      "name": "Laquan McKnight",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    },
+    {
+      "name": "Laura Nino",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    },
+    {
+      "name": "Leilani Farmer",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    },
+    {
+      "name": "Leilani Farmer",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    },
+    {
+      "name": "Lexi Otten",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    },
+    {
+      "name": "Lucas Maciel",
+      "status": "Varsity",
+      "start_year": 2025,
+      "years_on_team": 2
+    },
+    {
+      "name": "Madison Hull",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    },
+    {
+      "name": "Mahi Khangura",
+      "status": "Varsity",
+      "start_year": 2024,
+      "years_on_team": 3
+    },
+    {
+      "name": "Marios Kalpakis",
+      "status": "Varsity",
+      "start_year": 2025,
+      "years_on_team": 2
+    },
+    {
+      "name": "Mia Tanzilli",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    },
+    {
+      "name": "Narein Vignesh",
+      "status": "Varsity",
+      "start_year": 2024,
+      "years_on_team": 3
+    },
+    {
+      "name": "Nathan Kovicak",
+      "status": "Varsity",
+      "start_year": 2025,
+      "years_on_team": 2
+    },
+    {
+      "name": "Nethra Naresh",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    },
+    {
+      "name": "Nico Solano",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    },
+    {
+      "name": "Nitya Matcha",
+      "status": "Varsity",
+      "start_year": 2025,
+      "years_on_team": 2
+    },
+    {
+      "name": "Parth Tailor",
+      "status": "Varsity",
+      "start_year": 2025,
+      "years_on_team": 2
+    },
+    {
+      "name": "Pranav Sasikumar",
+      "status": "Varsity",
+      "start_year": 2024,
+      "years_on_team": 3
+    },
+    {
+      "name": "Pranika Singh",
+      "status": "Varsity",
+      "start_year": 2025,
+      "years_on_team": 2
+    },
+    {
+      "name": "Rahul Ray",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    },
+    {
+      "name": "Riley Crane",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    },
+    {
+      "name": "Saahil Bhawnani",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    },
+    {
+      "name": "Sahithya Venkatesh",
+      "status": "Varsity",
+      "start_year": 2024,
+      "years_on_team": 3
+    },
+    {
+      "name": "Sanni Korisepati",
+      "status": "Varsity",
+      "start_year": 2024,
+      "years_on_team": 3
+    },
+    {
+      "name": "Stefano Raffo",
+      "status": "Dino",
+      "start_year": 2023,
+      "years_on_team": 4
+    },
+    {
+      "name": "Sudharsna Suresh",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    },
+    {
+      "name": "Suhail Al Eryani",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    },
+    {
+      "name": "Tafa Nutakor",
+      "status": "Novice",
+      "start_year": 2025,
+      "years_on_team": 2
+    },
+    {
+      "name": "Thomas Dragovich",
+      "status": "Dino",
+      "start_year": 2022,
+      "years_on_team": 5
+    },
+    {
+      "name": "Trevor Hartman",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    },
+    {
+      "name": "Vasa Syomin",
+      "status": "Varsity",
+      "start_year": 2024,
+      "years_on_team": 3
+    },
+    {
+      "name": "Vihaan Iyer",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    },
+    {
+      "name": "Zainab Odusanya",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    }
+  ],
+  "links": [
+    {
+      "source": "Jack Beery",
+      "target": "Dheeraj Keshav",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-02"
+    },
+    {
+      "source": "Angelina Afanasenka",
+      "target": "Danielle Keenan",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-02"
+    },
+    {
+      "source": "Amudhan Gandhi",
+      "target": "Stefano Raffo",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-02"
+    },
+    {
+      "source": "Bowen Yan",
+      "target": "Jeremy Wong",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-02"
+    },
+    {
+      "source": "Vasa Syomin",
+      "target": "Nico Solano",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-02"
+    },
+    {
+      "source": "Sanni Korisepati",
+      "target": "Fatima Masood",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-02"
+    },
+    {
+      "source": "Madison Hull",
+      "target": "Mahi Khangura",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-02"
+    },
+    {
+      "source": "Ernest Zhang",
+      "target": "Jayr Wynn",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-02"
+    },
+    {
+      "source": "Rahul Ray",
+      "target": "Anna Gustafson",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-02"
+    },
+    {
+      "source": "Bowen Yan",
+      "target": "Aayush Bhargava",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-05"
+    },
+    {
+      "source": "Pranika Singh",
+      "target": "Marios Kalpakis",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-05"
+    },
+    {
+      "source": "Rahul Ray",
+      "target": "Anna Gustafson",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-05"
+    },
+    {
+      "source": "Nathan Kovicak",
+      "target": "Joseph Garrison",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-05"
+    },
+    {
+      "source": "Pranav Sasikumar",
+      "target": "Suhail Al Eryani",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-05"
+    },
+    {
+      "source": "Tafa Nutakor",
+      "target": "Ernest Zhang",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-05"
+    },
+    {
+      "source": "Juha Park",
+      "target": "Jack Beery",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-05"
+    },
+    {
+      "source": "Mahi Khangura",
+      "target": "Madison Hull",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-05"
+    }
+  ],
+  "judging": [
+    {
+      "name": "Suhail Al Eryani",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-02"
+    },
+    {
+      "name": "Marios Kalpakis",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-02"
+    },
+    {
+      "name": "Aayush Bhargava",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-02"
+    },
+    {
+      "name": "Riley Crane",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-02"
+    },
+    {
+      "name": "Jaidon Faircloth-Scott",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-02"
+    },
+    {
+      "name": "Sanni Korisepati",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-05"
+    }
+  ],
+  "attendance": [
+    {
+      "name": "Amulya Chennamaneni",
+      "tournament": "Practice",
+      "year": "Summer 2026",
+      "date": "2026-08-31"
+    },
+    {
+      "name": "Anna Gustafson",
+      "tournament": "Practice",
+      "year": "Summer 2026",
+      "date": "2026-08-31"
+    },
+    {
+      "name": "Arav Juneja",
+      "tournament": "Practice",
+      "year": "Summer 2026",
+      "date": "2026-08-31"
+    },
+    {
+      "name": "Atharv Umap",
+      "tournament": "Practice",
+      "year": "Summer 2026",
+      "date": "2026-08-31"
+    },
+    {
+      "name": "Jack Beery",
+      "tournament": "Practice",
+      "year": "Summer 2026",
+      "date": "2026-08-31"
+    },
+    {
+      "name": "Kate Keller",
+      "tournament": "Practice",
+      "year": "Summer 2026",
+      "date": "2026-08-31"
+    },
+    {
+      "name": "Lucas Maciel",
+      "tournament": "Practice",
+      "year": "Summer 2026",
+      "date": "2026-08-31"
+    },
+    {
+      "name": "Marios Kalpakis",
+      "tournament": "Practice",
+      "year": "Summer 2026",
+      "date": "2026-08-31"
+    },
+    {
+      "name": "Narein Vignesh",
+      "tournament": "Practice",
+      "year": "Summer 2026",
+      "date": "2026-08-31"
+    },
+    {
+      "name": "Nathan Kovicak",
+      "tournament": "Practice",
+      "year": "Summer 2026",
+      "date": "2026-08-31"
+    },
+    {
+      "name": "Nitya Matcha",
+      "tournament": "Practice",
+      "year": "Summer 2026",
+      "date": "2026-08-31"
+    },
+    {
+      "name": "Pranav Sasikumar",
+      "tournament": "Practice",
+      "year": "Summer 2026",
+      "date": "2026-08-31"
+    },
+    {
+      "name": "Stefano Raffo",
+      "tournament": "Practice",
+      "year": "Summer 2026",
+      "date": "2026-08-31"
+    },
+    {
+      "name": "Suhail Al Eryani",
+      "tournament": "Practice",
+      "year": "Summer 2026",
+      "date": "2026-08-31"
+    },
+    {
+      "name": "Vasa Syomin",
+      "tournament": "Practice",
+      "year": "Summer 2026",
+      "date": "2026-08-31"
+    },
+    {
+      "name": "Aayush Bhargava",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-06"
+    },
+    {
+      "name": "Anna Gustafson",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-06"
+    },
+    {
+      "name": "Calvin Chrisfield",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-06"
+    },
+    {
+      "name": "Dheeraj Keshav",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-06"
+    },
+    {
+      "name": "Jack Beery",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-06"
+    },
+    {
+      "name": "Jayr Wynn",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-06"
+    },
+    {
+      "name": "Kate Keller",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-06"
+    },
+    {
+      "name": "Nathan Kovicak",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-06"
+    },
+    {
+      "name": "Parth Tailor",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-06"
+    },
+    {
+      "name": "Pranav Sasikumar",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-06"
+    },
+    {
+      "name": "Pranika Singh",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-06"
+    },
+    {
+      "name": "Sahithya Venkatesh",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-06"
+    },
+    {
+      "name": "Sanni Korisepati",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-06"
+    },
+    {
+      "name": "Suhail Al Eryani",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-06"
+    },
+    {
+      "name": "Vasa Syomin",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-06"
+    },
+    {
+      "name": "Aayush Bhargava",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-10"
+    },
+    {
+      "name": "Anna Gustafson",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-10"
+    },
+    {
+      "name": "Calvin Chrisfield",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-10"
+    },
+    {
+      "name": "Dheeraj Keshav",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-10"
+    },
+    {
+      "name": "Jack Beery",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-10"
+    },
+    {
+      "name": "Jayr Wynn",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-10"
+    },
+    {
+      "name": "Kate Keller",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-10"
+    },
+    {
+      "name": "Nathan Kovicak",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-10"
+    },
+    {
+      "name": "Parth Tailor",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-10"
+    },
+    {
+      "name": "Pranav Sasikumar",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-10"
+    },
+    {
+      "name": "Pranika Singh",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-10"
+    },
+    {
+      "name": "Sahithya Venkatesh",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-10"
+    },
+    {
+      "name": "Sanni Korisepati",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-10"
+    },
+    {
+      "name": "Suhail Al Eryani",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-10"
+    },
+    {
+      "name": "Vasa Syomin",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-10"
+    },
+    {
+      "name": "Anna Gustafson",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-14"
+    },
+    {
+      "name": "Dheeraj Keshav",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-14"
+    },
+    {
+      "name": "Ernest Zhang",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-14"
+    },
+    {
+      "name": "Jack Beery",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-14"
+    },
+    {
+      "name": "Jayr Wynn",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-14"
+    },
+    {
+      "name": "Mahi Khangura",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-14"
+    },
+    {
+      "name": "Pranav Sasikumar",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-14"
+    },
+    {
+      "name": "Pranika Singh",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-14"
+    },
+    {
+      "name": "Sanni Korisepati",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-14"
+    },
+    {
+      "name": "Stefano Raffo",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-14"
+    },
+    {
+      "name": "Tafa Nutakor",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-14"
+    },
+    {
+      "name": "Aayush Bhargava",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Adenike Higgins",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Amudhan Gandhi",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Angelina Afanasenka",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Anna Gustafson",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Anya Ottiende",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Ava Blanke",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Avay Bhandari",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Bowen Yan",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Celina Li",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Chikemka Kingdom-Nwankwoala",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Christian Once",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Danielle Keenan",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Dheeraj Keshav",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Erin Dorsey",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Fawzan Aslam",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Gabriel Jodlowsky",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Grace Cao",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Harika Akundi",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Heliany Hernandez",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Isabelle Ortiz",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Isadora Kaufman",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Jack Beery",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Jaidon Faircloth-Scott",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Jayr Wynn",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Jeremy Wong",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Joseph Garrison",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Judi Tchoudja",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Juha Park",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Kaitlyn Thomas",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Katherine Rynes",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Laura Nino",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Leilani Farmer",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Lexi Otten",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Madison Hull",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Marios Kalpakis",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Mia Tanzilli",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Nathan Kovicak",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Nico Solano",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Nitya Matcha",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Parth Tailor",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Pranav Sasikumar",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Rahul Ray",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Riley Crane",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Saahil Bhawnani",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Sahithya Venkatesh",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Sanni Korisepati",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Stefano Raffo",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Suhail Al Eryani",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Tafa Nutakor",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Thomas Dragovich",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Trevor Hartman",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Vihaan Iyer",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Zainab Odusanya",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-24"
+    },
+    {
+      "name": "Aayush Bhargava",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-28"
+    },
+    {
+      "name": "Amudhan Gandhi",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-28"
+    },
+    {
+      "name": "Ananya Porwal",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-28"
+    },
+    {
+      "name": "Angelina Afanasenka",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-28"
+    },
+    {
+      "name": "Anna Gustafson",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-28"
+    },
+    {
+      "name": "Anya Ottiende",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-28"
+    },
+    {
+      "name": "Bowen Yan",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-28"
+    },
+    {
+      "name": "Celina Li",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-28"
+    },
+    {
+      "name": "Danielle Keenan",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-28"
+    },
+    {
+      "name": "Erin Dorsey",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-28"
+    },
+    {
+      "name": "Ernest Zhang",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-28"
+    },
+    {
+      "name": "Fatima Masood",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-28"
+    },
+    {
+      "name": "Grace Cao",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-28"
+    },
+    {
+      "name": "Jack Beery",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-28"
+    },
+    {
+      "name": "Jaidon Faircloth-Scott",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-28"
+    },
+    {
+      "name": "Jeremy Wong",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-28"
+    },
+    {
+      "name": "Joseph Garrison",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-28"
+    },
+    {
+      "name": "Juha Park",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-28"
+    },
+    {
+      "name": "Kate Keller",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-28"
+    },
+    {
+      "name": "Leilani Farmer",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-28"
+    },
+    {
+      "name": "Madison Hull",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-28"
+    },
+    {
+      "name": "Nathan Kovicak",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-28"
+    },
+    {
+      "name": "Nethra Naresh",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-28"
+    },
+    {
+      "name": "Nico Solano",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-28"
+    },
+    {
+      "name": "Pranav Sasikumar",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-28"
+    },
+    {
+      "name": "Pranika Singh",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-28"
+    },
+    {
+      "name": "Rahul Ray",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-28"
+    },
+    {
+      "name": "Riley Crane",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-28"
+    },
+    {
+      "name": "Sahithya Venkatesh",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-28"
+    },
+    {
+      "name": "Sanni Korisepati",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-28"
+    },
+    {
+      "name": "Stefano Raffo",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-28"
+    },
+    {
+      "name": "Suhail Al Eryani",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-28"
+    },
+    {
+      "name": "Tafa Nutakor",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-28"
+    },
+    {
+      "name": "Vihaan Iyer",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-28"
+    },
+    {
+      "name": "Zainab Odusanya",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-09-28"
+    },
+    {
+      "name": "Aayush Bhargava",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-01"
+    },
+    {
+      "name": "Adenike Higgins",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-01"
+    },
+    {
+      "name": "Amudhan Gandhi",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-01"
+    },
+    {
+      "name": "Angelina Afanasenka",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-01"
+    },
+    {
+      "name": "Anna Gustafson",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-01"
+    },
+    {
+      "name": "Anya Ottiende",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-01"
+    },
+    {
+      "name": "Atharv Umap",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-01"
+    },
+    {
+      "name": "Avay Bhandari",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-01"
+    },
+    {
+      "name": "Bowen Yan",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-01"
+    },
+    {
+      "name": "Christian Once",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-01"
+    },
+    {
+      "name": "Danielle Keenan",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-01"
+    },
+    {
+      "name": "Dheeraj Keshav",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-01"
+    },
+    {
+      "name": "Erin Dorsey",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-01"
+    },
+    {
+      "name": "Ernest Zhang",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-01"
+    },
+    {
+      "name": "Isabelle Ortiz",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-01"
+    },
+    {
+      "name": "Jack Beery",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-01"
+    },
+    {
+      "name": "Jaidon Faircloth-Scott",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-01"
+    },
+    {
+      "name": "Joseph Garrison",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-01"
+    },
+    {
+      "name": "Juha Park",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-01"
+    },
+    {
+      "name": "Laquan McKnight",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-01"
+    },
+    {
+      "name": "Madison Hull",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-01"
+    },
+    {
+      "name": "Mahi Khangura",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-01"
+    },
+    {
+      "name": "Nathan Kovicak",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-01"
+    },
+    {
+      "name": "Nico Solano",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-01"
+    },
+    {
+      "name": "Pranav Sasikumar",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-01"
+    },
+    {
+      "name": "Pranika Singh",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-01"
+    },
+    {
+      "name": "Riley Crane",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-01"
+    },
+    {
+      "name": "Sanni Korisepati",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-01"
+    },
+    {
+      "name": "Stefano Raffo",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-01"
+    },
+    {
+      "name": "Suhail Al Eryani",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-01"
+    },
+    {
+      "name": "Tafa Nutakor",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-01"
+    },
+    {
+      "name": "Zainab Odusanya",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-01"
+    },
+    {
+      "name": "Angelina Afanasenka",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-05"
+    },
+    {
+      "name": "Anna Gustafson",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-05"
+    },
+    {
+      "name": "Avay Bhandari",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-05"
+    },
+    {
+      "name": "Celina Li",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-05"
+    },
+    {
+      "name": "Christian Once",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-05"
+    },
+    {
+      "name": "Dheeraj Keshav",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-05"
+    },
+    {
+      "name": "Ernest Zhang",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-05"
+    },
+    {
+      "name": "Fatima Masood",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-05"
+    },
+    {
+      "name": "Jack Beery",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-05"
+    },
+    {
+      "name": "Jaidon Faircloth-Scott",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-05"
+    },
+    {
+      "name": "Jeremy Wong",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-05"
+    },
+    {
+      "name": "Juha Park",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-05"
+    },
+    {
+      "name": "Lexi Otten",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-05"
+    },
+    {
+      "name": "Madison Hull",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-05"
+    },
+    {
+      "name": "Mahi Khangura",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-05"
+    },
+    {
+      "name": "Nathan Kovicak",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-05"
+    },
+    {
+      "name": "Nico Solano",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-05"
+    },
+    {
+      "name": "Nitya Matcha",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-05"
+    },
+    {
+      "name": "Rahul Ray",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-05"
+    },
+    {
+      "name": "Riley Crane",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-05"
+    },
+    {
+      "name": "Sahithya Venkatesh",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-05"
+    },
+    {
+      "name": "Sudharsna Suresh",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-05"
+    },
+    {
+      "name": "Suhail Al Eryani",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-05"
+    },
+    {
+      "name": "Vihaan Iyer",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-05"
+    },
+    {
+      "name": "Angelina Afanasenka",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-09"
+    },
+    {
+      "name": "Anna Gustafson",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-09"
+    },
+    {
+      "name": "Anya Ottiende",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-09"
+    },
+    {
+      "name": "Atharv Umap",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-09"
+    },
+    {
+      "name": "Avay Bhandari",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-09"
+    },
+    {
+      "name": "Bowen Yan",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-09"
+    },
+    {
+      "name": "Danielle Keenan",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-09"
+    },
+    {
+      "name": "Dheeraj Keshav",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-09"
+    },
+    {
+      "name": "Ernest Zhang",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-09"
+    },
+    {
+      "name": "Isabelle Ortiz",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-09"
+    },
+    {
+      "name": "Isadora Kaufman",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-09"
+    },
+    {
+      "name": "Jaidon Faircloth-Scott",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-09"
+    },
+    {
+      "name": "Jeremy Wong",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-09"
+    },
+    {
+      "name": "Pranav Sasikumar",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-09"
+    },
+    {
+      "name": "Rahul Ray",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-09"
+    },
+    {
+      "name": "Suhail Al Eryani",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-09"
+    },
+    {
+      "name": "Tafa Nutakor",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-09"
+    },
+    {
+      "name": "Vihaan Iyer",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-09"
+    },
+    {
+      "name": "Aayush Bhargava",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-15"
+    },
+    {
+      "name": "Angelina Afanasenka",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-15"
+    },
+    {
+      "name": "Anna Gustafson",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-15"
+    },
+    {
+      "name": "Avay Bhandari",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-15"
+    },
+    {
+      "name": "Dheeraj Keshav",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-15"
+    },
+    {
+      "name": "Isadora Kaufman",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-15"
+    },
+    {
+      "name": "Jack Beery",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-15"
+    },
+    {
+      "name": "Jaidon Faircloth-Scott",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-15"
+    },
+    {
+      "name": "Jeremy Wong",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-15"
+    },
+    {
+      "name": "Juha Park",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-15"
+    },
+    {
+      "name": "Kate Keller",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-15"
+    },
+    {
+      "name": "Nico Solano",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-15"
+    },
+    {
+      "name": "Parth Tailor",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-15"
+    },
+    {
+      "name": "Pranav Sasikumar",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-15"
+    },
+    {
+      "name": "Pranika Singh",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-15"
+    },
+    {
+      "name": "Rahul Ray",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-15"
+    },
+    {
+      "name": "Sanni Korisepati",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-15"
+    },
+    {
+      "name": "Stefano Raffo",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-15"
+    },
+    {
+      "name": "Suhail Al Eryani",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-15"
+    },
+    {
+      "name": "Tafa Nutakor",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-15"
+    },
+    {
+      "name": "Thomas Dragovich",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-15"
+    },
+    {
+      "name": "Vasa Syomin",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-15"
+    },
+    {
+      "name": "Vihaan Iyer",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-15"
+    },
+    {
+      "name": "Aayush Bhargava",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-19"
+    },
+    {
+      "name": "Anna Gustafson",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-19"
+    },
+    {
+      "name": "Anya Ottiende",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-19"
+    },
+    {
+      "name": "Avay Bhandari",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-19"
+    },
+    {
+      "name": "Bowen Yan",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-19"
+    },
+    {
+      "name": "Danielle Keenan",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-19"
+    },
+    {
+      "name": "Dheeraj Keshav",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-19"
+    },
+    {
+      "name": "Fatima Masood",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-19"
+    },
+    {
+      "name": "Jack Beery",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-19"
+    },
+    {
+      "name": "Jaidon Faircloth-Scott",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-19"
+    },
+    {
+      "name": "Jeremy Wong",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-19"
+    },
+    {
+      "name": "Juha Park",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-19"
+    },
+    {
+      "name": "Madison Hull",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-19"
+    },
+    {
+      "name": "Mahi Khangura",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-19"
+    },
+    {
+      "name": "Nathan Kovicak",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-19"
+    },
+    {
+      "name": "Nitya Matcha",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-19"
+    },
+    {
+      "name": "Pranav Sasikumar",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-19"
+    },
+    {
+      "name": "Pranika Singh",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-19"
+    },
+    {
+      "name": "Rahul Ray",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-19"
+    },
+    {
+      "name": "Riley Crane",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-19"
+    },
+    {
+      "name": "Sanni Korisepati",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-19"
+    },
+    {
+      "name": "Stefano Raffo",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-19"
+    },
+    {
+      "name": "Suhail Al Eryani",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-19"
+    },
+    {
+      "name": "Thomas Dragovich",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-19"
+    },
+    {
+      "name": "Trevor Hartman",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-19"
+    },
+    {
+      "name": "Vasa Syomin",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-19"
+    },
+    {
+      "name": "Vihaan Iyer",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-19"
+    },
+    {
+      "name": "Aayush Bhargava",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-22"
+    },
+    {
+      "name": "Angelina Afanasenka",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-22"
+    },
+    {
+      "name": "Anna Gustafson",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-22"
+    },
+    {
+      "name": "Bowen Yan",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-22"
+    },
+    {
+      "name": "Danielle Keenan",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-22"
+    },
+    {
+      "name": "Dheeraj Keshav",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-22"
+    },
+    {
+      "name": "Jack Beery",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-22"
+    },
+    {
+      "name": "Jaidon Faircloth-Scott",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-22"
+    },
+    {
+      "name": "Jayr Wynn",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-22"
+    },
+    {
+      "name": "Joseph Garrison",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-22"
+    },
+    {
+      "name": "Juha Park",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-22"
+    },
+    {
+      "name": "Mahi Khangura",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-22"
+    },
+    {
+      "name": "Nathan Kovicak",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-22"
+    },
+    {
+      "name": "Nitya Matcha",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-22"
+    },
+    {
+      "name": "Pranav Sasikumar",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-22"
+    },
+    {
+      "name": "Rahul Ray",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-22"
+    },
+    {
+      "name": "Sanni Korisepati",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-22"
+    },
+    {
+      "name": "Stefano Raffo",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-22"
+    },
+    {
+      "name": "Suhail Al Eryani",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-22"
+    },
+    {
+      "name": "Tafa Nutakor",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-22"
+    },
+    {
+      "name": "Thomas Dragovich",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-22"
+    },
+    {
+      "name": "Vasa Syomin",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-22"
+    },
+    {
+      "name": "Zainab Odusanya",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-22"
+    },
+    {
+      "name": "Aayush Bhargava",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-29"
+    },
+    {
+      "name": "Anna Gustafson",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-29"
+    },
+    {
+      "name": "Avay Bhandari",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-29"
+    },
+    {
+      "name": "Dheeraj Keshav",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-29"
+    },
+    {
+      "name": "Erin Dorsey",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-29"
+    },
+    {
+      "name": "Ernest Zhang",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-29"
+    },
+    {
+      "name": "Jack Beery",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-29"
+    },
+    {
+      "name": "Jaidon Faircloth-Scott",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-29"
+    },
+    {
+      "name": "Jayr Wynn",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-29"
+    },
+    {
+      "name": "Nico Solano",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-29"
+    },
+    {
+      "name": "Pranav Sasikumar",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-29"
+    },
+    {
+      "name": "Pranika Singh",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-29"
+    },
+    {
+      "name": "Rahul Ray",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-29"
+    },
+    {
+      "name": "Suhail Al Eryani",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-29"
+    },
+    {
+      "name": "Tafa Nutakor",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-29"
+    },
+    {
+      "name": "Vasa Syomin",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-10-29"
+    },
+    {
+      "name": "Aayush Bhargava",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-02"
+    },
+    {
+      "name": "Amudhan Gandhi",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-02"
+    },
+    {
+      "name": "Angelina Afanasenka",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-02"
+    },
+    {
+      "name": "Anna Gustafson",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-02"
+    },
+    {
+      "name": "Bowen Yan",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-02"
+    },
+    {
+      "name": "Danielle Keenan",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-02"
+    },
+    {
+      "name": "Dheeraj Keshav",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-02"
+    },
+    {
+      "name": "Ernest Zhang",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-02"
+    },
+    {
+      "name": "Fatima Masood",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-02"
+    },
+    {
+      "name": "Jack Beery",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-02"
+    },
+    {
+      "name": "Jaidon Faircloth-Scott",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-02"
+    },
+    {
+      "name": "Jayr Wynn",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-02"
+    },
+    {
+      "name": "Jeremy Wong",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-02"
+    },
+    {
+      "name": "Judi Tchoudja",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-02"
+    },
+    {
+      "name": "Madison Hull",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-02"
+    },
+    {
+      "name": "Mahi Khangura",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-02"
+    },
+    {
+      "name": "Marios Kalpakis",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-02"
+    },
+    {
+      "name": "Nico Solano",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-02"
+    },
+    {
+      "name": "Pranav Sasikumar",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-02"
+    },
+    {
+      "name": "Rahul Ray",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-02"
+    },
+    {
+      "name": "Riley Crane",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-02"
+    },
+    {
+      "name": "Sanni Korisepati",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-02"
+    },
+    {
+      "name": "Stefano Raffo",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-02"
+    },
+    {
+      "name": "Suhail Al Eryani",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-02"
+    },
+    {
+      "name": "Vasa Syomin",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-02"
+    },
+    {
+      "name": "Aayush Bhargava",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-05"
+    },
+    {
+      "name": "Anna Gustafson",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-05"
+    },
+    {
+      "name": "Bowen Yan",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-05"
+    },
+    {
+      "name": "Ernest Zhang",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-05"
+    },
+    {
+      "name": "Jack Beery",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-05"
+    },
+    {
+      "name": "Joseph Garrison",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-05"
+    },
+    {
+      "name": "Juha Park",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-05"
+    },
+    {
+      "name": "Madison Hull",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-05"
+    },
+    {
+      "name": "Mahi Khangura",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-05"
+    },
+    {
+      "name": "Marios Kalpakis",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-05"
+    },
+    {
+      "name": "Nathan Kovicak",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-05"
+    },
+    {
+      "name": "Pranav Sasikumar",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-05"
+    },
+    {
+      "name": "Pranika Singh",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-05"
+    },
+    {
+      "name": "Rahul Ray",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-05"
+    },
+    {
+      "name": "Sanni Korisepati",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-05"
+    },
+    {
+      "name": "Suhail Al Eryani",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-05"
+    },
+    {
+      "name": "Tafa Nutakor",
+      "tournament": "Practice",
+      "year": "Fall 2026",
+      "date": "2026-11-05"
+    }
+  ]
+}
