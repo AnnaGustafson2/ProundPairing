@@ -13,6 +13,12 @@
       "years_on_team": 1
     },
     {
+      "name": "Amulya Chennamaneni",
+      "status": "Novice",
+      "start_year": 2026,
+      "years_on_team": 1
+    },
+    {
       "name": "Angelina Afanasenka",
       "status": "Novice",
       "start_year": 2026,
@@ -564,6 +570,34 @@
       "tournament": "GW",
       "year": "Fall 2026",
       "date": "2026-11-06"
+    },
+    {
+      "source": "Anna Gustafson",
+      "target": "Pranav Sasikumar",
+      "tournament": "Rutgers",
+      "year": "Fall 2026",
+      "date": "2026-11-13"
+    },
+    {
+      "source": "Fatima Masood",
+      "target": "Vasa Syomin",
+      "tournament": "Rutgers",
+      "year": "Fall 2026",
+      "date": "2026-11-13"
+    },
+    {
+      "source": "Amulya Chennamaneni",
+      "target": "Tafa Nutakor",
+      "tournament": "Rutgers",
+      "year": "Fall 2026",
+      "date": "2026-11-13"
+    },
+    {
+      "source": "Dheeraj Keshav",
+      "target": "Jack Beery",
+      "tournament": "Rutgers",
+      "year": "Fall 2026",
+      "date": "2026-11-13"
     }
   ],
   "judging": [],
@@ -1299,6 +1333,66 @@
       "tournament": "GW",
       "year": "Fall 2026",
       "date": "2026-11-06"
+    },
+    {
+      "name": "Amulya Chennamaneni",
+      "tournament": "Rutgers",
+      "year": "Fall 2026",
+      "date": "2026-11-13"
+    },
+    {
+      "name": "Anna Gustafson",
+      "tournament": "Rutgers",
+      "year": "Fall 2026",
+      "date": "2026-11-13"
+    },
+    {
+      "name": "Dheeraj Keshav",
+      "tournament": "Rutgers",
+      "year": "Fall 2026",
+      "date": "2026-11-13"
+    },
+    {
+      "name": "Fatima Masood",
+      "tournament": "Rutgers",
+      "year": "Fall 2026",
+      "date": "2026-11-13"
+    },
+    {
+      "name": "Jack Beery",
+      "tournament": "Rutgers",
+      "year": "Fall 2026",
+      "date": "2026-11-13"
+    },
+    {
+      "name": "Mahi Khangura",
+      "tournament": "Rutgers",
+      "year": "Fall 2026",
+      "date": "2026-11-13"
+    },
+    {
+      "name": "Pranav Sasikumar",
+      "tournament": "Rutgers",
+      "year": "Fall 2026",
+      "date": "2026-11-13"
+    },
+    {
+      "name": "Sahithya Venkatesh",
+      "tournament": "Rutgers",
+      "year": "Fall 2026",
+      "date": "2026-11-13"
+    },
+    {
+      "name": "Tafa Nutakor",
+      "tournament": "Rutgers",
+      "year": "Fall 2026",
+      "date": "2026-11-13"
+    },
+    {
+      "name": "Vasa Syomin",
+      "tournament": "Rutgers",
+      "year": "Fall 2026",
+      "date": "2026-11-13"
     }
   ]
 }
