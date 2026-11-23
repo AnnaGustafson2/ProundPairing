@@ -154,6 +154,11 @@ Gotchas
 - The fuzzy-match threshold is length / 2. That is quite loose and can match the wrong person for long names. length / 4 is stricter. This was changed deliberately at one point, so decide which you want.
 - No authentication, and it only runs locally. Anyone who can reach port 7070 can read and write data.
 
+## Images
+![Main Attendance Screen](./ProundPairingMainScreen.png)
+![Tournament Entry Screen](./ProundPairingTournamentEntry.png)
+![Attendance Graph](./ProundPairingDumbellChart.png)
+![Partnership Graph](./ProundPairingForceGraph.png)
 
 ## Initial Wireframe designed using Figma
 ![Wireframe of website](./ProundPairing_Wireframe.png)
