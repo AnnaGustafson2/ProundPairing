@@ -8,6 +8,68 @@ const termKey = (t) => {
   return (+year || 2026) * 3 + (SEASON_ORDER[season] ?? 0);
 };
 
+/* =====================================================================
+   Shared tooltip used by every visualization
+   ===================================================================== */
+const tip = (() => {
+  const el = d3
+    .select("body")
+    .append("div")
+    .attr("class", "chart-tooltip")
+    .style("position", "absolute")
+    .style("pointer-events", "none")
+    .style("opacity", 0)
+    .style("background", "rgba(30, 30, 30, 0.92)")
+    .style("color", "#fff")
+    .style("padding", "6px 10px")
+    .style("border-radius", "4px")
+    .style("font", "13px/1.4 sans-serif")
+    .style("max-width", "280px")
+    .style("z-index", 1000);
+
+  function move(event) {
+    const node = el.node();
+    const pad = 14;
+    let left = event.pageX + pad;
+    let top = event.pageY + pad;
+    // Flip to the other side of the cursor if it would run off-screen.
+    if (left + node.offsetWidth > window.scrollX + window.innerWidth - 8) {
+      left = event.pageX - node.offsetWidth - pad;
+    }
+    if (top + node.offsetHeight > window.scrollY + window.innerHeight - 8) {
+      top = event.pageY - node.offsetHeight - pad;
+    }
+    el.style("left", left + "px").style("top", top + "px");
+  }
+
+  // lines: array of strings; the first one is shown in bold.
+  function show(event, lines) {
+    el.selectAll("*").remove();
+    lines.filter(Boolean).forEach((line, i) => {
+      el.append("div")
+        .style("font-weight", i === 0 ? "600" : "400")
+        .style("white-space", "pre-line")
+        .text(line);
+    });
+    el.style("opacity", 1);
+    move(event);
+  }
+
+  function hide() {
+    el.style("opacity", 0);
+  }
+
+  // Attach to a d3 selection; `content(d)` returns the lines array.
+  function attach(selection, content) {
+    selection
+      .on("mouseover.tip", (event, d) => show(event, content(d)))
+      .on("mousemove.tip", move)
+      .on("mouseout.tip", hide);
+  }
+
+  return { show, move, hide, attach };
+})();
+
 function dateToTerm(date) {
   if (!date) return "Fall 2026";
   let month = 9;
@@ -195,6 +257,15 @@ async function createAttendanceChart({
     const domain = sortYearsDomain(rows.map(get));
     color.domain(domain);
     bars.attr("fill", (d) => color(get(d)));
+    bars.style("cursor", "pointer");
+    tip.attach(bars, (d) => [
+      d.name,
+      `${d.attended} of ${d[totalKey] || total} ${noun} (${Math.round(
+        (d.rate || (total > 0 ? d.attended / total : 0)) * 100,
+      )}%)`,
+      d.experience_level,
+      `${d.years_on_team ?? (d.start_year ? 2026 - d.start_year + 1 : "?")} yr on team`,
+    ]);
 
     const items = d3
       .select(`#${prefix}-legend`)
@@ -346,11 +417,27 @@ async function createComparisonChart() {
     .attr("r", 5)
     .attr("fill", TOURNAMENT);
 
-  row.append("title").text(
-    (d) =>
-      `${d.name}\nPractice: ${Math.round(d.practice * 100)}%` +
-      `\nTournaments: ${Math.round(d.tournament * 100)}%`,
-  );
+    row
+    .insert("rect", ":first-child")
+    .attr("x", margin.left)
+    .attr("width", width - margin.left - margin.right)
+    .attr("y", -y.bandwidth() / 2)
+    .attr("height", y.bandwidth())
+    .attr("fill", "transparent");
+
+  row
+    .on("mouseenter.hl", function () {
+      d3.select(this).selectAll("circle").attr("r", 7);
+    })
+    .on("mouseleave.hl", function () {
+      d3.select(this).selectAll("circle").attr("r", 5);
+    });
+
+  tip.attach(row, (d) => [
+    d.name,
+    `Practice: ${Math.round(d.practice * 100)}%`,
+    `Tournaments: ${Math.round(d.tournament * 100)}%`,
+  ]);
 
   svg
     .append("g")
@@ -445,49 +532,23 @@ function createVis(data, { mount = "#vis", noun = "Tournaments" } = {}) {
   let link = linkLayer.selectAll("line");
   let node = nodeLayer.selectAll("circle");
 
-  // ---------- Tooltip ----------
-  const tooltip = d3
-    .select("body")
-    .append("div")
-    .attr("class", "node-tooltip")
-    .style("position", "absolute")
-    .style("pointer-events", "none")
-    .style("opacity", 0)
-    .style("background", "rgba(30, 30, 30, 0.92)")
-    .style("color", "#fff")
-    .style("padding", "6px 10px")
-    .style("border-radius", "4px")
-    .style("font", "13px/1.4 sans-serif")
-    .style("z-index", 10);
-
-  function showTooltip(event, d) {
-    tooltip.selectAll("*").remove();
-    tooltip.append("div").style("font-weight", "600").text(d.name);
-    tooltip.append("div").text(`${noun}: ${d.count}`);
+  const nodeLines = (d) => {
+    const lines = [d.name, `${noun}: ${d.count}`];
     const parts = [];
     if (d.debated > 0) parts.push(`Debated ${d.debated}`);
     if (d.judged > 0) parts.push(`Judged ${d.judged}`);
     if (d.attendedOnly > 0) parts.push(`Attended ${d.attendedOnly}`);
-    if (parts.length > 0) {
-      tooltip.append("div").text(parts.join(", "));
-    }
+    if (parts.length) lines.push(parts.join(", "));
     const yrs = d.years_on_team ?? (d.start_year ? 2026 - d.start_year + 1 : null);
-    if (yrs) {
-      tooltip.append("div").text(`${yrs} yr on team`);
-    }
-    tooltip.style("opacity", 1);
-    moveTooltip(event);
-  }
+    if (yrs) lines.push(`${yrs} yr on team`);
+    return lines;
+  };
 
-  function moveTooltip(event) {
-    tooltip
-      .style("left", event.pageX + 14 + "px")
-      .style("top", event.pageY + 14 + "px");
-  }
-
-  function hideTooltip() {
-    tooltip.style("opacity", 0);
-  }
+  const linkLines = (d) => {
+    const a = d.source.name ?? d.source;
+    const b = d.target.name ?? d.target;
+    return [`${a} ↔ ${b}`, ...d.events];
+  };
 
   // ---------- Simulation ----------
   const simulation = d3
@@ -565,7 +626,7 @@ function createVis(data, { mount = "#vis", noun = "Tournaments" } = {}) {
 
   // ---------- Time filtering ----------
   function update() {
-    hideTooltip();
+    tip.hide();
     const lo = termKey(terms[state.start]);
     const hi = termKey(terms[state.end]);
 
@@ -638,16 +699,28 @@ function createVis(data, { mount = "#vis", noun = "Tournaments" } = {}) {
       .data(links, (d) => d.key)
       .join("line")
       .attr("stroke-width", (d) => widthScale(d.events.length));
-    link.selectAll("title").remove();
+        link = linkLayer
+      .selectAll("line")
+      .data(links, (d) => d.key)
+      .join("line")
+      .attr("stroke-width", (d) => widthScale(d.events.length))
+      .style("cursor", "pointer");
+    tip.attach(link, linkLines);
+    link
+      .on("mouseenter.hl", function () {
+        d3.select(this).attr("stroke-opacity", 1).attr("stroke", "#333");
+      })
+      .on("mouseleave.hl", function () {
+        d3.select(this).attr("stroke-opacity", null).attr("stroke", null);
+      });
+    
     link.append("title").text((d) => d.events.join("\n"));
 
     node = nodeLayer
       .selectAll("circle")
       .data(nodes, (d) => d.name)
       .join((enter) => enter.append("circle").attr("r", 5))
-      .on("mouseover", showTooltip)
-      .on("mousemove", moveTooltip)
-      .on("mouseout", hideTooltip)
+      .call((sel) => tip.attach(sel, nodeLines))
       .call(
         d3
           .drag()
@@ -834,45 +907,6 @@ function createPairingCharts(data, attendanceData) {
 
     const JITTER_RANGE = 50;
 
-    // Tooltip for the ratio charts.
-    const tooltip = d3
-      .select("body")
-      .append("div")
-      .attr("class", "ratio-tooltip")
-      .style("position", "absolute")
-      .style("pointer-events", "none")
-      .style("opacity", 0)
-      .style("background", "rgba(30, 30, 30, 0.92)")
-      .style("color", "#fff")
-      .style("padding", "6px 10px")
-      .style("border-radius", "4px")
-      .style("font", "13px/1.4 sans-serif")
-      .style("z-index", 10);
-
-    function showTooltip(event, d) {
-      tooltip.selectAll("*").remove();
-      tooltip.append("div").style("font-weight", "600").text(d.name);
-      if (d.gender) tooltip.append("div").text(`Gender: ${d.gender}`);
-      tooltip.append("div").text(`Cross-level pairings: ${d.pairings}`);
-      tooltip.append("div").text(`Practices attended: ${d.attended}`);
-      tooltip
-        .append("div")
-        .text(`Pairings per practice: ${d.ratio.toFixed(2)}`);
-
-      tooltip.style("opacity", 1);
-      moveTooltip(event);
-    }
-
-    function moveTooltip(event) {
-      tooltip
-        .style("left", event.pageX + 14 + "px")
-        .style("top", event.pageY + 14 + "px");
-    }
-
-    function hideTooltip() {
-      tooltip.style("opacity", 0);
-    }
-
     svg
       .append("g")
       .selectAll("circle")
@@ -902,9 +936,17 @@ function createPairingCharts(data, attendanceData) {
       )
       .attr("stroke", "#fff")
       .attr("stroke-width", 1.5)
-      .on("mouseover", showTooltip)
-      .on("mousemove", moveTooltip)
-      .on("mouseout", hideTooltip);
+            .attr("stroke-width", 1.5)
+      .style("cursor", "pointer")
+      .call((sel) =>
+        tip.attach(sel, (d) => [
+          d.name,
+          d.gender ? `Gender: ${d.gender}` : null,
+          `Cross-level pairings: ${d.pairings}`,
+          `Practices attended: ${d.attended}`,
+          `Pairings per practice: ${d.ratio.toFixed(2)}`,
+        ]),
+      );
 
     svg
       .append("g")
@@ -963,10 +1005,6 @@ async function init() {
     loadPairings("./data/practice-pairings.json"),
   ]);
 
-  try {
-    const resAtt = await fetch("/api/statistics/attendance");
-    if (resAtt.ok) attendanceData = await resAtt.json();
-  } catch (e) {}
   try {
     const resAtt = await fetch("/api/statistics/attendance");
     if (resAtt.ok) attendanceData = await resAtt.json();
